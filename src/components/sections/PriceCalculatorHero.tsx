@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { CalculatorIcon, CurrencyDollarIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion';
+import { CalculatorIcon, CurrencyDollarIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 export default function PriceCalculatorHero() {
   return (
@@ -23,7 +23,7 @@ export default function PriceCalculatorHero() {
               <CalculatorIcon className="w-16 h-16 text-white" />
             </div>
           </motion.div>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function PriceCalculatorHero() {
           >
             Prisberegner
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,14 +41,14 @@ export default function PriceCalculatorHero() {
           >
             Få et øjeblikkeligt estimat på dit projekt
           </motion.p>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg text-blue-200 max-w-2xl mx-auto mb-12"
           >
-            Brug vores interaktive prisberegner til at få en præcis pris på dit næste webprojekt. 
+            Brug vores interaktive prisberegner til at få en præcis pris på dit næste webprojekt.
             Vælg mellem forskellige projekttyper og tilpasningsmuligheder.
           </motion.p>
 
@@ -62,15 +62,17 @@ export default function PriceCalculatorHero() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
               <CurrencyDollarIcon className="w-8 h-8 text-green-400 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Transparent Prissætning</h3>
-              <p className="text-sm text-blue-200">Ingen skjulte omkostninger eller overraskelser</p>
+              <p className="text-sm text-blue-200">
+                Ingen skjulte omkostninger eller overraskelser
+              </p>
             </div>
-            
+
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
               <ClockIcon className="w-8 h-8 text-yellow-400 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Øjeblikkelig Beregning</h3>
               <p className="text-sm text-blue-200">Få dit estimat på få sekunder</p>
             </div>
-            
+
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
               <CalculatorIcon className="w-8 h-8 text-purple-400 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Fleksible Muligheder</h3>
@@ -95,7 +97,7 @@ export default function PriceCalculatorHero() {
         >
           💰
         </motion.div>
-        
+
         <motion.div
           className="absolute bottom-20 right-10 text-6xl text-white opacity-10"
           animate={{
@@ -111,5 +113,5 @@ export default function PriceCalculatorHero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

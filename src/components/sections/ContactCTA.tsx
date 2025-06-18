@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { ArrowRightIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion';
+import { ArrowRightIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 export default function ContactCTA() {
   return (
@@ -16,16 +16,17 @@ export default function ContactCTA() {
           >
             Klar til at komme i gang?
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl mb-8 text-blue-100"
           >
-            Kontakt os i dag for en gratis konsultation og få et skræddersyet tilbud til dit projekt.
+            Kontakt os i dag for en gratis konsultation og få et skræddersyet tilbud til dit
+            projekt.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +42,7 @@ export default function ContactCTA() {
               Få et tilbud
               <ArrowRightIcon className="w-5 h-5" />
             </motion.a>
-            
+
             <motion.a
               href="tel:+4512345678"
               whileHover={{ scale: 1.05 }}
@@ -52,7 +53,7 @@ export default function ContactCTA() {
               Ring nu
             </motion.a>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,5 +72,5 @@ export default function ContactCTA() {
         </div>
       </div>
     </section>
-  )
+  );
 }

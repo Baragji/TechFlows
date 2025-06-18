@@ -40,12 +40,10 @@ const Layout: React.FC<LayoutProps> = ({ children, className = '' }) => {
     <div className={`min-h-screen flex flex-col ${className}`}>
       {/* Navigation */}
       <Navigation />
-      
+
       {/* Main Content */}
-      <main className="flex-grow pt-16">
-        {children}
-      </main>
-      
+      <main className="flex-grow pt-16">{children}</main>
+
       {/* Footer */}
       <Footer
         sections={footerSections}

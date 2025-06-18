@@ -1,24 +1,57 @@
 @import "tailwindcss";
 
 :root {
-  --primary-color: #264653;
+  /* Obsidian-inspired color system */
+  --obsidian-dark: #0a0a0a;
+  --obsidian-darker: #1a1a1a;
+  --obsidian-medium: #2a2a2a;
+  --obsidian-light: #3a3a3a;
+  --obsidian-lighter: #4a4a4a;
+  
+  /* Accent colors */
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-purple: #8b5cf6;
+  --accent-orange: #f59e0b;
+  
+  /* Glass morphism */
+  --glass-light: rgba(255, 255, 255, 0.1);
+  --glass-medium: rgba(255, 255, 255, 0.2);
+  --glass-dark: rgba(0, 0, 0, 0.1);
+  --glass-darker: rgba(0, 0, 0, 0.2);
+  
+  /* Legacy colors for backward compatibility */
+  --primary-color: #1a1a1a;
   --secondary-color: #2a9d8f;
-  --accent-color: #e9c46a;
-  --text-dark: #264653;
+  --text-dark: #1a1a1a;
   --text-light: #6c757d;
-  --background-light: #f4f1ed;
+  --background-light: #f8f8f8;
   --background-white: #ffffff;
-  --border-color: #e0e0e0;
+  --border-color: #e4e4e4;
   --hover-color: #f76c6c;
   --success-color: #2a9d8f;
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-obsidian: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 @theme inline {
+  --color-obsidian-dark: var(--obsidian-dark);
+  --color-obsidian-darker: var(--obsidian-darker);
+  --color-obsidian-medium: var(--obsidian-medium);
+  --color-obsidian-light: var(--obsidian-light);
+  --color-obsidian-lighter: var(--obsidian-lighter);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-green: var(--accent-green);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-orange: var(--accent-orange);
+  --color-glass-light: var(--glass-light);
+  --color-glass-medium: var(--glass-medium);
+  --color-glass-dark: var(--glass-dark);
+  --color-glass-darker: var(--glass-darker);
   --color-primary: var(--primary-color);
   --color-secondary: var(--secondary-color);
-  --color-accent: var(--accent-color);
   --color-text-dark: var(--text-dark);
   --color-text-light: var(--text-light);
   --color-background-light: var(--background-light);
@@ -29,6 +62,7 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Base styles with Obsidian influence */
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
@@ -37,26 +71,34 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-optical-sizing: auto;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Typography */
+/* Obsidian-inspired Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 h3 {
@@ -66,6 +108,29 @@ h3 {
 p {
   margin-bottom: 1rem;
   color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Display text for hero sections */
+.text-display {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+  .text-display {
+    font-size: 3rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
 }
 
 /* Smooth scrolling */
@@ -91,6 +156,55 @@ html {
   background: #a8a8a8;
 }
 
+/* Glassmorphism utilities */
+.glass {
+  background: var(--glass-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-medium);
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-darker);
+}
+
+.glass-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-hover:hover {
+  background: var(--glass-medium);
+  box-shadow: var(--shadow-glass);
+  transform: translateY(-2px);
+}
+
+/* Obsidian-inspired gradients */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  padding: 1px;
+  border-radius: 8px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: white;
+  border-radius: 7px;
+  z-index: -1;
+}
+
 /* Custom animations */
 @keyframes float {
   0%, 100% {
@@ -111,10 +225,51 @@ html {
 }
 
 @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
 }
 
 /* Utility classes for animations */
@@ -132,6 +287,23 @@ html {
   animation: fadeInUp 1s ease forwards;
 }
 
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s ease forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: scaleIn 0.5s ease forwards;
+}
+
 .animate-fade-in-delay {
   opacity: 0;
   transform: translateY(30px);
@@ -142,6 +314,71 @@ html {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s ease 0.6s forwards;
+}
+
+.animate-fade-in-delay-3 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease 0.9s forwards;
+}
+
+/* Obsidian-inspired hover effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-obsidian);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Text selection */
+::selection {
+  background-color: var(--accent-blue);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--accent-blue);
+  color: white;
+}
+
+/* Focus styles */
+.focus-ring {
+  transition: all 0.2s ease;
+}
+
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
 }
 
 /* Reduced motion preferences */

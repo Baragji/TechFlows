@@ -20,16 +20,22 @@ interface NotificationComponentProps {
 const NotificationComponent: React.FC<NotificationComponentProps> = ({ notification, onClose }) => {
   const getBackgroundColor = () => {
     switch (notification.type) {
-      case 'success': return 'bg-secondary';
-      case 'error': return 'bg-red-500';
-      case 'warning': return 'bg-accent';
+      case 'success':
+        return 'bg-secondary';
+      case 'error':
+        return 'bg-red-500';
+      case 'warning':
+        return 'bg-accent';
       case 'info':
-      default: return 'bg-primary';
+      default:
+        return 'bg-primary';
     }
   };
 
   return (
-    <div className={`fixed top-24 right-4 z-50 max-w-sm w-full ${getBackgroundColor()} text-white rounded-lg shadow-custom transform transition-all duration-300 animate-slide-in-right`}>
+    <div
+      className={`fixed top-24 right-4 z-50 max-w-sm w-full ${getBackgroundColor()} text-white rounded-lg shadow-custom transform transition-all duration-300 animate-slide-in-right`}
+    >
       <div className="flex items-center justify-between p-4">
         <span className="text-sm font-medium">{notification.message}</span>
         <button
@@ -38,7 +44,12 @@ const NotificationComponent: React.FC<NotificationComponentProps> = ({ notificat
           aria-label="Luk notifikation"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>
@@ -49,22 +60,25 @@ const NotificationComponent: React.FC<NotificationComponentProps> = ({ notificat
 export const useNotification = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
-  const showNotification = useCallback((message: string, type: NotificationType = 'info', duration: number = 5000) => {
-    const id = Math.random().toString(36).substr(2, 9);
-    const notification: Notification = { id, message, type, duration };
+  const showNotification = useCallback(
+    (message: string, type: NotificationType = 'info', duration: number = 5000) => {
+      const id = Math.random().toString(36).substr(2, 9);
+      const notification: Notification = { id, message, type, duration };
 
-    setNotifications(prev => [...prev, notification]);
+      setNotifications((prev) => [...prev, notification]);
 
-    // Auto remove after duration
-    setTimeout(() => {
-      setNotifications(prev => prev.filter(n => n.id !== id));
-    }, duration);
+      // Auto remove after duration
+      setTimeout(() => {
+        setNotifications((prev) => prev.filter((n) => n.id !== id));
+      }, duration);
 
-    return id;
-  }, []);
+      return id;
+    },
+    []
+  );
 
   const removeNotification = useCallback((id: string) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
   }, []);
 
   const clearAllNotifications = useCallback(() => {
@@ -79,13 +93,10 @@ export const useNotification = () => {
         {notifications.map((notification, index) => (
           <div
             key={notification.id}
-            style={{ top: `${100 + (index * 80)}px` }}
+            style={{ top: `${100 + index * 80}px` }}
             className="absolute right-4"
           >
-            <NotificationComponent
-              notification={notification}
-              onClose={removeNotification}
-            />
+            <NotificationComponent notification={notification} onClose={removeNotification} />
           </div>
         ))}
       </div>,
@@ -98,7 +109,7 @@ export const useNotification = () => {
     removeNotification,
     clearAllNotifications,
     NotificationContainer,
-    notifications
+    notifications,
   };
 };
 

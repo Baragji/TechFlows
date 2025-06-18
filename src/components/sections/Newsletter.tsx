@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { EnvelopeIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
+import { motion } from 'framer-motion';
+import { EnvelopeIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 
 export default function Newsletter() {
-  const [email, setEmail] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle newsletter signup
-    console.log('Newsletter signup:', email)
-    setIsSubmitted(true)
-    setEmail('')
-    
+    console.log('Newsletter signup:', email);
+    setIsSubmitted(true);
+    setEmail('');
+
     // Reset after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false)
-    }, 3000)
-  }
+      setIsSubmitted(false);
+    }, 3000);
+  };
 
   return (
     <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
@@ -41,7 +41,7 @@ export default function Newsletter() {
             >
               <EnvelopeIcon className="w-8 h-8 text-white" />
             </motion.div>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function Newsletter() {
             >
               Hold dig opdateret
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -59,10 +59,10 @@ export default function Newsletter() {
               viewport={{ once: true }}
               className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto"
             >
-              Tilmeld dig vores nyhedsbrev og få de seneste artikler, tips og indsigter 
-              direkte i din indbakke.
+              Tilmeld dig vores nyhedsbrev og få de seneste artikler, tips og indsigter direkte i
+              din indbakke.
             </motion.p>
-            
+
             {!isSubmitted ? (
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
@@ -98,7 +98,7 @@ export default function Newsletter() {
                 </p>
               </motion.div>
             )}
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -111,7 +111,7 @@ export default function Newsletter() {
           </div>
         </motion.div>
       </div>
-      
+
       {/* Background Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(8)].map((_, i) => (
@@ -135,5 +135,5 @@ export default function Newsletter() {
         ))}
       </div>
     </section>
-  )
+  );
 }

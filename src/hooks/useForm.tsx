@@ -75,11 +75,11 @@ export const useForm = (options: UseFormOptions = {}) => {
   // Initialize form state
   const [formState, setFormState] = useState<FormState>(() => {
     const state: FormState = {};
-    Object.keys(initialValues).forEach(key => {
+    Object.keys(initialValues).forEach((key) => {
       state[key] = {
         value: initialValues[key] || '',
         error: undefined,
-        touched: false
+        touched: false,
       };
     });
     return state;
@@ -88,46 +88,63 @@ export const useForm = (options: UseFormOptions = {}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Get field value
-  const getValue = useCallback((fieldName: string): string => {
-    return formState[fieldName]?.value || '';
-  }, [formState]);
+  const getValue = useCallback(
+    (fieldName: string): string => {
+      return formState[fieldName]?.value || '';
+    },
+    [formState]
+  );
 
   // Get field error
-  const getError = useCallback((fieldName: string): string | undefined => {
-    return formState[fieldName]?.error;
-  }, [formState]);
+  const getError = useCallback(
+    (fieldName: string): string | undefined => {
+      return formState[fieldName]?.error;
+    },
+    [formState]
+  );
 
   // Check if field has been touched
-  const isTouched = useCallback((fieldName: string): boolean => {
-    return formState[fieldName]?.touched || false;
-  }, [formState]);
+  const isTouched = useCallback(
+    (fieldName: string): boolean => {
+      return formState[fieldName]?.touched || false;
+    },
+    [formState]
+  );
 
   // Set field value
-  const setValue = useCallback((fieldName: string, value: string) => {
-    setFormState(prev => ({
-      ...prev,
-      [fieldName]: {
-        ...prev[fieldName],
-        value,
-        error: validationRules[fieldName] ? validateField(value, validationRules[fieldName]) : undefined
-      }
-    }));
-  }, [validationRules]);
+  const setValue = useCallback(
+    (fieldName: string, value: string) => {
+      setFormState((prev) => ({
+        ...prev,
+        [fieldName]: {
+          ...prev[fieldName],
+          value,
+          error: validationRules[fieldName]
+            ? validateField(value, validationRules[fieldName])
+            : undefined,
+        },
+      }));
+    },
+    [validationRules]
+  );
 
   // Handle input change
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setValue(name, value);
-  }, [setValue]);
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { name, value } = e.target;
+      setValue(name, value);
+    },
+    [setValue]
+  );
 
   // Handle field blur
   const handleBlur = useCallback((fieldName: string) => {
-    setFormState(prev => ({
+    setFormState((prev) => ({
       ...prev,
       [fieldName]: {
         ...prev[fieldName],
-        touched: true
-      }
+        touched: true,
+      },
     }));
   }, []);
 
@@ -136,15 +153,15 @@ export const useForm = (options: UseFormOptions = {}) => {
     let isValid = true;
     const newFormState = { ...formState };
 
-    Object.keys(validationRules).forEach(fieldName => {
+    Object.keys(validationRules).forEach((fieldName) => {
       const value = formState[fieldName]?.value || '';
       const error = validateField(value, validationRules[fieldName]);
-      
+
       newFormState[fieldName] = {
         ...newFormState[fieldName],
         value,
         error,
-        touched: true
+        touched: true,
       };
 
       if (error) {
@@ -157,45 +174,48 @@ export const useForm = (options: UseFormOptions = {}) => {
   }, [formState, validationRules]);
 
   // Handle form submission
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    if (isSubmitting) return;
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-    const isValid = validateForm();
-    
-    if (!isValid) {
-      showNotification('Ret venligst fejlene i formularen', 'error');
-      return;
-    }
+      if (isSubmitting) return;
 
-    if (onSubmit) {
-      setIsSubmitting(true);
-      try {
-        const data: { [key: string]: string } = {};
-        Object.keys(formState).forEach(key => {
-          data[key] = formState[key].value;
-        });
-        
-        await onSubmit(data);
-        showNotification('Formularen blev sendt succesfuldt!', 'success');
-      } catch (error) {
-        console.error('Form submission error:', error);
-        showNotification('Der opstod en fejl. Prøv venligst igen.', 'error');
-      } finally {
-        setIsSubmitting(false);
+      const isValid = validateForm();
+
+      if (!isValid) {
+        showNotification('Ret venligst fejlene i formularen', 'error');
+        return;
       }
-    }
-  }, [formState, isSubmitting, onSubmit, showNotification, validateForm]);
+
+      if (onSubmit) {
+        setIsSubmitting(true);
+        try {
+          const data: { [key: string]: string } = {};
+          Object.keys(formState).forEach((key) => {
+            data[key] = formState[key].value;
+          });
+
+          await onSubmit(data);
+          showNotification('Formularen blev sendt succesfuldt!', 'success');
+        } catch (error) {
+          console.error('Form submission error:', error);
+          showNotification('Der opstod en fejl. Prøv venligst igen.', 'error');
+        } finally {
+          setIsSubmitting(false);
+        }
+      }
+    },
+    [formState, isSubmitting, onSubmit, showNotification, validateForm]
+  );
 
   // Reset form
   const resetForm = useCallback(() => {
     const resetState: FormState = {};
-    Object.keys(initialValues).forEach(key => {
+    Object.keys(initialValues).forEach((key) => {
       resetState[key] = {
         value: initialValues[key] || '',
         error: undefined,
-        touched: false
+        touched: false,
       };
     });
     setFormState(resetState);
@@ -204,12 +224,12 @@ export const useForm = (options: UseFormOptions = {}) => {
 
   // Check if form has errors
   const hasErrors = useCallback((): boolean => {
-    return Object.values(formState).some(field => field.error);
+    return Object.values(formState).some((field) => field.error);
   }, [formState]);
 
   // Check if form is dirty (has changes)
   const isDirty = useCallback((): boolean => {
-    return Object.keys(formState).some(key => {
+    return Object.keys(formState).some((key) => {
       const initialValue = initialValues[key] || '';
       const currentValue = formState[key]?.value || '';
       return initialValue !== currentValue;
@@ -220,25 +240,25 @@ export const useForm = (options: UseFormOptions = {}) => {
     // Values and state
     formState,
     isSubmitting,
-    
+
     // Getters
     getValue,
     getError,
     isTouched,
     hasErrors,
     isDirty,
-    
+
     // Setters
     setValue,
-    
+
     // Event handlers
     handleChange,
     handleBlur,
     handleSubmit,
-    
+
     // Actions
     validateForm,
-    resetForm
+    resetForm,
   };
 };
 

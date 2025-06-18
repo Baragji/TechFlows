@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { StarIcon } from '@heroicons/react/24/solid'
+import { motion } from 'framer-motion';
+import { StarIcon } from '@heroicons/react/24/solid';
 
 export default function TestimonialsHero() {
   return (
@@ -25,7 +25,7 @@ export default function TestimonialsHero() {
               ))}
             </div>
           </motion.div>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ export default function TestimonialsHero() {
           >
             Kundeanmeldelser
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,15 +43,15 @@ export default function TestimonialsHero() {
           >
             Se hvad vores kunder siger om os
           </motion.p>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg text-blue-200 max-w-2xl mx-auto"
           >
-            Vi er stolte af de resultater vi leverer og de relationer vi bygger. 
-            Læs erfaringerne fra virksomheder der har valgt os som deres teknologipartner.
+            Vi er stolte af de resultater vi leverer og de relationer vi bygger. Læs erfaringerne
+            fra virksomheder der har valgt os som deres teknologipartner.
           </motion.p>
         </div>
       </div>
@@ -69,9 +69,9 @@ export default function TestimonialsHero() {
             repeat: Infinity,
           }}
         >
-          "
+          &ldquo;
         </motion.div>
-        
+
         <motion.div
           className="absolute bottom-20 right-10 text-6xl text-white opacity-10"
           animate={{
@@ -84,9 +84,9 @@ export default function TestimonialsHero() {
             delay: 2,
           }}
         >
-          "
+          &ldquo;
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

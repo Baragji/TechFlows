@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { useCounterAnimation } from '@/hooks/useScrollAnimation';
-import { 
+import {
   LightBulbIcon,
   StarIcon,
   CubeIcon,
   UserGroupIcon,
   EyeIcon,
-  SparklesIcon
+  SparklesIcon,
 } from '@heroicons/react/24/outline';
 
 interface Stat {
@@ -27,7 +27,7 @@ const AboutContent = () => {
     { number: '75', label: 'Tilfredse kunder' },
     { number: '150', label: 'Projekter leveret' },
     { number: '7', label: 'Års erfaring' },
-    { number: '98', label: '% kundetilfredshed' }
+    { number: '98', label: '% kundetilfredshed' },
   ];
 
   // Counter animations for stats
@@ -40,33 +40,33 @@ const AboutContent = () => {
     {
       icon: LightBulbIcon,
       title: 'Innovation',
-      description: 'Vi holder os altid opdateret med de nyeste teknologier og trends'
+      description: 'Vi holder os altid opdateret med de nyeste teknologier og trends',
     },
     {
       icon: StarIcon,
       title: 'Kvalitet',
-      description: 'Vi leverer altid professionelt håndværk af højeste standard'
+      description: 'Vi leverer altid professionelt håndværk af højeste standard',
     },
     {
       icon: CubeIcon,
       title: 'Enkelhed',
-      description: 'Vi skaber intuitive løsninger, der er nemme at bruge og forstå'
+      description: 'Vi skaber intuitive løsninger, der er nemme at bruge og forstå',
     },
     {
       icon: UserGroupIcon,
       title: 'Samarbejde',
-      description: 'Vi arbejder tæt sammen med vores kunder som ægte partnere'
+      description: 'Vi arbejder tæt sammen med vores kunder som ægte partnere',
     },
     {
       icon: EyeIcon,
       title: 'Transparens',
-      description: 'Vi kommunikerer åbent og ærligt gennem hele processen'
+      description: 'Vi kommunikerer åbent og ærligt gennem hele processen',
     },
     {
       icon: SparklesIcon,
       title: 'Bæredygtighed',
-      description: 'Vi tænker langsigtet og skaber løsninger der holder'
-    }
+      description: 'Vi tænker langsigtet og skaber løsninger der holder',
+    },
   ];
 
   return (
@@ -84,7 +84,10 @@ const AboutContent = () => {
             >
               <h2 className="text-3xl font-bold text-text-dark mb-6">Vores historie</h2>
               <p className="text-lg text-text-light leading-relaxed mb-8">
-                TechFlow Solutions blev grundlagt med en klar vision: at gøre teknologi tilgængelig og værdiskabende for alle virksomheder, uanset størrelse. Vi startede som et lille team af passionerede udviklere og er vokset til at blive en pålidelig partner for virksomheder, der ønsker at udnytte teknologiens fulde potentiale.
+                TechFlow Solutions blev grundlagt med en klar vision: at gøre teknologi tilgængelig
+                og værdiskabende for alle virksomheder, uanset størrelse. Vi startede som et lille
+                team af passionerede udviklere og er vokset til at blive en pålidelig partner for
+                virksomheder, der ønsker at udnytte teknologiens fulde potentiale.
               </p>
             </motion.div>
 
@@ -97,7 +100,10 @@ const AboutContent = () => {
             >
               <h3 className="text-2xl font-semibold text-text-dark mb-4">Vores mission</h3>
               <p className="text-lg text-text-light leading-relaxed mb-8">
-                Hos TechFlow Solutions tror vi på, at teknologi skal gøre livet lettere, ikke mere kompliceret. Vi hjælper virksomheder med at automatisere deres processer og skabe digitale løsninger, der virkelig gør en forskel. Vores mål er at være den teknologipartner, der forstår både forretning og teknologi.
+                Hos TechFlow Solutions tror vi på, at teknologi skal gøre livet lettere, ikke mere
+                kompliceret. Vi hjælper virksomheder med at automatisere deres processer og skabe
+                digitale løsninger, der virkelig gør en forskel. Vores mål er at være den
+                teknologipartner, der forstår både forretning og teknologi.
               </p>
             </motion.div>
 
@@ -144,10 +150,14 @@ const AboutContent = () => {
             >
               <h3 className="text-2xl font-semibold text-text-dark mb-4">Vores tilgang</h3>
               <p className="text-lg text-text-light leading-relaxed mb-4">
-                Vi tror på, at de bedste løsninger opstår gennem tæt samarbejde mellem kunde og leverandør. Derfor starter vi altid med at forstå jeres forretning, jeres udfordringer og jeres mål. Først derefter designer vi teknologiløsninger, der passer præcist til jeres behov.
+                Vi tror på, at de bedste løsninger opstår gennem tæt samarbejde mellem kunde og
+                leverandør. Derfor starter vi altid med at forstå jeres forretning, jeres
+                udfordringer og jeres mål. Først derefter designer vi teknologiløsninger, der passer
+                præcist til jeres behov.
               </p>
               <p className="text-lg text-text-light leading-relaxed">
-                Vores agile arbejdsmetode sikrer, at I altid er involveret i processen, og at vi kan tilpasse os undervejs. Vi leverer ikke bare kode - vi leverer værdi.
+                Vores agile arbejdsmetode sikrer, at I altid er involveret i processen, og at vi kan
+                tilpasse os undervejs. Vi leverer ikke bare kode - vi leverer værdi.
               </p>
             </motion.div>
           </div>
@@ -161,24 +171,27 @@ const AboutContent = () => {
             viewport={{ once: true }}
           >
             <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 sticky top-8">
-              <h3 className="text-xl font-semibold text-text-dark mb-8 text-center">Vores resultater</h3>
+              <h3 className="text-xl font-semibold text-text-dark mb-8 text-center">
+                Vores resultater
+              </h3>
               <div className="space-y-8">
                 {stats.map((stat, index) => {
                   const counters = [counter1, counter2, counter3, counter4];
                   const currentCounter = counters[index];
-                  
+
                   return (
                     <motion.div
                       key={stat.label}
                       className="text-center"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.5 + (index * 0.1) }}
+                      transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                       viewport={{ once: true }}
                       ref={currentCounter.elementRef as React.RefObject<HTMLDivElement>}
                     >
                       <div className="text-4xl font-bold text-accent mb-2">
-                        {Math.round(currentCounter.count)}{stat.label.includes('%') ? '' : '+'}
+                        {Math.round(currentCounter.count)}
+                        {stat.label.includes('%') ? '' : '+'}
                       </div>
                       <div className="text-text-light font-medium">{stat.label}</div>
                     </motion.div>

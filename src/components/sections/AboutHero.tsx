@@ -8,7 +8,7 @@ const AboutHero = () => {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Hero Content */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -18,12 +18,13 @@ const AboutHero = () => {
               Om TechFlow Solutions
             </h1>
             <p className="text-xl text-text-light leading-relaxed">
-              Vi bygger bro mellem teknologi og forretning med innovative løsninger der skaber reel værdi
+              Vi bygger bro mellem teknologi og forretning med innovative løsninger der skaber reel
+              værdi
             </p>
           </motion.div>
-          
+
           {/* Hero Visual */}
-          <motion.div 
+          <motion.div
             className="relative"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -36,27 +37,32 @@ const AboutHero = () => {
                   className={`
                     aspect-square rounded-2xl
                     ${
-                      index === 0 ? 'bg-gradient-to-br from-primary to-accent' :
-                      index === 1 ? 'bg-gradient-to-br from-secondary to-primary' :
-                      index === 2 ? 'bg-gradient-to-br from-accent to-secondary' :
-                      index === 3 ? 'bg-gradient-to-br from-primary to-secondary' :
-                      index === 4 ? 'bg-gradient-to-br from-secondary to-accent' :
-                      'bg-gradient-to-br from-accent to-primary'
+                      index === 0
+                        ? 'bg-gradient-to-br from-primary to-accent'
+                        : index === 1
+                          ? 'bg-gradient-to-br from-secondary to-primary'
+                          : index === 2
+                            ? 'bg-gradient-to-br from-accent to-secondary'
+                            : index === 3
+                              ? 'bg-gradient-to-br from-primary to-secondary'
+                              : index === 4
+                                ? 'bg-gradient-to-br from-secondary to-accent'
+                                : 'bg-gradient-to-br from-accent to-primary'
                     }
                   `}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 0.4 + (index * 0.1),
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.4 + index * 0.1,
                     repeat: Infinity,
                     repeatType: 'reverse',
-                    repeatDelay: 2 + (index * 0.2)
+                    repeatDelay: 2 + index * 0.2,
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     rotate: 5,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.2 },
                   }}
                 />
               ))}

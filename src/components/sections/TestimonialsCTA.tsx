@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { ArrowRightIcon, ChatBubbleLeftRightIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion';
+import { ArrowRightIcon, ChatBubbleLeftRightIcon, PhoneIcon } from '@heroicons/react/24/outline';
 
 export default function TestimonialsCTA() {
   return (
@@ -24,8 +24,8 @@ export default function TestimonialsCTA() {
               Klar til at Starte Dit Næste Projekt?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Bliv en del af vores voksende familie af tilfredse kunder. 
-              Lad os hjælpe dig med at realisere dine digitale ambitioner.
+              Bliv en del af vores voksende familie af tilfredse kunder. Lad os hjælpe dig med at
+              realisere dine digitale ambitioner.
             </p>
           </motion.div>
 
@@ -40,9 +40,7 @@ export default function TestimonialsCTA() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
               <ChatBubbleLeftRightIcon className="w-12 h-12 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold mb-2">Gratis Konsultation</h3>
-              <p className="text-gray-300 text-sm">
-                30 minutters gratis rådgivning om dit projekt
-              </p>
+              <p className="text-gray-300 text-sm">30 minutters gratis rådgivning om dit projekt</p>
             </div>
 
             {/* Fast Response */}
@@ -58,9 +56,7 @@ export default function TestimonialsCTA() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
               <ArrowRightIcon className="w-12 h-12 text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold mb-2">Skræddersyede Løsninger</h3>
-              <p className="text-gray-300 text-sm">
-                Hver løsning tilpasses dine specifikke behov
-              </p>
+              <p className="text-gray-300 text-sm">Hver løsning tilpasses dine specifikke behov</p>
             </div>
           </motion.div>
 
@@ -78,7 +74,7 @@ export default function TestimonialsCTA() {
               <span>Få et Gratis Tilbud</span>
               <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
-            
+
             <a
               href="tel:+4512345678"
               className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 group"
@@ -96,22 +92,12 @@ export default function TestimonialsCTA() {
             viewport={{ once: true }}
             className="mt-16 pt-8 border-t border-white/20"
           >
-            <p className="text-gray-400 text-sm mb-4">
-              Betroet af 120+ virksomheder i Danmark
-            </p>
+            <p className="text-gray-400 text-sm mb-4">Betroet af 120+ virksomheder i Danmark</p>
             <div className="flex justify-center items-center space-x-8 text-gray-500">
-              <div className="text-xs">
-                ✓ 5 års erfaring
-              </div>
-              <div className="text-xs">
-                ✓ 98% kundetilfredshed
-              </div>
-              <div className="text-xs">
-                ✓ 24/7 support
-              </div>
-              <div className="text-xs">
-                ✓ Pengene tilbage garanti
-              </div>
+              <div className="text-xs">✓ 5 års erfaring</div>
+              <div className="text-xs">✓ 98% kundetilfredshed</div>
+              <div className="text-xs">✓ 24/7 support</div>
+              <div className="text-xs">✓ Pengene tilbage garanti</div>
             </div>
           </motion.div>
         </div>
@@ -143,5 +129,5 @@ export default function TestimonialsCTA() {
         />
       </div>
     </section>
-  )
+  );
 }

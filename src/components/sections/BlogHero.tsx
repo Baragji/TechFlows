@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 export default function BlogHero() {
   return (
@@ -20,7 +20,7 @@ export default function BlogHero() {
           >
             Blog
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -29,15 +29,15 @@ export default function BlogHero() {
           >
             Indsigter og trends inden for teknologi
           </motion.p>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg text-blue-200 max-w-2xl mx-auto"
           >
-            Hold dig opdateret med de seneste udviklinger inden for webudvikling, 
-            digitalisering og teknologiske innovationer.
+            Hold dig opdateret med de seneste udviklinger inden for webudvikling, digitalisering og
+            teknologiske innovationer.
           </motion.p>
         </div>
       </div>
@@ -65,5 +65,5 @@ export default function BlogHero() {
         ))}
       </div>
     </section>
-  )
+  );
 }

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { NavigationProps, NavItem, NavDropdown } from '@/types/navigation';
 import { useNavbarScroll } from '@/hooks/useScrollAnimation';
 
-const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
+const Navigation: React.FC<NavigationProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isScrolled = useNavbarScroll(50);
   const pathname = usePathname();
@@ -51,25 +51,22 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Check if link is active
-  const isActiveLink = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
-    }
-    return pathname.startsWith(href);
-  };
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-custom' : 'bg-transparent'
-      }`}>
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold text-primary hover:text-accent transition-colors">
-            TechFlow Solutions
-          </Link>
+            <Link
+              href="/"
+              className="text-xl font-bold text-primary hover:text-accent transition-colors"
+            >
+              TechFlow Solutions
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -81,10 +78,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
                   key={item.href}
                   href={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                pathname === item.href
-                  ? 'text-accent bg-accent/10'
-                  : 'text-text-dark hover:text-accent hover:bg-background-light'
-              }`}
+                    pathname === item.href
+                      ? 'text-accent bg-accent/10'
+                      : 'text-text-dark hover:text-accent hover:bg-background-light'
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -97,11 +94,21 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
                   className="px-3 py-2 rounded-md text-sm font-medium text-text-dark hover:text-accent hover:bg-background-light transition-colors flex items-center"
                 >
                   {servicesDropdown.label}
-                  <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className="ml-1 h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </Link>
-                
+
                 {/* Dropdown Menu */}
                 <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="py-1">
@@ -124,10 +131,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
                   key={item.href}
                   href={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                pathname === item.href
-                  ? 'text-accent bg-accent/10'
-                  : 'text-text-dark hover:text-accent hover:bg-background-light'
-              }`}
+                    pathname === item.href
+                      ? 'text-accent bg-accent/10'
+                      : 'text-text-dark hover:text-accent hover:bg-background-light'
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -152,9 +159,15 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
             >
               <span className="sr-only">Open main menu</span>
               <div className="hamburger">
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 mt-1 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 mt-1 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+                <span
+                  className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}
+                ></span>
+                <span
+                  className={`block h-0.5 w-6 bg-current transition-all duration-300 mt-1 ${isMenuOpen ? 'opacity-0' : ''}`}
+                ></span>
+                <span
+                  className={`block h-0.5 w-6 bg-current transition-all duration-300 mt-1 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}
+                ></span>
               </div>
             </button>
           </div>
@@ -162,7 +175,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div className={`md:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div
+        className={`md:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-custom">
           {navItems.map((item) => (
             <Link
@@ -178,10 +193,12 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
               {item.label}
             </Link>
           ))}
-          
+
           {/* Mobile Services */}
           <div className="px-3 py-2">
-            <div className="text-base font-medium text-text-dark mb-2">{servicesDropdown.label}</div>
+            <div className="text-base font-medium text-text-dark mb-2">
+              {servicesDropdown.label}
+            </div>
             <div className="pl-4 space-y-1">
               {servicesDropdown.items.map((item) => (
                 <Link

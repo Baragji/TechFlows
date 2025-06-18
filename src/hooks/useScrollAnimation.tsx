@@ -14,7 +14,7 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
     threshold = 0.1,
     rootMargin = '0px 0px -50px 0px',
     triggerOnce = true,
-    delay = 0
+    delay = 0,
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -59,7 +59,11 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
 };
 
 // Hook for counter animations
-export const useCounterAnimation = (target: number, duration: number = 2000, startOnVisible: boolean = true) => {
+export const useCounterAnimation = (
+  target: number,
+  duration: number = 2000,
+  startOnVisible: boolean = true
+) => {
   const [count, setCount] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.5 });
@@ -69,7 +73,7 @@ export const useCounterAnimation = (target: number, duration: number = 2000, sta
       setIsAnimating(true);
       let start = 0;
       const increment = target / (duration / 16);
-      
+
       const updateCounter = () => {
         start += increment;
         if (start < target) {
@@ -80,7 +84,7 @@ export const useCounterAnimation = (target: number, duration: number = 2000, sta
           setIsAnimating(false);
         }
       };
-      
+
       updateCounter();
     }
   }, [target, duration, isVisible, startOnVisible, isAnimating]);

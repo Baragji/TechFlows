@@ -10,17 +10,8 @@ export interface TypewriterOptions {
   pauseTime?: number;
 }
 
-export const useTypewriter = (
-  texts: string | string[],
-  options: TypewriterOptions = {}
-) => {
-  const {
-    speed = 100,
-    delay = 1000,
-    loop = false,
-    deleteSpeed = 50,
-    pauseTime = 2000
-  } = options;
+export const useTypewriter = (texts: string | string[], options: TypewriterOptions = {}) => {
+  const { speed = 100, delay = 1000, loop = false, deleteSpeed = 50, pauseTime = 2000 } = options;
 
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,7 +62,19 @@ export const useTypewriter = (
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [displayText, currentText, isDeleting, currentIndex, speed, delay, deleteSpeed, pauseTime, loop, textArray, isStarted]);
+  }, [
+    displayText,
+    currentText,
+    isDeleting,
+    currentIndex,
+    speed,
+    delay,
+    deleteSpeed,
+    pauseTime,
+    loop,
+    textArray,
+    isStarted,
+  ]);
 
   const start = () => {
     setIsStarted(true);
@@ -96,7 +99,7 @@ export const useTypewriter = (
     start,
     stop,
     reset,
-    isStarted
+    isStarted,
   };
 };
 
@@ -134,7 +137,7 @@ export const useTypewriterOnScroll = (
 
   return {
     ...typewriter,
-    elementRef
+    elementRef,
   };
 };
 

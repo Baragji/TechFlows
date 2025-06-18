@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface Stat {
-  id: string
-  value: number
-  suffix: string
-  label: string
-  icon: string
+  id: string;
+  value: number;
+  suffix: string;
+  label: string;
+  icon: string;
 }
 
 const stats: Stat[] = [
@@ -17,64 +17,64 @@ const stats: Stat[] = [
     value: 98,
     suffix: '%',
     label: 'Kundetilfredshed',
-    icon: '😊'
+    icon: '😊',
   },
   {
     id: '2',
     value: 150,
     suffix: '+',
     label: 'Projekter Leveret',
-    icon: '🚀'
+    icon: '🚀',
   },
   {
     id: '3',
     value: 120,
     suffix: '+',
     label: 'Tilfredse Kunder',
-    icon: '👥'
+    icon: '👥',
   },
   {
     id: '4',
     value: 24,
     suffix: '/7',
     label: 'Support Timer',
-    icon: '🛠️'
-  }
-]
+    icon: '🛠️',
+  },
+];
 
 interface CounterProps {
-  end: number
-  duration?: number
+  end: number;
+  duration?: number;
 }
 
 function Counter({ end, duration = 2000 }: CounterProps) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let startTime: number
-    let animationFrame: number
+    let startTime: number;
+    let animationFrame: number;
 
     const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-      
-      setCount(Math.floor(progress * end))
-      
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate)
-      }
-    }
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
 
-    animationFrame = requestAnimationFrame(animate)
+      setCount(Math.floor(progress * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
 
     return () => {
       if (animationFrame) {
-        cancelAnimationFrame(animationFrame)
+        cancelAnimationFrame(animationFrame);
       }
-    }
-  }, [end, duration])
+    };
+  }, [end, duration]);
 
-  return <span>{count}</span>
+  return <span>{count}</span>;
 }
 
 export default function TestimonialsStats() {
@@ -131,13 +131,13 @@ export default function TestimonialsStats() {
               Kvalitet og Tillid i Hver Detalje
             </h3>
             <p className="text-blue-100 leading-relaxed">
-              Vores høje kundetilfredshed og succesrate afspejler vores dedikation til at levere 
-              innovative løsninger der overgår forventningerne. Vi bygger ikke bare websites og apps - 
-              vi skaber digitale oplevelser der driver vækst og succes.
+              Vores høje kundetilfredshed og succesrate afspejler vores dedikation til at levere
+              innovative løsninger der overgår forventningerne. Vi bygger ikke bare websites og apps
+              - vi skaber digitale oplevelser der driver vækst og succes.
             </p>
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

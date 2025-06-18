@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  LightBulbIcon, 
-  SparklesIcon, 
-  RocketLaunchIcon 
-} from '@heroicons/react/24/outline';
+import { LightBulbIcon, SparklesIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
 
 interface AIIdea {
   id: string;
@@ -22,10 +18,11 @@ const mockIdeas: AIIdea[] = [
   {
     id: '1',
     title: 'AI-Powered Chatbots',
-    description: 'Intelligente chatbots der kan håndtere kundeservice 24/7 med naturlig sprogforståelse',
+    description:
+      'Intelligente chatbots der kan håndtere kundeservice 24/7 med naturlig sprogforståelse',
     category: 'Kundeservice',
     impact: 'høj',
-    complexity: 'medium'
+    complexity: 'medium',
   },
   {
     id: '2',
@@ -33,7 +30,7 @@ const mockIdeas: AIIdea[] = [
     description: 'Forudsig salgsdata og kundeadfærd med machine learning algoritmer',
     category: 'Business Intelligence',
     impact: 'høj',
-    complexity: 'kompleks'
+    complexity: 'kompleks',
   },
   {
     id: '3',
@@ -41,7 +38,7 @@ const mockIdeas: AIIdea[] = [
     description: 'Generer automatisk produktbeskrivelser og marketing content med AI',
     category: 'Marketing',
     impact: 'medium',
-    complexity: 'medium'
+    complexity: 'medium',
   },
   {
     id: '4',
@@ -49,7 +46,7 @@ const mockIdeas: AIIdea[] = [
     description: 'Optimer lagerføring med AI-baserede forudsigelser af efterspørgsel',
     category: 'Logistik',
     impact: 'høj',
-    complexity: 'kompleks'
+    complexity: 'kompleks',
   },
   {
     id: '5',
@@ -57,7 +54,7 @@ const mockIdeas: AIIdea[] = [
     description: 'Implementer stemmebaseret navigation og kommandoer i dine apps',
     category: 'User Experience',
     impact: 'medium',
-    complexity: 'medium'
+    complexity: 'medium',
   },
   {
     id: '6',
@@ -65,27 +62,35 @@ const mockIdeas: AIIdea[] = [
     description: 'AI-drevet automatisk testing der finder bugs før de når produktion',
     category: 'Udvikling',
     impact: 'medium',
-    complexity: 'simpel'
-  }
+    complexity: 'simpel',
+  },
 ];
 
 const getImpactColor = (impact: string) => {
-    switch (impact.toLowerCase()) {
-      case 'høj': return 'bg-secondary/20 text-secondary';
-      case 'medium': return 'bg-accent/20 text-accent';
-      case 'lav': return 'bg-border text-text-dark';
-      default: return 'bg-border text-text-dark';
-    }
-  };
+  switch (impact.toLowerCase()) {
+    case 'høj':
+      return 'bg-secondary/20 text-secondary';
+    case 'medium':
+      return 'bg-accent/20 text-accent';
+    case 'lav':
+      return 'bg-border text-text-dark';
+    default:
+      return 'bg-border text-text-dark';
+  }
+};
 
 const getComplexityColor = (complexity: string) => {
-    switch (complexity.toLowerCase()) {
-      case 'simpel': return 'bg-primary/20 text-primary';
-      case 'medium': return 'bg-accent/20 text-accent';
-      case 'kompleks': return 'bg-red-100 text-red-800';
-      default: return 'bg-border text-text-dark';
-    }
-  };
+  switch (complexity.toLowerCase()) {
+    case 'simpel':
+      return 'bg-primary/20 text-primary';
+    case 'medium':
+      return 'bg-accent/20 text-accent';
+    case 'kompleks':
+      return 'bg-red-100 text-red-800';
+    default:
+      return 'bg-border text-text-dark';
+  }
+};
 
 const AIIdeas = () => {
   const [ideas, setIdeas] = useState<AIIdea[]>([]);
@@ -96,7 +101,7 @@ const AIIdeas = () => {
     const loadIdeas = async () => {
       setLoading(true);
       // Simuler loading delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setIdeas(mockIdeas);
       setLoading(false);
     };
@@ -108,7 +113,7 @@ const AIIdeas = () => {
     <section id="ideas" className="py-20 bg-gradient-to-br from-background-light to-primary/10">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +130,7 @@ const AIIdeas = () => {
             Lad dig inspirere af de nyeste trends og muligheder inden for teknologi
           </p>
         </motion.div>
-        
+
         {/* Ideas Grid */}
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -159,45 +164,41 @@ const AIIdeas = () => {
                   </div>
                   <RocketLaunchIcon className="w-5 h-5 text-text-light group-hover:text-accent transition-colors duration-300" />
                 </div>
-                
-                <h3 className="text-xl font-semibold text-text-dark mb-3">
-                  {idea.title}
-                </h3>
-                
-                <p className="text-text-light leading-relaxed mb-4">
-                  {idea.description}
-                </p>
-                
+
+                <h3 className="text-xl font-semibold text-text-dark mb-3">{idea.title}</h3>
+
+                <p className="text-text-light leading-relaxed mb-4">{idea.description}</p>
+
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getImpactColor(idea.impact)}`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${getImpactColor(idea.impact)}`}
+                  >
                     Impact: {idea.impact}
                   </span>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getComplexityColor(idea.complexity)}`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${getComplexityColor(idea.complexity)}`}
+                  >
                     {idea.complexity}
                   </span>
                 </div>
-                
-                <div className="text-sm text-text-light font-medium">
-                  {idea.category}
-                </div>
+
+                <div className="text-sm text-text-light font-medium">{idea.category}</div>
               </motion.div>
             ))}
           </div>
         )}
-        
+
         {/* CTA */}
-        <motion.div 
+        <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <p className="text-text-light mb-6">
-            Har du en idé du gerne vil realisere?
-          </p>
-          <a 
-            href="#contact" 
+          <p className="text-text-light mb-6">Har du en idé du gerne vil realisere?</p>
+          <a
+            href="#contact"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-lg hover:from-primary/80 hover:to-accent/80 transition-all duration-300 shadow-custom hover:shadow-custom-lg"
           >
             Lad os tale om det

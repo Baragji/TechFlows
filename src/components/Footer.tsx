@@ -1,13 +1,7 @@
 import Link from 'next/link';
 import { FooterProps } from '@/types/navigation';
 
-const Footer: React.FC<FooterProps> = ({
-  sections,
-  contactInfo,
-  companyName,
-  tagline,
-  year,
-}) => {
+const Footer: React.FC<FooterProps> = ({ sections, contactInfo, companyName, tagline, year }) => {
   return (
     <footer className="bg-text-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -22,9 +16,7 @@ const Footer: React.FC<FooterProps> = ({
           {sections.map((section, index) => (
             <div key={index} className="lg:col-span-1">
               <h4 className="text-lg font-semibold mb-4">{section.title}</h4>
-              {section.content && (
-                <p className="text-text-light mb-4">{section.content}</p>
-              )}
+              {section.content && <p className="text-text-light mb-4">{section.content}</p>}
               {section.links && (
                 <ul className="space-y-2">
                   {section.links.map((link, linkIndex) => (
@@ -72,12 +64,10 @@ const Footer: React.FC<FooterProps> = ({
             <p className="text-text-light text-sm">
               &copy; {year} {companyName}. Alle rettigheder forbeholdes.
             </p>
-            
+
             {/* Optional: Social Links or Additional Links */}
             <div className="mt-4 md:mt-0">
-              <div className="flex space-x-6">
-                {/* Add social media links here if needed */}
-              </div>
+              <div className="flex space-x-6">{/* Add social media links here if needed */}</div>
             </div>
           </div>
         </div>
