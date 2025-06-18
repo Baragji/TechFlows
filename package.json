@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build",
+    "audit:performance": "node scripts/performance-audit.js",
+    "build:production": "NODE_ENV=production npm run build",
+    "lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html --chrome-flags='--headless'"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -36,6 +40,7 @@
     "eslint-config-next": "15.3.3",
     "prettier": "^3.5.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

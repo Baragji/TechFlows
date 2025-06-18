@@ -13,6 +13,7 @@ import {
   XMarkIcon
 } from '@heroicons/react/24/outline';
 import { Event, getUpcomingEvents, eventCategories } from '@/data/events';
+import StructuredData from '@/components/seo/StructuredData';
 
 interface EventDetailProps {
   event: Event;
@@ -66,8 +67,36 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
     }
   };
 
+  const eventData = {
+    name: event.title,
+    startDate: `${event.date}T${event.time}:00`,
+    endDate: `${event.date}T${event.time}:00`, // You might want to calculate actual end time
+    description: event.description,
+    image: event.image,
+    location: event.location.type === 'online' ? {
+      '@type': 'VirtualLocation',
+      url: event.location.url || 'https://techflow.dk/events'
+    } : {
+      '@type': 'Place',
+      name: event.location.venue,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: event.location.address,
+        addressLocality: event.location.city,
+        addressCountry: 'DK'
+      }
+    },
+    offers: {
+      '@type': 'Offer',
+      price: event.price.type === 'free' ? '0' : event.price.amount?.toString(),
+      priceCurrency: 'DKK',
+      availability: event.registration.isOpen ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut'
+    }
+  };
+
   return (
     <article className="min-h-screen bg-gradient-to-br from-background via-background to-glass-dark">
+      <StructuredData type="Event" data={eventData} />
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">

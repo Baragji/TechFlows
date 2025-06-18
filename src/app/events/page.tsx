@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import EventsHero from '@/components/sections/EventsHero';
-import EventsGrid from '@/components/sections/EventsGrid';
 import Newsletter from '@/components/sections/Newsletter';
+import { LazyEventsGrid } from '@/components/lazy/LazyComponents';
 
 export const metadata: Metadata = {
   title: 'Events - Webinarer, Workshops & Konferencer | TechFlow Solutions',
@@ -26,7 +26,7 @@ export default function EventsPage() {
   return (
     <main>
       <EventsHero />
-      <EventsGrid />
+      <LazyEventsGrid />
       <Newsletter />
     </main>
   );

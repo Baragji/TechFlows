@@ -11,6 +11,7 @@ import {
   ShareIcon
 } from '@heroicons/react/24/outline';
 import { BlogPost, blogCategories, getPublishedPosts } from '@/data/blogPosts';
+import StructuredData from '@/components/seo/StructuredData';
 
 interface BlogPostDetailProps {
   post: BlogPost;
@@ -36,8 +37,18 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
     }
   };
 
+  const articleData = {
+    headline: post.title,
+    image: post.image,
+    author: post.author,
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt
+  };
+
   return (
     <article className="min-h-screen bg-gradient-to-br from-background via-background to-glass-dark">
+      <StructuredData type="Article" data={articleData} />
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
