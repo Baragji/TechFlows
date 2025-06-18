@@ -9,6 +9,7 @@ export interface NavItem {
 export interface DropdownItem {
   label: string;
   href: string;
+  description?: string;
 }
 
 export interface NavDropdown {
