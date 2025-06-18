@@ -4,6 +4,7 @@ import Services from '@/components/sections/Services';
 import FeaturedCaseStudies from '@/components/sections/FeaturedCaseStudies';
 import StatsSection from '@/components/sections/StatsSection';
 import ClientMarquee from '@/components/sections/ClientMarquee';
+import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel';
 import Contact from '@/components/sections/Contact';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <FeaturedCaseStudies />
       <StatsSection />
       <ClientMarquee />
+      <TestimonialsCarousel />
       <Contact />
     </main>
   );
