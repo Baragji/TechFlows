@@ -47,6 +47,7 @@ const config: Config = {
           green: '#10b981',
           purple: '#8b5cf6',
           orange: '#f59e0b',
+          gold: '#f59e0b',
         },
         glass: {
           light: 'rgba(255, 255, 255, 0.1)',
@@ -231,7 +232,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
 
 export default config
