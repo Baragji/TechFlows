@@ -1,8 +1,9 @@
 # TechFlow Solutions - Next.js Website
 
-[![CI/CD Pipeline](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/ci.yml)
-[![CodeQL Security Analysis](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/codeql.yml/badge.svg)](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/codeql.yml)
-[![Security Scanning](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/security.yml/badge.svg)](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/security.yml)
+
+''''''[![CI/CD Pipeline](https://github.com/Baragji/TechFlows/actions/workflows/ci.yml/badge.svg)](https://github.com/Baragji/TechFlows/actions/workflows/ci.yml)
+[![CodeQL Security Analysis](https://github.com/Baragji/TechFlows/actions/workflows/codeql.yml/badge.svg)](https://github.com/Baragji/TechFlows/actions/workflows/codeql.yml)
+[![Security Scanning](https://github.com/Baragji/TechFlows/actions/workflows/security.yml/badge.svg)](https://github.com/Baragji/TechFlows/actions/workflows/security.yml)
 
 Modern technology company website built with Next.js, featuring automated security scanning and continuous integration.
 
