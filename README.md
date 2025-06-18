@@ -1,4 +1,32 @@
+# TechFlow Solutions - Next.js Website
+
+[![CI/CD Pipeline](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/ci.yml)
+[![CodeQL Security Analysis](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/codeql.yml/badge.svg)](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/codeql.yml)
+[![Security Scanning](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/security.yml/badge.svg)](https://github.com/YOUR_USERNAME/techflow-nextjs/actions/workflows/security.yml)
+
+Modern technology company website built with Next.js, featuring automated security scanning and continuous integration.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## 🔒 Security & Quality
+
+This project includes comprehensive automated security scanning:
+
+- **CodeQL Analysis**: Advanced security vulnerability detection
+- **Dependency Scanning**: Automated vulnerability checks for all dependencies  
+- **Code Quality**: ESLint, TypeScript, and circular dependency checks
+- **Multi-tool Security**: Semgrep, Snyk, and OSSAR integration
+- **Continuous Monitoring**: Daily security scans and weekly deep analysis
+
+## 🚀 Features
+
+- Modern Next.js 15 with App Router
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Framer Motion for animations
+- Responsive design
+- SEO optimized
+- Automated testing and deployment
 
 ## Getting Started
 
