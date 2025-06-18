@@ -59,22 +59,34 @@ const Hero = () => {
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
+      {/* Hero Background Image - matching HTML example */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('/images/hero/Forside (Main Hero).png')",
+        }}
+      />
       {/* Parallax Background Elements */}
       <motion.div 
         style={{ y, opacity }}
         className="absolute inset-0 -z-10"
       >
-        {/* Geometric Background Pattern */}
+        {/* Subtle Obsidian-style dots pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+            backgroundSize: '60px 60px'
+          }}
+        />
+        
+        {/* Very subtle geometric shapes */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-100/40 to-purple-100/40 rounded-full mix-blend-multiply filter blur-xl"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-purple-100/40 to-pink-100/40 rounded-full mix-blend-multiply filter blur-xl"></div>
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-blue-100/40 to-cyan-100/40 rounded-full mix-blend-multiply filter blur-xl"></div>
+          <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-accent-blue/3 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/6 w-48 h-48 bg-accent-purple/3 rounded-full blur-3xl"></div>
         </div>
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         
         {/* Floating Elements */}
         <motion.div
@@ -117,9 +129,9 @@ const Hero = () => {
         />
       </motion.div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-32 relative z-20">
         <motion.div
-          className="max-w-6xl mx-auto text-center space-y-12"
+          className="max-w-4xl mx-auto text-left ml-[20%] bg-obsidian-overlay backdrop-blur-hero rounded-3xl p-12 border border-glass-light"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -127,7 +139,7 @@ const Hero = () => {
           {/* Main Headline */}
           <div className="space-y-6">
             <motion.div
-              className="flex flex-wrap justify-center gap-4 text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-none"
+              className="flex flex-wrap justify-start gap-4 text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight"
               variants={itemVariants}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
@@ -149,7 +161,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              className="flex flex-wrap justify-center gap-3 text-3xl md:text-5xl lg:text-6xl font-semibold text-gray-700 leading-tight"
+              className="flex flex-wrap justify-start gap-3 text-2xl md:text-4xl lg:text-5xl font-medium text-white/90 leading-tight"
               variants={itemVariants}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             >
@@ -173,7 +185,7 @@ const Hero = () => {
 
           {/* Tagline */}
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light"
+            className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light mb-8"
             variants={itemVariants}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
           >
@@ -181,38 +193,28 @@ const Hero = () => {
             Fra apps der engagerer til hjemmesider der konverterer og automatisering der sparer tid.
           </motion.p>
 
-          {/* Stats Preview */}
+          {/* Tags */}
           <motion.div
-            className="flex flex-wrap justify-center gap-8 md:gap-12 py-8"
+            className="flex flex-wrap gap-3 mb-10"
             variants={itemVariants}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.9 }}
           >
-            {[
-              { number: "150+", label: "Projekter leveret" },
-              { number: "98%", label: "Klient tilfredshed" },
-              { number: "5x", label: "Gennemsnitlig ROI" }
-            ].map((stat, index) => (
-              <motion.div
+            {['Web Development', 'App Development', 'Digital Marketing', 'SEO', 'Automation'].map((tag, index) => (
+              <motion.span
                 key={index}
-                className="text-center"
+                className="px-4 py-2 border border-glass-strong rounded-full text-sm text-white/90 hover:bg-white/10 hover:border-white transition-all duration-300 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
               >
-                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-1">
-                  {stat.number}
-                </div>
-                <div className="text-sm md:text-base text-gray-600 font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
+                {tag}
+              </motion.span>
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
+            className="pt-8"
             variants={itemVariants}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -220,39 +222,9 @@ const Hero = () => {
             >
               <Link
                 href="/prisberegner"
-                className="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-obsidian-darker bg-white rounded-lg hover:bg-gray-100 transition-all duration-300"
               >
-                <span className="relative z-10">Start dit projekt nu</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="#services"
-                className="group inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-300 hover:text-blue-600 transition-all duration-300 shadow-sm hover:shadow-lg"
-              >
-                Se vores services
-                <motion.svg
-                  className="ml-2 w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </motion.svg>
+                Start dit projekt nu
               </Link>
             </motion.div>
           </motion.div>
@@ -265,7 +237,7 @@ const Hero = () => {
             transition={{ delay: 2, duration: 0.8 }}
           >
             <motion.div
-              className="flex flex-col items-center text-gray-400 cursor-pointer"
+              className="flex flex-col items-center text-white/40 cursor-pointer"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
               onClick={() => {

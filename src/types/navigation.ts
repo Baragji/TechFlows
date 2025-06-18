@@ -10,6 +10,7 @@ export interface DropdownItem {
   label: string;
   href: string;
   description?: string;
+  icon?: string;
 }
 
 export interface NavDropdown {

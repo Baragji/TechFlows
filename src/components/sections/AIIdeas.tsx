@@ -69,26 +69,26 @@ const mockIdeas: AIIdea[] = [
 const getImpactColor = (impact: string) => {
   switch (impact.toLowerCase()) {
     case 'høj':
-      return 'bg-secondary/20 text-secondary';
+      return 'bg-accent-green/20 text-accent-green border border-accent-green/30';
     case 'medium':
-      return 'bg-accent/20 text-accent';
+      return 'bg-accent-blue/20 text-accent-blue border border-accent-blue/30';
     case 'lav':
-      return 'bg-border text-text-dark';
+      return 'bg-white/10 text-white/70 border border-white/20';
     default:
-      return 'bg-border text-text-dark';
+      return 'bg-white/10 text-white border border-white/20';
   }
 };
 
 const getComplexityColor = (complexity: string) => {
   switch (complexity.toLowerCase()) {
     case 'simpel':
-      return 'bg-primary/20 text-primary';
+      return 'bg-accent-green/20 text-accent-green border border-accent-green/30';
     case 'medium':
-      return 'bg-accent/20 text-accent';
+      return 'bg-accent-orange/20 text-accent-orange border border-accent-orange/30';
     case 'kompleks':
-      return 'bg-red-100 text-red-800';
+      return 'bg-red-500/20 text-red-400 border border-red-500/30';
     default:
-      return 'bg-border text-text-dark';
+      return 'bg-white/10 text-white border border-white/20';
   }
 };
 
@@ -110,7 +110,7 @@ const AIIdeas = () => {
   }, []);
 
   return (
-    <section id="ideas" className="py-20 bg-gradient-to-br from-background-light to-primary/10">
+    <section id="ideas" className="py-20 bg-obsidian-dark">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -121,12 +121,12 @@ const AIIdeas = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center justify-center mb-4">
-            <SparklesIcon className="w-8 h-8 text-accent mr-3" />
-            <h2 className="text-3xl md:text-4xl font-bold text-text-dark">
+            <SparklesIcon className="w-8 h-8 text-accent-blue mr-3" />
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               AI-Genererede Teknologi Idéer
             </h2>
           </div>
-          <p className="text-lg text-text-light max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Lad dig inspirere af de nyeste trends og muligheder inden for teknologi
           </p>
         </motion.div>
@@ -135,13 +135,13 @@ const AIIdeas = () => {
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg animate-pulse">
-                <div className="h-4 bg-border rounded mb-4"></div>
-                <div className="h-3 bg-border rounded mb-2"></div>
-                <div className="h-3 bg-border rounded mb-4"></div>
+              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 animate-pulse">
+                <div className="h-4 bg-white/20 rounded mb-4"></div>
+                <div className="h-3 bg-white/20 rounded mb-2"></div>
+                <div className="h-3 bg-white/20 rounded mb-4"></div>
                 <div className="flex gap-2">
-                  <div className="h-6 w-16 bg-border rounded-full"></div>
-                  <div className="h-6 w-16 bg-border rounded-full"></div>
+                  <div className="h-6 w-16 bg-white/20 rounded-full"></div>
+                  <div className="h-6 w-16 bg-white/20 rounded-full"></div>
                 </div>
               </div>
             ))}
@@ -151,7 +151,7 @@ const AIIdeas = () => {
             {ideas.map((idea, index) => (
               <motion.div
                 key={idea.id}
-                className="bg-white rounded-2xl p-6 shadow-custom hover:shadow-custom-lg transition-all duration-300 border border-border hover:border-accent/30 group"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent-blue/30 hover:bg-white/10 transition-all duration-300 group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -159,15 +159,15 @@ const AIIdeas = () => {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-accent-purple rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <LightBulbIcon className="w-6 h-6 text-white" />
                   </div>
-                  <RocketLaunchIcon className="w-5 h-5 text-text-light group-hover:text-accent transition-colors duration-300" />
+                  <RocketLaunchIcon className="w-5 h-5 text-white/60 group-hover:text-accent-blue transition-colors duration-300" />
                 </div>
 
-                <h3 className="text-xl font-semibold text-text-dark mb-3">{idea.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">{idea.title}</h3>
 
-                <p className="text-text-light leading-relaxed mb-4">{idea.description}</p>
+                <p className="text-white/70 leading-relaxed mb-4">{idea.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span

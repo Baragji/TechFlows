@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Obsidian-inspired color palette
+        // Obsidian-inspired color palette matching HTML example
         obsidian: {
           50: '#f8f8f8',
           100: '#f0f0f0',
@@ -22,11 +22,17 @@ const config: Config = {
           800: '#5a5a5a',
           900: '#4a4a4a',
           950: '#1a1a1a',
+          // Exact colors from HTML example
           dark: '#0a0a0a',
-          darker: '#1a1a1a',
-          medium: '#2a2a2a',
+          darker: 'rgb(20, 20, 25)', // --background-overlay base color
+          medium: 'rgb(35, 35, 40)', // Navigation background base color
           light: '#3a3a3a',
           lighter: '#4a4a4a',
+          // Glass overlay colors from HTML example
+          overlay: 'rgba(20, 20, 25, 0.7)', // --background-overlay
+          nav: 'rgba(35, 35, 40, 0.95)', // Navigation default - much more opaque
+          'nav-scrolled': 'rgba(35, 35, 40, 0.98)', // Navigation when scrolled - almost solid
+          'nav-hover': 'rgba(30, 30, 35, 0.95)', // Dropdown background - much more opaque
         },
         primary: {
           DEFAULT: '#1a1a1a',
@@ -50,8 +56,9 @@ const config: Config = {
           gold: '#f59e0b',
         },
         glass: {
-          light: 'rgba(255, 255, 255, 0.1)',
+          light: 'rgba(255, 255, 255, 0.1)', // Exact border color from HTML
           medium: 'rgba(255, 255, 255, 0.2)',
+          strong: 'rgba(255, 255, 255, 0.4)', // --border-color from HTML
           dark: 'rgba(0, 0, 0, 0.1)',
           darker: 'rgba(0, 0, 0, 0.2)',
         },
@@ -77,7 +84,8 @@ const config: Config = {
         'border-color': '#e4e4e4',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       fontSize: {
         'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
@@ -115,8 +123,9 @@ const config: Config = {
         'custom-hover': '0 4px 20px rgba(0, 0, 0, 0.15)',
       },
       backdropBlur: {
-        'navbar': '10px',
+        'navbar': '15px', // Exact value from HTML example
         'glass': '16px',
+        'hero': '8px', // Hero content blur from HTML example
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

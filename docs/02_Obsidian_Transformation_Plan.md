@@ -32,22 +32,22 @@ Dette dokument beskriver en komplet transformation af TechFlow Solutions website
 **Mål**: Etabler det visuelle fundament
 
 #### 1.1 Farvepalet og Typografi
-- [ ] Implementer Obsidian's farveskema:
+- [x] Implementer Obsidian's farveskema:
   - Primary: Mørk baggrund (#1a1a1a)
   - Secondary: Hvid tekst (#ffffff)
   - Accent: Blå/grøn toner for highlights
   - Grå nuancer for subtile elementer
 
-- [ ] Typografi system:
+- [x] Typografi system:
   - Primær font: Inter (allerede installeret)
   - Font weights: 300, 400, 500, 600, 700
   - Responsive font sizes
   - Line height optimering
 
 #### 1.2 Tailwind Konfiguration
-- [ ] Udvid tailwind.config.ts med custom farver
-- [ ] Tilføj custom spacing og breakpoints
-- [ ] Implementer glassmorphism utilities
+- [x] Udvid tailwind.config.ts med custom farver
+- [x] Tilføj custom spacing og breakpoints
+- [x] Implementer glassmorphism utilities
 - [ ] Tilføj animation og transition klasser
 
 #### 1.3 Komponent Arkitektur

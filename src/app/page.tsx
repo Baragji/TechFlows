@@ -1,7 +1,7 @@
 import Hero from '@/components/sections/Hero';
 import AIIdeas from '@/components/sections/AIIdeas';
 import Services from '@/components/sections/Services';
-import FeaturedCaseStudies from '@/components/sections/FeaturedCaseStudies';
+import CaseStudiesShowcase from '@/components/sections/CaseStudiesShowcase';
 import Contact from '@/components/sections/Contact';
 import StructuredData from '@/components/seo/StructuredData';
 import { 
@@ -28,7 +28,7 @@ export default function Home() {
       <Hero />
       <AIIdeas />
       <Services />
-      <FeaturedCaseStudies />
+      <CaseStudiesShowcase />
       <LazyStatsSection />
       <LazyClientMarquee />
       <LazyTestimonialsCarousel />

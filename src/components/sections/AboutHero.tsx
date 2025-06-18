@@ -4,8 +4,17 @@ import { motion } from 'framer-motion';
 
 const AboutHero = () => {
   return (
-    <section className="relative min-h-[60vh] bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center">
-      <div className="container mx-auto px-4">
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+      {/* About Hero Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/hero/About-hero.png')",
+        }}
+      />
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-obsidian-darker/50" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Hero Content */}
           <motion.div
@@ -14,10 +23,10 @@ const AboutHero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-dark leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Om TechFlow Solutions
             </h1>
-            <p className="text-xl text-text-light leading-relaxed">
+            <p className="text-xl text-white/70 leading-relaxed">
               Vi bygger bro mellem teknologi og forretning med innovative løsninger der skaber reel
               værdi
             </p>

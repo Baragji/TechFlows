@@ -70,7 +70,7 @@ const AboutContent = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-obsidian-darker">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Main Content */}
@@ -82,8 +82,8 @@ const AboutContent = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-text-dark mb-6">Vores historie</h2>
-              <p className="text-lg text-text-light leading-relaxed mb-8">
+              <h2 className="text-3xl font-bold text-white mb-6">Vores historie</h2>
+              <p className="text-lg text-white/70 leading-relaxed mb-8">
                 TechFlow Solutions blev grundlagt med en klar vision: at gøre teknologi tilgængelig
                 og værdiskabende for alle virksomheder, uanset størrelse. Vi startede som et lille
                 team af passionerede udviklere og er vokset til at blive en pålidelig partner for
@@ -98,8 +98,8 @@ const AboutContent = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-text-dark mb-4">Vores mission</h3>
-              <p className="text-lg text-text-light leading-relaxed mb-8">
+              <h3 className="text-2xl font-semibold text-white mb-4">Vores mission</h3>
+              <p className="text-lg text-white/70 leading-relaxed mb-8">
                 Hos TechFlow Solutions tror vi på, at teknologi skal gøre livet lettere, ikke mere
                 kompliceret. Vi hjælper virksomheder med at automatisere deres processer og skabe
                 digitale løsninger, der virkelig gør en forskel. Vores mål er at være den
@@ -114,26 +114,26 @@ const AboutContent = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-text-dark mb-8">Vores værdier</h3>
+              <h3 className="text-2xl font-semibold text-white mb-8">Vores værdier</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {values.map((value, index) => {
                   const IconComponent = value.icon;
                   return (
                     <motion.div
                       key={value.title}
-                      className="flex items-start space-x-4 p-6 bg-background-light rounded-xl hover:bg-background-light/80 transition-colors duration-300"
+                      className="flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/10 transition-colors duration-300 border border-white/10"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.02 }}
                     >
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <IconComponent className="w-6 h-6 text-accent" />
+                      <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="w-6 h-6 text-accent-blue" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-text-dark mb-2">{value.title}</h4>
-                        <p className="text-text-light">{value.description}</p>
+                        <h4 className="font-semibold text-white mb-2">{value.title}</h4>
+                        <p className="text-white/70">{value.description}</p>
                       </div>
                     </motion.div>
                   );
@@ -148,14 +148,14 @@ const AboutContent = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-text-dark mb-4">Vores tilgang</h3>
-              <p className="text-lg text-text-light leading-relaxed mb-4">
+              <h3 className="text-2xl font-semibold text-white mb-4">Vores tilgang</h3>
+              <p className="text-lg text-white/70 leading-relaxed mb-4">
                 Vi tror på, at de bedste løsninger opstår gennem tæt samarbejde mellem kunde og
                 leverandør. Derfor starter vi altid med at forstå jeres forretning, jeres
                 udfordringer og jeres mål. Først derefter designer vi teknologiløsninger, der passer
                 præcist til jeres behov.
               </p>
-              <p className="text-lg text-text-light leading-relaxed">
+              <p className="text-lg text-white/70 leading-relaxed">
                 Vores agile arbejdsmetode sikrer, at I altid er involveret i processen, og at vi kan
                 tilpasse os undervejs. Vi leverer ikke bare kode - vi leverer værdi.
               </p>
@@ -170,8 +170,8 @@ const AboutContent = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 sticky top-8">
-              <h3 className="text-xl font-semibold text-text-dark mb-8 text-center">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 sticky top-8">
+              <h3 className="text-xl font-semibold text-white mb-8 text-center">
                 Vores resultater
               </h3>
               <div className="space-y-8">
@@ -189,11 +189,11 @@ const AboutContent = () => {
                       viewport={{ once: true }}
                       ref={currentCounter.elementRef as React.RefObject<HTMLDivElement>}
                     >
-                      <div className="text-4xl font-bold text-accent mb-2">
+                      <div className="text-4xl font-bold text-accent-blue mb-2">
                         {Math.round(currentCounter.count)}
                         {stat.label.includes('%') ? '' : '+'}
                       </div>
-                      <div className="text-text-light font-medium">{stat.label}</div>
+                      <div className="text-white/60 font-medium">{stat.label}</div>
                     </motion.div>
                   );
                 })}
