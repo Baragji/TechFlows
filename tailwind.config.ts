@@ -131,6 +131,9 @@ const config: Config = {
         'scale-in': 'scaleIn 0.5s ease forwards',
         'marquee': 'marquee 25s linear infinite',
         'marquee-reverse': 'marquee-reverse 25s linear infinite',
+        'blob': 'blob 7s infinite',
+        'text-reveal': 'textReveal 0.8s ease forwards',
+        'gradient-shift': 'gradientShift 3s ease infinite',
       },
       keyframes: {
         float: {
@@ -190,6 +193,40 @@ const config: Config = {
         'marquee-reverse': {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(0%)' },
+        },
+        blob: {
+          '0%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -50px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
+        textReveal: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(30px) rotateX(-90deg)',
+            filter: 'blur(10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0) rotateX(0deg)',
+            filter: 'blur(0px)',
+          },
+        },
+        gradientShift: {
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
+          },
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
         },
       },
     },
