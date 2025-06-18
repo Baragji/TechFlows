@@ -1,13 +1,5 @@
 import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
-import { 
-  CogIcon,
-  BoltIcon,
-  ChartBarIcon,
-  ClockIcon,
-  DocumentTextIcon,
-  CloudArrowUpIcon
-} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Proces Automatisering | TechFlow Solutions',
@@ -19,32 +11,32 @@ const features = [
   {
     title: 'Workflow Automation',
     description: 'Automatisering af komplekse forretningsprocesser og workflows for øget effektivitet.',
-    icon: CogIcon,
+    icon: 'CogIcon',
   },
   {
     title: 'API Integration',
     description: 'Seamless integration mellem forskellige systemer og platforme for automatisk dataflow.',
-    icon: CloudArrowUpIcon,
+    icon: 'CloudArrowUpIcon',
   },
   {
     title: 'Data Processing',
     description: 'Automatisk behandling og analyse af store datamængder med intelligent algoritmer.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
   {
     title: 'Tidsbesparende Løsninger',
     description: 'Eliminering af repetitive opgaver der frigør tid til mere værdiskabende aktiviteter.',
-    icon: ClockIcon,
+    icon: 'ClockIcon',
   },
   {
     title: 'Dokumentautomatisering',
     description: 'Automatisk generering, behandling og distribution af dokumenter og rapporter.',
-    icon: DocumentTextIcon,
+    icon: 'DocumentTextIcon',
   },
   {
     title: 'Performance Monitoring',
     description: 'Real-time overvågning og optimering af automatiserede processer for maksimal effektivitet.',
-    icon: BoltIcon,
+    icon: 'BoltIcon',
   },
 ];
 
@@ -126,7 +118,7 @@ export default function AutomatiseringPage() {
       subtitle="Automatiser for øget effektivitet og vækst"
       description="Vi hjælper virksomheder med at automatisere manuelle processer og workflows, hvilket frigør ressourcer og reducerer omkostninger. Fra simple task automation til komplekse business process automation - vi skaber løsninger der transformerer din drift."
       heroGradient="from-accent-orange to-accent-green"
-      icon={CogIcon}
+      icon="CogIcon"
       features={features}
       benefits={benefits}
       process={process}

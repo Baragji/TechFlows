@@ -1,13 +1,5 @@
 import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
-import { 
-  LightBulbIcon,
-  ChartBarIcon,
-  TrophyIcon,
-  RocketLaunchIcon,
-  MagnifyingGlassIcon,
-  PresentationChartLineIcon
-} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Digital Strategi | TechFlow Solutions',
@@ -19,32 +11,32 @@ const features = [
   {
     title: 'Digital Transformation',
     description: 'Omfattende strategi for at digitalisere og modernisere dine forretningsprocesser.',
-    icon: RocketLaunchIcon,
+    icon: 'RocketLaunchIcon',
   },
   {
     title: 'Technology Roadmap',
     description: 'Detaljeret plan for teknologisk udvikling og implementering over tid.',
-    icon: PresentationChartLineIcon,
+    icon: 'PresentationChartLineIcon',
   },
   {
     title: 'Konkurrenceanalyse',
     description: 'Dybdegående analyse af markedet og konkurrenter for at identificere muligheder.',
-    icon: MagnifyingGlassIcon,
+    icon: 'MagnifyingGlassIcon',
   },
   {
     title: 'ROI Optimering',
     description: 'Fokus på løsninger der leverer målbare resultater og maksimerer return on investment.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
   {
     title: 'Innovation Workshops',
     description: 'Faciliterede workshops der fremmer innovation og kreativ problemløsning.',
-    icon: LightBulbIcon,
+    icon: 'LightBulbIcon',
   },
   {
     title: 'Performance Metrics',
     description: 'Etablering af KPIs og metrics for at måle succes og kontinuerlig forbedring.',
-    icon: TrophyIcon,
+    icon: 'TrophyIcon',
   },
 ];
 
@@ -126,7 +118,7 @@ export default function DigitalStrategiPage() {
       subtitle="Strategisk rådgivning for digital transformation"
       description="Vi hjælper virksomheder med at navigere den digitale transformation gennem strategisk planlægning og ekspert rådgivning. Fra teknologi roadmaps til innovation strategier - vi sikrer at dine digitale investeringer skaber reel værdi og konkurrencefordel."
       heroGradient="from-accent-blue to-accent-green"
-      icon={LightBulbIcon}
+      icon="LightBulbIcon"
       features={features}
       benefits={benefits}
       process={process}

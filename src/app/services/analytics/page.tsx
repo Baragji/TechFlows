@@ -1,50 +1,42 @@
 import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
-import { 
-  ChartBarIcon,
-  EyeIcon,
-  CursorArrowRaysIcon,
-  PresentationChartLineIcon,
-  FunnelIcon,
-  ClockIcon
-} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Analytics & Tracking | TechFlow Solutions',
-  description: 'Avancerede analytics løsninger for datadrevet beslutningstagning. Google Analytics, custom dashboards og conversion tracking.',
-  keywords: 'analytics, tracking, Google Analytics, conversion tracking, data analyse, performance metrics, dashboards',
+  description: 'Datadrevet indsigt gennem avancerede analytics løsninger. Fra Google Analytics til custom dashboards - optimer din digitale performance.',
+  keywords: 'analytics, tracking, Google Analytics, conversion tracking, data visualisering, KPIs, dashboards',
 };
 
 const features = [
   {
     title: 'Google Analytics Setup',
     description: 'Professionel opsætning af Google Analytics 4 med custom events og enhanced e-commerce tracking.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
   {
     title: 'Custom Dashboards',
     description: 'Skræddersyede dashboards der visualiserer dine vigtigste metrics og KPIs i real-time.',
-    icon: PresentationChartLineIcon,
+    icon: 'PresentationChartLineIcon',
   },
   {
     title: 'Conversion Tracking',
     description: 'Detaljeret sporing af konverteringer og customer journey for optimering af salgsprocessen.',
-    icon: CursorArrowRaysIcon,
+    icon: 'CursorArrowRaysIcon',
   },
   {
     title: 'Brugeradfærd Analyse',
     description: 'Dybdegående analyse af hvordan brugere interagerer med din hjemmeside eller app.',
-    icon: EyeIcon,
+    icon: 'EyeIcon',
   },
   {
     title: 'Funnel Optimering',
     description: 'Identifikation og optimering af flaskehalse i dine salgs- og konverteringsfunnels.',
-    icon: FunnelIcon,
+    icon: 'FunnelIcon',
   },
   {
     title: 'Real-time Monitoring',
     description: 'Kontinuerlig overvågning af performance med automatiske alerts ved kritiske ændringer.',
-    icon: ClockIcon,
+    icon: 'ClockIcon',
   },
 ];
 
@@ -126,7 +118,7 @@ export default function AnalyticsPage() {
       subtitle="Datadrevet indsigt for bedre resultater"
       description="Vi implementerer avancerede analytics løsninger der giver dig den indsigt du behøver for at træffe bedre beslutninger. Fra basic tracking til komplekse data visualiseringer - vi hjælper dig med at forstå og optimere din digitale performance."
       heroGradient="from-accent-purple to-accent-blue"
-      icon={ChartBarIcon}
+      icon="ChartBarIcon"
       features={features}
       benefits={benefits}
       process={process}

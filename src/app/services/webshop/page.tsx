@@ -1,13 +1,5 @@
 import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
-import { 
-  ShoppingCartIcon,
-  CreditCardIcon,
-  ChartBarIcon,
-  TruckIcon,
-  ShieldCheckIcon,
-  DevicePhoneMobileIcon
-} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'E-commerce & Webshop Udvikling | TechFlow Solutions',
@@ -19,32 +11,32 @@ const features = [
   {
     title: 'Betalingsintegration',
     description: 'Sikre betalingsløsninger med support for alle større betalingsmetoder og kryptovaluta.',
-    icon: CreditCardIcon,
+    icon: 'CreditCardIcon',
   },
   {
     title: 'Lagerstyring',
     description: 'Avanceret inventory management med automatisk opdatering og low-stock notifikationer.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
   {
     title: 'Mobiloptimeret',
     description: 'Fuldt responsive design optimeret til mobile shopping med touch-venlige interfaces.',
-    icon: DevicePhoneMobileIcon,
+    icon: 'DevicePhoneMobileIcon',
   },
   {
     title: 'Forsendelsesintegration',
     description: 'Automatisk integration med forsendelsespartnere og real-time tracking for kunder.',
-    icon: TruckIcon,
+    icon: 'TruckIcon',
   },
   {
     title: 'Sikkerhed & PCI Compliance',
     description: 'Højeste sikkerhedsstandarder med SSL, PCI compliance og GDPR overholdelse.',
-    icon: ShieldCheckIcon,
+    icon: 'ShieldCheckIcon',
   },
   {
     title: 'Analytics & Rapporter',
     description: 'Detaljerede salgsrapporter og customer insights for datadrevet beslutningstagning.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
 ];
 
@@ -126,7 +118,7 @@ export default function WebshopPage() {
       subtitle="Professionelle webshops der øger dit salg"
       description="Vi bygger skalerbare e-commerce løsninger der ikke bare sælger produkter, men skaber exceptionelle shopping oplevelser. Fra små boutique shops til store enterprise løsninger - vi har ekspertisen til at drive dit online salg."
       heroGradient="from-accent-green to-accent-blue"
-      icon={ShoppingCartIcon}
+      icon="ShoppingCartIcon"
       features={features}
       benefits={benefits}
       process={process}

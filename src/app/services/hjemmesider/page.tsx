@@ -1,13 +1,5 @@
 import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
-import { 
-  GlobeAltIcon,
-  DevicePhoneMobileIcon,
-  MagnifyingGlassIcon,
-  ChartBarIcon,
-  ShieldCheckIcon,
-  BoltIcon
-} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Hjemmeside Udvikling | TechFlow Solutions',
@@ -19,32 +11,32 @@ const features = [
   {
     title: 'Responsive Design',
     description: 'Perfekt visning på alle enheder - desktop, tablet og mobil med optimeret brugeroplevelse.',
-    icon: DevicePhoneMobileIcon,
+    icon: 'DevicePhoneMobileIcon',
   },
   {
     title: 'SEO Optimeret',
     description: 'Bygget med søgemaskineoptimering fra starten for bedre synlighed og organisk trafik.',
-    icon: MagnifyingGlassIcon,
+    icon: 'MagnifyingGlassIcon',
   },
   {
     title: 'Performance Fokus',
     description: 'Lynhurtige indlæsningstider og optimeret kode for den bedste brugeroplevelse.',
-    icon: BoltIcon,
+    icon: 'BoltIcon',
   },
   {
     title: 'CMS Integration',
     description: 'Brugervenlige content management systemer så du nemt kan opdatere dit indhold.',
-    icon: GlobeAltIcon,
+    icon: 'GlobeAltIcon',
   },
   {
     title: 'Analytics Setup',
     description: 'Komplet opsætning af tracking og analytics for at måle din hjemmesides performance.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
   {
     title: 'Sikkerhed & Backup',
     description: 'Avancerede sikkerhedsforanstaltninger og automatiske backups for ro i sindet.',
-    icon: ShieldCheckIcon,
+    icon: 'ShieldCheckIcon',
   },
 ];
 
@@ -121,7 +113,7 @@ export default function HjemmesiderPage() {
       subtitle="Moderne, responsive hjemmesider der konverterer"
       description="Vi skaber professionelle hjemmesider der ikke bare ser godt ud, men også leverer resultater. Med fokus på brugeroplevelse, performance og konvertering hjælper vi din virksomhed med at skille sig ud online og tiltrække flere kunder."
       heroGradient="from-accent-blue to-accent-purple"
-      icon={GlobeAltIcon}
+      icon="GlobeAltIcon"
       features={features}
       benefits={benefits}
       process={process}

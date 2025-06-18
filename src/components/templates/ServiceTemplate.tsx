@@ -2,12 +2,81 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowLeftIcon, CheckIcon } from '@heroicons/react/24/outline';
+import { 
+  ArrowLeftIcon, 
+  CheckIcon,
+  CogIcon,
+  BoltIcon,
+  ChartBarIcon,
+  ClockIcon,
+  DocumentTextIcon,
+  CloudArrowUpIcon,
+  GlobeAltIcon,
+  DevicePhoneMobileIcon,
+  MagnifyingGlassIcon,
+  ShieldCheckIcon,
+  ShoppingCartIcon,
+  CreditCardIcon,
+  TruckIcon,
+  UserGroupIcon,
+  PresentationChartBarIcon,
+  LightBulbIcon,
+  RocketLaunchIcon,
+  BookOpenIcon,
+  PencilIcon,
+  EyeIcon,
+  BuildingStorefrontIcon,
+  PaintBrushIcon,
+  ComputerDesktopIcon,
+  CubeTransparentIcon,
+  BeakerIcon,
+  CursorArrowRaysIcon,
+  PresentationChartLineIcon,
+  FunnelIcon,
+  CloudIcon,
+  BellIcon,
+  TrophyIcon
+} from '@heroicons/react/24/outline';
+
+// Icon mapping
+const iconMap = {
+  'CogIcon': CogIcon,
+  'BoltIcon': BoltIcon,
+  'ChartBarIcon': ChartBarIcon,
+  'ClockIcon': ClockIcon,
+  'DocumentTextIcon': DocumentTextIcon,
+  'CloudArrowUpIcon': CloudArrowUpIcon,
+  'GlobeAltIcon': GlobeAltIcon,
+  'DevicePhoneMobileIcon': DevicePhoneMobileIcon,
+  'MagnifyingGlassIcon': MagnifyingGlassIcon,
+  'ShieldCheckIcon': ShieldCheckIcon,
+  'ShoppingCartIcon': ShoppingCartIcon,
+  'CreditCardIcon': CreditCardIcon,
+  'TruckIcon': TruckIcon,
+  'UserGroupIcon': UserGroupIcon,
+  'PresentationChartBarIcon': PresentationChartBarIcon,
+  'LightBulbIcon': LightBulbIcon,
+  'RocketLaunchIcon': RocketLaunchIcon,
+  'BookOpenIcon': BookOpenIcon,
+  'PencilIcon': PencilIcon,
+  'EyeIcon': EyeIcon,
+  'BuildingStorefrontIcon': BuildingStorefrontIcon,
+  'PaintBrushIcon': PaintBrushIcon,
+  'ComputerDesktopIcon': ComputerDesktopIcon,
+  'CubeTransparentIcon': CubeTransparentIcon,
+  'BeakerIcon': BeakerIcon,
+  'CursorArrowRaysIcon': CursorArrowRaysIcon,
+  'PresentationChartLineIcon': PresentationChartLineIcon,
+  'FunnelIcon': FunnelIcon,
+  'CloudIcon': CloudIcon,
+  'BellIcon': BellIcon,
+  'TrophyIcon': TrophyIcon,
+};
 
 interface ServiceFeature {
   title: string;
   description: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: string;
 }
 
 interface ServiceBenefit {
@@ -27,7 +96,7 @@ interface ServiceTemplateProps {
   subtitle: string;
   description: string;
   heroGradient: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: string;
   features: ServiceFeature[];
   benefits: ServiceBenefit[];
   process: ServiceProcess[];
@@ -42,7 +111,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
   subtitle,
   description,
   heroGradient,
-  icon: IconComponent,
+  icon: iconName,
   features,
   benefits,
   process,
@@ -51,6 +120,8 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
   caseStudyDescription,
   caseStudyMetrics,
 }) => {
+  // Get the icon component from the mapping
+  const IconComponent = iconMap[iconName as keyof typeof iconMap] || CogIcon;
   return (
     <div className="min-h-screen bg-obsidian-950">
       {/* Hero Section */}
@@ -181,7 +252,10 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
               >
                 {feature.icon && (
                   <div className="mb-4">
-                    <feature.icon className="w-8 h-8 text-accent-blue" />
+                    {(() => {
+                      const FeatureIcon = iconMap[feature.icon as keyof typeof iconMap] || CogIcon;
+                      return <FeatureIcon className="w-8 h-8 text-accent-blue" />;
+                    })()}
                   </div>
                 )}
                 <h3 className="text-xl font-semibold text-white mb-3">

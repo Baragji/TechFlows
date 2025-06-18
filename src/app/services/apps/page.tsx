@@ -1,50 +1,42 @@
 import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
-import { 
-  DevicePhoneMobileIcon,
-  CloudIcon,
-  BellIcon,
-  ShieldCheckIcon,
-  ChartBarIcon,
-  CogIcon
-} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'App Udvikling | TechFlow Solutions',
-  description: 'Native og cross-platform apps til iOS og Android. Professionel app udvikling med fokus på brugeroplevelse, performance og skalerbarhed.',
-  keywords: 'app udvikling, iOS app, Android app, React Native, Flutter, mobile app, native app',
+  description: 'Professionel udvikling af mobile apps og web applikationer. Native iOS/Android apps og cross-platform løsninger der engagerer dine brugere.',
+  keywords: 'app udvikling, mobile apps, iOS, Android, React Native, Flutter, web apps, mobile development',
 };
 
 const features = [
   {
     title: 'Native & Cross-platform',
     description: 'Udvikling af både native iOS/Android apps og cross-platform løsninger for optimal performance.',
-    icon: DevicePhoneMobileIcon,
+    icon: 'DevicePhoneMobileIcon',
   },
   {
     title: 'Cloud Integration',
     description: 'Seamless integration med cloud services for data sync, backup og skalerbarhed.',
-    icon: CloudIcon,
+    icon: 'CloudIcon',
   },
   {
     title: 'Push Notifications',
     description: 'Intelligent notification system der engagerer brugere og øger retention rates.',
-    icon: BellIcon,
+    icon: 'BellIcon',
   },
   {
     title: 'Sikkerhed & Privacy',
     description: 'End-to-end encryption og avancerede sikkerhedsforanstaltninger for beskyttelse af brugerdata.',
-    icon: ShieldCheckIcon,
+    icon: 'ShieldCheckIcon',
   },
   {
     title: 'Analytics & Insights',
     description: 'Detaljeret brugeranalyse og app performance metrics for kontinuerlig optimering.',
-    icon: ChartBarIcon,
+    icon: 'ChartBarIcon',
   },
   {
     title: 'API Integration',
     description: 'Robust integration med tredjepartsservices og eksisterende business systemer.',
-    icon: CogIcon,
+    icon: 'CogIcon',
   },
 ];
 
@@ -126,7 +118,7 @@ export default function AppsPage() {
       subtitle="Native og cross-platform apps der engagerer"
       description="Vi udvikler mobile apps der ikke bare fungerer, men skaber værdi for dine brugere og din forretning. Fra simple utility apps til komplekse enterprise løsninger - vi har ekspertisen til at bringe din vision til live på iOS og Android."
       heroGradient="from-accent-purple to-accent-orange"
-      icon={DevicePhoneMobileIcon}
+      icon="DevicePhoneMobileIcon"
       features={features}
       benefits={benefits}
       process={process}
