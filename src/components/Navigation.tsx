@@ -50,6 +50,7 @@ const Navigation: React.FC<NavigationProps> = () => {
   const additionalNavItems: NavItem[] = [
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'Blog', href: '/blog' },
+    { label: 'Events', href: '/events' },
     { label: 'Kontakt', href: '/#contact' },
   ];
 

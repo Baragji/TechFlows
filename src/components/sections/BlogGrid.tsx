@@ -1,225 +1,246 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CalendarIcon, ClockIcon, UserIcon } from '@heroicons/react/24/outline';
+import { CalendarIcon, ClockIcon, UserIcon, TagIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useState } from 'react';
+import { getPublishedPosts, blogCategories, BlogPost } from '@/data/blogPosts';
 
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  author: string;
-  date: string;
-  readTime: string;
-  category: string;
-  image: string;
-}
+const BlogGrid: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  
+  const allPosts = getPublishedPosts();
+  
+  // Filter posts based on category and search
+  const filteredPosts = allPosts.filter(post => {
+    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    
+    return matchesCategory && matchesSearch;
+  });
 
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Fremtiden for Webudvikling: Trends i 2024',
-    excerpt:
-      'Udforsk de seneste trends inden for webudvikling, fra AI-integration til progressive web apps og hvad det betyder for din virksomhed.',
-    author: 'Yousef Beshara',
-    date: '15. marts 2024',
-    readTime: '5 min',
-    category: 'Webudvikling',
-    image: '/api/placeholder/400/250',
-  },
-  {
-    id: '2',
-    title: 'Sådan Optimerer du din Hjemmeside for Søgemaskiner',
-    excerpt:
-      'En komplet guide til SEO-optimering af din hjemmeside. Lær de vigtigste teknikker til at forbedre din synlighed på Google.',
-    author: 'Tech Specialist',
-    date: '10. marts 2024',
-    readTime: '8 min',
-    category: 'SEO',
-    image: '/api/placeholder/400/250',
-  },
-  {
-    id: '3',
-    title: 'Automatisering af Forretningsprocesser',
-    excerpt:
-      'Discover hvordan automatisering kan spare tid og ressourcer i din virksomhed. Fra simple workflows til komplekse systemer.',
-    author: 'Yousef Beshara',
-    date: '5. marts 2024',
-    readTime: '6 min',
-    category: 'Automatisering',
-    image: '/api/placeholder/400/250',
-  },
-  {
-    id: '4',
-    title: 'Cybersikkerhed for Små Virksomheder',
-    excerpt:
-      'Beskyt din virksomhed mod cybertrusler med disse praktiske tips og best practices for små og mellemstore virksomheder.',
-    author: 'Tech Specialist',
-    date: '28. februar 2024',
-    readTime: '7 min',
-    category: 'Sikkerhed',
-    image: '/api/placeholder/400/250',
-  },
-  {
-    id: '5',
-    title: 'Bæredygtig Webudvikling',
-    excerpt:
-      'Lær hvordan du kan udvikle miljøvenlige websites der både performer godt og reducerer dit CO2-aftryk.',
-    author: 'Yousef Beshara',
-    date: '20. februar 2024',
-    readTime: '4 min',
-    category: 'Bæredygtighed',
-    image: '/api/placeholder/400/250',
-  },
-  {
-    id: '6',
-    title: 'Data-Drevet Beslutningstagning',
-    excerpt:
-      'Hvordan du bruger data analytics til at træffe bedre forretningsbeslutninger og optimere din digitale strategi.',
-    author: 'Tech Specialist',
-    date: '15. februar 2024',
-    readTime: '9 min',
-    category: 'Analytics',
-    image: '/api/placeholder/400/250',
-  },
-];
-
-const categories = [
-  'Alle',
-  'Webudvikling',
-  'SEO',
-  'Automatisering',
-  'Sikkerhed',
-  'Bæredygtighed',
-  'Analytics',
-];
-
-export default function BlogGrid() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section className="py-20 bg-glass-dark/20">
+      <div className="container mx-auto px-4">
+        {/* Filter Controls */}
         <motion.div
+          className="mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Seneste Artikler</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Udforsk vores samling af artikler om teknologi, innovation og digitale løsninger
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto mb-8">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Søg i artikler..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-3 pl-12 bg-glass-light border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-accent-blue transition-colors"
+              />
+              <TagIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
+            </div>
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-3">
+            <motion.button
+              onClick={() => setSelectedCategory('all')}
+              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                selectedCategory === 'all'
+                  ? 'bg-gradient-to-r from-accent-blue to-accent-purple text-white'
+                  : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FunnelIcon className="w-4 h-4 inline-block mr-2" />
+              Alle
+            </motion.button>
+            
+            {blogCategories.map((category) => (
+              <motion.button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.name)}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  selectedCategory === category.name
+                    ? 'bg-gradient-to-r from-accent-blue to-accent-purple text-white'
+                    : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="mr-2">{category.icon}</span>
+                {category.name}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Results Count */}
+        <motion.div
+          className="text-center mb-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-white/70">
+            Viser {filteredPosts.length} artikel{filteredPosts.length !== 1 ? 'r' : ''}
+            {selectedCategory !== 'all' && ` i kategorien "${selectedCategory}"`}
+            {searchTerm && ` for "${searchTerm}"`}
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {categories.map((category, index) => (
-            <button
-              key={category}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                index === 0
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Blog Grid */}
+        {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {post.category}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
-                  <Link href={`/blog/${post.id}`}>{post.title}</Link>
-                </h3>
-
-                <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <UserIcon className="w-4 h-4" />
-                      <span>{post.author}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <ClockIcon className="w-4 h-4" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <CalendarIcon className="w-4 h-4" />
-                    <span>{post.date}</span>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <Link
-                    href={`/blog/${post.id}`}
-                    className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center group"
-                  >
-                    Læs mere
-                    <svg
-                      className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </motion.article>
+          {filteredPosts.map((post, index) => (
+            <BlogPostCard key={post.id} post={post} index={index} />
           ))}
         </div>
 
-        {/* Load More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium">
-            Indlæs flere artikler
-          </button>
-        </motion.div>
+        {/* No Results */}
+        {filteredPosts.length === 0 && (
+          <motion.div
+            className="text-center py-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="w-24 h-24 bg-glass-light rounded-full flex items-center justify-center mx-auto mb-6">
+              <TagIcon className="w-12 h-12 text-white/50" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ingen artikler fundet
+            </h3>
+            <p className="text-white/70 mb-8">
+              Prøv at justere dine søgekriterier eller vælg en anden kategori.
+            </p>
+            <motion.button
+              onClick={() => {
+                setSelectedCategory('all');
+                setSearchTerm('');
+              }}
+              className="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Ryd filtre
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
+};
+
+// Blog Post Card Component
+interface BlogPostCardProps {
+  post: BlogPost;
+  index: number;
 }
+
+const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
+  const categoryInfo = blogCategories.find(cat => cat.name === post.category);
+  
+  return (
+    <motion.article
+      className="bg-glass-light backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+    >
+      <Link href={`/blog/${post.slug}`}>
+        <div className="relative">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4">
+            <span className={`px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-sm ${categoryInfo?.color || 'text-white'}`}>
+              <span className="mr-2">{categoryInfo?.icon}</span>
+              {post.category}
+            </span>
+          </div>
+
+          {/* Featured Badge */}
+          {post.featured && (
+            <div className="absolute top-4 right-4">
+              <span className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-accent-gold to-accent-orange text-white">
+                ⭐ Featured
+              </span>
+            </div>
+          )}
+        </div>
+        
+        <div className="p-6">
+          {/* Meta Information */}
+          <div className="flex items-center space-x-4 text-sm text-white/70 mb-4">
+            <div className="flex items-center space-x-1">
+              <CalendarIcon className="w-4 h-4" />
+              <span>{post.date}</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <ClockIcon className="w-4 h-4" />
+              <span>{post.readTime}</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <UserIcon className="w-4 h-4" />
+              <span>{post.author}</span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors duration-300">
+            {post.title}
+          </h3>
+
+          {/* Excerpt */}
+          <p className="text-white/70 mb-4 leading-relaxed">
+            {post.excerpt}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {post.tags.slice(0, 3).map((tag, tagIndex) => (
+              <span
+                key={tagIndex}
+                className="px-2 py-1 text-xs bg-glass-medium rounded-md text-white/60"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Read More */}
+          <div className="flex items-center text-accent-blue font-medium group-hover:text-accent-purple transition-colors duration-300">
+            Læs mere
+            <motion.svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              whileHover={{ x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </motion.svg>
+          </div>
+        </div>
+      </Link>
+    </motion.article>
+  );
+};
+
+export default BlogGrid;

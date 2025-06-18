@@ -5,6 +5,7 @@ import FeaturedCaseStudies from '@/components/sections/FeaturedCaseStudies';
 import StatsSection from '@/components/sections/StatsSection';
 import ClientMarquee from '@/components/sections/ClientMarquee';
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel';
+import FeaturedEvents from '@/components/sections/FeaturedEvents';
 import Contact from '@/components/sections/Contact';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <StatsSection />
       <ClientMarquee />
       <TestimonialsCarousel />
+      <FeaturedEvents />
       <Contact />
     </main>
   );
