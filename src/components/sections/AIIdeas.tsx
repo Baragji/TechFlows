@@ -1,0 +1,212 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  LightBulbIcon, 
+  SparklesIcon, 
+  RocketLaunchIcon 
+} from '@heroicons/react/24/outline';
+
+interface AIIdea {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  impact: 'høj' | 'medium' | 'lav';
+  complexity: 'simpel' | 'medium' | 'kompleks';
+}
+
+// Mock data - i produktion ville dette komme fra en API eller JSON fil
+const mockIdeas: AIIdea[] = [
+  {
+    id: '1',
+    title: 'AI-Powered Chatbots',
+    description: 'Intelligente chatbots der kan håndtere kundeservice 24/7 med naturlig sprogforståelse',
+    category: 'Kundeservice',
+    impact: 'høj',
+    complexity: 'medium'
+  },
+  {
+    id: '2',
+    title: 'Predictive Analytics Dashboard',
+    description: 'Forudsig salgsdata og kundeadfærd med machine learning algoritmer',
+    category: 'Business Intelligence',
+    impact: 'høj',
+    complexity: 'kompleks'
+  },
+  {
+    id: '3',
+    title: 'Automated Content Generation',
+    description: 'Generer automatisk produktbeskrivelser og marketing content med AI',
+    category: 'Marketing',
+    impact: 'medium',
+    complexity: 'medium'
+  },
+  {
+    id: '4',
+    title: 'Smart Inventory Management',
+    description: 'Optimer lagerføring med AI-baserede forudsigelser af efterspørgsel',
+    category: 'Logistik',
+    impact: 'høj',
+    complexity: 'kompleks'
+  },
+  {
+    id: '5',
+    title: 'Voice-Activated Interfaces',
+    description: 'Implementer stemmebaseret navigation og kommandoer i dine apps',
+    category: 'User Experience',
+    impact: 'medium',
+    complexity: 'medium'
+  },
+  {
+    id: '6',
+    title: 'Automated Testing Suite',
+    description: 'AI-drevet automatisk testing der finder bugs før de når produktion',
+    category: 'Udvikling',
+    impact: 'medium',
+    complexity: 'simpel'
+  }
+];
+
+const getImpactColor = (impact: string) => {
+    switch (impact.toLowerCase()) {
+      case 'høj': return 'bg-secondary/20 text-secondary';
+      case 'medium': return 'bg-accent/20 text-accent';
+      case 'lav': return 'bg-border text-text-dark';
+      default: return 'bg-border text-text-dark';
+    }
+  };
+
+const getComplexityColor = (complexity: string) => {
+    switch (complexity.toLowerCase()) {
+      case 'simpel': return 'bg-primary/20 text-primary';
+      case 'medium': return 'bg-accent/20 text-accent';
+      case 'kompleks': return 'bg-red-100 text-red-800';
+      default: return 'bg-border text-text-dark';
+    }
+  };
+
+const AIIdeas = () => {
+  const [ideas, setIdeas] = useState<AIIdea[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simuler API kald
+    const loadIdeas = async () => {
+      setLoading(true);
+      // Simuler loading delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setIdeas(mockIdeas);
+      setLoading(false);
+    };
+
+    loadIdeas();
+  }, []);
+
+  return (
+    <section id="ideas" className="py-20 bg-gradient-to-br from-background-light to-primary/10">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center justify-center mb-4">
+            <SparklesIcon className="w-8 h-8 text-accent mr-3" />
+            <h2 className="text-3xl md:text-4xl font-bold text-text-dark">
+              AI-Genererede Teknologi Idéer
+            </h2>
+          </div>
+          <p className="text-lg text-text-light max-w-2xl mx-auto">
+            Lad dig inspirere af de nyeste trends og muligheder inden for teknologi
+          </p>
+        </motion.div>
+        
+        {/* Ideas Grid */}
+        {loading ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg animate-pulse">
+                <div className="h-4 bg-border rounded mb-4"></div>
+                <div className="h-3 bg-border rounded mb-2"></div>
+                <div className="h-3 bg-border rounded mb-4"></div>
+                <div className="flex gap-2">
+                  <div className="h-6 w-16 bg-border rounded-full"></div>
+                  <div className="h-6 w-16 bg-border rounded-full"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {ideas.map((idea, index) => (
+              <motion.div
+                key={idea.id}
+                className="bg-white rounded-2xl p-6 shadow-custom hover:shadow-custom-lg transition-all duration-300 border border-border hover:border-accent/30 group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <LightBulbIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <RocketLaunchIcon className="w-5 h-5 text-text-light group-hover:text-accent transition-colors duration-300" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-text-dark mb-3">
+                  {idea.title}
+                </h3>
+                
+                <p className="text-text-light leading-relaxed mb-4">
+                  {idea.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getImpactColor(idea.impact)}`}>
+                    Impact: {idea.impact}
+                  </span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getComplexityColor(idea.complexity)}`}>
+                    {idea.complexity}
+                  </span>
+                </div>
+                
+                <div className="text-sm text-text-light font-medium">
+                  {idea.category}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+        
+        {/* CTA */}
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-text-light mb-6">
+            Har du en idé du gerne vil realisere?
+          </p>
+          <a 
+            href="#contact" 
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-lg hover:from-primary/80 hover:to-accent/80 transition-all duration-300 shadow-custom hover:shadow-custom-lg"
+          >
+            Lad os tale om det
+            <SparklesIcon className="w-5 h-5 ml-2" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default AIIdeas;
