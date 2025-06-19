@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        'obsidian-nav': 'rgba(35,35,40,0.6)',   // 60 % opacity mørkegrå
         // Obsidian-inspired color palette matching HTML example
         obsidian: {
           50: '#f8f8f8',
@@ -88,9 +89,9 @@ const config: Config = {
         poppins: ['Poppins', 'sans-serif'],
       },
       fontSize: {
-        'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'hero': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
         'hero-sm': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'section': ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'section': ['3rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
         'display': ['5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
         'body-lg': ['1.125rem', { lineHeight: '1.6' }],
         'body': ['1rem', { lineHeight: '1.6' }],
@@ -126,6 +127,7 @@ const config: Config = {
         'navbar': '15px', // Exact value from HTML example
         'glass': '16px',
         'hero': '8px', // Hero content blur from HTML example
+        '20': '20px',      // sikrer utility `backdrop-blur-[20px]`
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -4,6 +4,7 @@ import Services from '@/components/sections/Services';
 import CaseStudiesShowcase from '@/components/sections/CaseStudiesShowcase';
 import Contact from '@/components/sections/Contact';
 import StructuredData from '@/components/seo/StructuredData';
+import { FloatingCard } from '@/components/sections/FloatingCard';
 import { 
   LazyStatsSection,
   LazyClientMarquee,
@@ -26,6 +27,13 @@ export default function Home() {
       <StructuredData type="LocalBusiness" data={{}} />
       
       <Hero />
+      <FloatingCard 
+        title="Featured Case Study"
+        subtitle="Digital Transformation"
+        imageUrl="/api/placeholder/80/80" 
+        linkText="Læs mere"
+        href="/case-studies/digital-transformation-hero"
+      />
       <AIIdeas />
       <Services />
       <CaseStudiesShowcase />

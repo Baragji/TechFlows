@@ -90,7 +90,7 @@ const EventsGrid: React.FC = () => {
                 onClick={() => setSelectedType(type.id)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                   selectedType === type.id
-                    ? 'bg-gradient-to-r from-accent-blue to-accent-purple text-white'
+                    ? 'bg-linear-to-r from-accent-blue to-accent-purple text-white'
                     : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -108,7 +108,7 @@ const EventsGrid: React.FC = () => {
               onClick={() => setSelectedCategory('all')}
               className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                 selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-accent-green to-accent-blue text-white'
+                  ? 'bg-linear-to-r from-accent-green to-accent-blue text-white'
                   : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -124,7 +124,7 @@ const EventsGrid: React.FC = () => {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-accent-green to-accent-blue text-white'
+                    ? 'bg-linear-to-r from-accent-green to-accent-blue text-white'
                     : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -184,7 +184,7 @@ const EventsGrid: React.FC = () => {
                 setSelectedType('all');
                 setSearchTerm('');
               }}
-              className="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+              className="px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -242,11 +242,11 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
             alt={event.title}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
           
           {/* Event Type Badge */}
           <div className="absolute top-4 left-4">
-            <span className={`px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r ${getEventTypeColor(event.type)} text-white`}>
+            <span className={`px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r ${getEventTypeColor(event.type)} text-white`}>
               {event.type === 'webinar' && '💻 Webinar'}
               {event.type === 'workshop' && '🛠️ Workshop'}
               {event.type === 'conference' && '🎤 Konference'}
@@ -257,7 +257,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
           {/* Featured Badge */}
           {event.featured && (
             <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-accent-gold to-accent-orange text-white">
+              <span className="px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-accent-gold to-accent-orange text-white">
                 ⭐ Featured
               </span>
             </div>

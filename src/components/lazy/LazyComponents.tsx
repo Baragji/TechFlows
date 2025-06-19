@@ -32,7 +32,7 @@ export const LazyClientMarquee = dynamic(() => import('@/components/sections/Cli
         </div>
         <div className="flex space-x-8 overflow-hidden">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="w-32 h-16 bg-glass-light rounded animate-pulse flex-shrink-0" />
+            <div key={i} className="w-32 h-16 bg-glass-light rounded animate-pulse shrink-0" />
           ))}
         </div>
       </div>

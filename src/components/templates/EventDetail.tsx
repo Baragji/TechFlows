@@ -95,7 +95,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
   };
 
   return (
-    <article className="min-h-screen bg-gradient-to-br from-background via-background to-glass-dark">
+    <article className="min-h-screen bg-linear-to-br from-background via-background to-glass-dark">
       <StructuredData type="Event" data={eventData} />
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
@@ -105,7 +105,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
             alt={event.title}
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
+          <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background" />
         </div>
         
         <div className="relative container mx-auto px-4">
@@ -135,14 +135,14 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="flex items-center space-x-4 mb-6"
               >
-                <span className="px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-accent-blue to-accent-purple text-white">
+                <span className="px-4 py-2 rounded-full text-sm font-medium bg-linear-to-r from-accent-blue to-accent-purple text-white">
                   {event.type === 'webinar' && '💻 Webinar'}
                   {event.type === 'workshop' && '🛠️ Workshop'}
                   {event.type === 'conference' && '🎤 Konference'}
                   {event.type === 'meetup' && '🤝 Meetup'}
                 </span>
                 {event.featured && (
-                  <span className="px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-accent-gold to-accent-orange text-white">
+                  <span className="px-4 py-2 rounded-full text-sm font-medium bg-linear-to-r from-accent-gold to-accent-orange text-white">
                     ⭐ Featured Event
                   </span>
                 )}
@@ -256,7 +256,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                     </div>
                     <div className="w-full bg-glass-medium rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-accent-blue to-accent-purple h-2 rounded-full transition-all duration-300"
+                        className="bg-linear-to-r from-accent-blue to-accent-purple h-2 rounded-full transition-all duration-300"
                         style={{ width: `${(event.registered / event.capacity) * 100}%` }}
                       />
                     </div>
@@ -271,7 +271,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                   {event.registration.isOpen ? (
                     <motion.button
                       onClick={() => setShowRegistrationModal(true)}
-                      className="w-full px-6 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 mb-4"
+                      className="w-full px-6 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 mb-4"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -308,7 +308,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                       <ul className="mt-2 space-y-1">
                         {event.registration.requirements.map((req, index) => (
                           <li key={index} className="flex items-start">
-                            <CheckCircleIcon className="w-4 h-4 text-accent-green mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircleIcon className="w-4 h-4 text-accent-green mr-2 mt-0.5 shrink-0" />
                             {req}
                           </li>
                         ))}
@@ -424,7 +424,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
               <div className="grid md:grid-cols-2 gap-4">
                 {event.registration.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <CheckCircleIcon className="w-6 h-6 text-accent-green flex-shrink-0 mt-1" />
+                    <CheckCircleIcon className="w-6 h-6 text-accent-green shrink-0 mt-1" />
                     <span className="text-white/90">{benefit}</span>
                   </div>
                 ))}
@@ -467,10 +467,10 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                         alt={relatedEvent.title}
                         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                       
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-accent-blue to-accent-purple text-white">
+                        <span className="px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-accent-blue to-accent-purple text-white">
                           {relatedEvent.type === 'webinar' && '💻'}
                           {relatedEvent.type === 'workshop' && '🛠️'}
                           {relatedEvent.type === 'conference' && '🎤'}
@@ -599,7 +599,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
                   type="submit"
-                  className="flex-1 px-6 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+                  className="flex-1 px-6 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

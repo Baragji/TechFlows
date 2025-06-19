@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children, className = '' }) => {
       <Navigation />
 
       {/* Main Content */}
-      <main className="flex-grow pt-16">{children}</main>
+      <main className="grow pt-[var(--navbar-height)]">{children}</main>
 
       {/* Enhanced Footer */}
       <FooterEnhanced />

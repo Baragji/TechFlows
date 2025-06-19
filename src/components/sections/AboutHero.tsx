@@ -47,16 +47,16 @@ const AboutHero = () => {
                     aspect-square rounded-2xl
                     ${
                       index === 0
-                        ? 'bg-gradient-to-br from-primary to-accent'
+                        ? 'bg-linear-to-br from-primary to-accent'
                         : index === 1
-                          ? 'bg-gradient-to-br from-secondary to-primary'
+                          ? 'bg-linear-to-br from-secondary to-primary'
                           : index === 2
-                            ? 'bg-gradient-to-br from-accent to-secondary'
+                            ? 'bg-linear-to-br from-accent to-secondary'
                             : index === 3
-                              ? 'bg-gradient-to-br from-primary to-secondary'
+                              ? 'bg-linear-to-br from-primary to-secondary'
                               : index === 4
-                                ? 'bg-gradient-to-br from-secondary to-accent'
-                                : 'bg-gradient-to-br from-accent to-primary'
+                                ? 'bg-linear-to-br from-secondary to-accent'
+                                : 'bg-linear-to-br from-accent to-primary'
                     }
                   `}
                   initial={{ opacity: 0, y: 20 }}

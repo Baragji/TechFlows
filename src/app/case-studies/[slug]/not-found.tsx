@@ -32,7 +32,7 @@ export default function NotFound() {
         <div className="space-y-4">
           <Link
             href="/case-studies"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Tilbage til Case Studies

@@ -51,7 +51,7 @@ const ClientMarquee: React.FC = () => {
             {duplicatedClients.map((client, index) => (
               <div
                 key={`${client.id}-${index}`}
-                className="flex-shrink-0 w-40 h-20 flex items-center justify-center group"
+                className="shrink-0 w-40 h-20 flex items-center justify-center group"
               >
                 <div className="relative w-full h-full flex items-center justify-center bg-glass-light backdrop-blur-sm rounded-xl border border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:bg-glass-medium">
                   {/* Placeholder for client logo */}

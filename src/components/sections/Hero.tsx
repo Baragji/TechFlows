@@ -1,18 +1,9 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRef } from 'react';
 
 const Hero = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   // Animation variants
   const containerVariants = {
@@ -57,22 +48,19 @@ const Hero = () => {
 
   return (
     <section
-      ref={ref}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Hero Background Image - matching HTML example */}
+      {/* Hero Background Image - optimized with bg-fixed only */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: "url('/images/hero/Forside (Main Hero).png')",
+          backgroundImage: "url('/images/hero/obsidian-bg.jpg')",
         }}
       />
-      {/* Parallax Background Elements */}
-      <motion.div 
-        style={{ y, opacity }}
-        className="absolute inset-0 -z-10"
-      >
+      
+      {/* Static Background Elements - no animation for performance */}
+      <div className="absolute inset-0 -z-10">
         {/* Subtle Obsidian-style dots pattern */}
         <div 
           className="absolute inset-0 opacity-10"
@@ -82,62 +70,22 @@ const Hero = () => {
           }}
         />
         
-        {/* Very subtle geometric shapes */}
+        {/* Very subtle geometric shapes - static for performance */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-accent-blue/3 rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/6 w-48 h-48 bg-accent-purple/3 rounded-full blur-3xl"></div>
         </div>
-        
-        {/* Floating Elements */}
-        <motion.div
-          className="absolute top-1/4 right-1/4 w-4 h-4 bg-blue-400 rounded-full"
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.8, 0.3]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 left-1/5 w-6 h-6 bg-purple-400 rounded-full"
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.6, 0.2]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/6 w-3 h-3 bg-cyan-400 rounded-full"
-          animate={{
-            y: [0, -15, 0],
-            opacity: [0.4, 0.9, 0.4]
-          }}
-          transition={{
-            duration: 3.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-      </motion.div>
+      </div>
 
-      <div className="container mx-auto px-4 py-32 relative z-20">
+      <div className="container mx-auto px-4 py-32 relative z-20 flex justify-end">
         <motion.div
-          className="max-w-4xl mx-auto text-left ml-[20%] bg-obsidian-overlay backdrop-blur-hero rounded-3xl p-12 border border-glass-light"
+          className="w-1/2 text-left glass-hero p-6 rounded-xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Main Headline */}
-          <div className="space-y-6">
+          <div className="space-y-6 mb-6">
             <motion.div
               className="flex flex-wrap justify-start gap-4 text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight"
               variants={itemVariants}
@@ -202,7 +150,7 @@ const Hero = () => {
             {['Web Development', 'App Development', 'Digital Marketing', 'SEO', 'Automation'].map((tag, index) => (
               <motion.span
                 key={index}
-                className="px-4 py-2 border border-glass-strong rounded-full text-sm text-white/90 hover:bg-white/10 hover:border-white transition-all duration-300 cursor-pointer"
+                className="bg-transparent border border-white/30 hover:bg-white/10 text-white/90 px-3 py-1 text-xs rounded-full"
                 whileHover={{ scale: 1.05 }}
               >
                 {tag}
@@ -222,9 +170,9 @@ const Hero = () => {
             >
               <Link
                 href="/prisberegner"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-obsidian-darker bg-white rounded-lg hover:bg-gray-100 transition-all duration-300"
+                className="inline-flex items-center justify-center bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-lg transition-all duration-300"
               >
-                Start dit projekt nu
+                Kom i gang i dag
               </Link>
             </motion.div>
           </motion.div>

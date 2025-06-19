@@ -67,7 +67,7 @@ const TeamSection = () => {
             >
               {/* Avatar */}
               <motion.div
-                className={`w-32 h-32 rounded-full bg-gradient-to-br ${member.gradientFrom} ${member.gradientTo} mx-auto mb-6 flex items-center justify-center text-white text-3xl font-bold shadow-lg`}
+                className={`w-32 h-32 rounded-full bg-linear-to-br ${member.gradientFrom} ${member.gradientTo} mx-auto mb-6 flex items-center justify-center text-white text-3xl font-bold shadow-lg`}
                 whileHover={{
                   scale: 1.05,
                   rotate: 5,
@@ -84,7 +84,7 @@ const TeamSection = () => {
 
               {/* Decorative Element */}
               <motion.div
-                className="mt-6 w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto"
+                className="mt-6 w-16 h-1 bg-linear-to-r from-primary to-accent rounded-full mx-auto"
                 initial={{ width: 0 }}
                 whileInView={{ width: 64 }}
                 transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
@@ -102,7 +102,7 @@ const TeamSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 max-w-2xl mx-auto">
+          <div className="bg-linear-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-text-dark mb-4">Klar til at arbejde sammen?</h3>
             <p className="text-text-light mb-6">
               Vi ser frem til at høre om dit projekt og hvordan vi kan hjælpe dig med at nå dine

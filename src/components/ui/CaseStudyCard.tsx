@@ -39,7 +39,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
     >
       {/* Hero Image */}
       <div className="relative h-48 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-obsidian-900/50 to-obsidian-950/50 z-10" />
+        <div className="absolute inset-0 bg-linear-to-br from-obsidian-900/50 to-obsidian-950/50 z-10" />
         <Image
           src={caseStudy.heroImage}
           alt={caseStudy.title}
@@ -50,7 +50,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
         
         {/* Category Badge */}
         <div className="absolute top-4 left-4 z-20">
-          <span className={`px-3 py-1 bg-gradient-to-r ${categoryColors[caseStudy.category]} text-white text-sm font-medium rounded-full`}>
+          <span className={`px-3 py-1 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white text-sm font-medium rounded-full`}>
             {categoryLabels[caseStudy.category]}
           </span>
         </div>
@@ -124,7 +124,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
       </div>
 
       {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-br from-accent-blue/5 to-accent-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </motion.div>
   );
 };

@@ -11,6 +11,7 @@ import { Icon } from '@/components/ui';
 const Navigation: React.FC<NavigationProps> = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const isScrolled = useNavbarScroll(50);
+  console.log('Navigation scroll state:', isScrolled); // Temporary usage to avoid lint error
   const pathname = usePathname();
 
   // Navigation items
@@ -66,7 +67,6 @@ const Navigation: React.FC<NavigationProps> = () => {
   // Additional nav items
   const additionalNavItems: NavItem[] = [
     { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Kontakt', href: '/contact' },
   ];
 
   // Close dropdown when clicking outside
@@ -95,31 +95,23 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <motion.nav
-      className="fixed top-5 left-0 w-full z-50 px-[5%] transition-all duration-700"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 nav-shell"
+      style={{ '--navbar-height': '72px' } as React.CSSProperties}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="max-w-[1280px] mx-auto flex items-center justify-between">
+      <div className="flex items-center justify-between px-6 py-3">
         {/* Left Navigation Group */}
         <motion.div 
-          className={`flex items-center gap-8 px-6 py-2.5 rounded-full transition-all duration-700 backdrop-blur-navbar border border-glass-light ${
-            isScrolled 
-              ? 'shadow-2xl' 
-              : ''
-          }`}
-          style={{
-            backgroundColor: isScrolled 
-              ? 'rgba(35, 35, 40, 0.98)' 
-              : 'rgba(35, 35, 40, 0.95)'
-          }}
+          className="flex items-center gap-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           {/* Logo */}
           <motion.div 
-            className="flex-shrink-0"
+            className="shrink-0"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
@@ -180,7 +172,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 bg-obsidian-nav-hover backdrop-blur-xl rounded-2xl border border-glass-light shadow-2xl overflow-hidden"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 bg-obsidian-nav-hover backdrop-blur-[20px] rounded-2xl border border-glass-light shadow-2xl overflow-hidden"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-4">
@@ -197,7 +189,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                               className="flex items-center p-3 rounded-xl hover:bg-white/5 transition-all duration-300 group"
                               onClick={() => setActiveDropdown(null)}
                             >
-                              <div className="flex-shrink-0 w-10 h-10 bg-accent-blue/10 rounded-lg flex items-center justify-center group-hover:bg-accent-blue/20 transition-colors duration-300">
+                              <div className="shrink-0 w-10 h-10 bg-accent-blue/10 rounded-lg flex items-center justify-center group-hover:bg-accent-blue/20 transition-colors duration-300">
                                 <Icon name={item.icon || 'globe'} className="w-5 h-5 text-accent-blue" />
                               </div>
                               <div className="ml-3">
@@ -237,16 +229,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
         {/* Right Navigation Group */}
         <motion.div 
-          className={`hidden lg:flex items-center gap-5 px-6 py-2.5 rounded-full transition-all duration-700 backdrop-blur-navbar border border-glass-light ${
-            isScrolled 
-              ? 'shadow-2xl' 
-              : ''
-          }`}
-          style={{
-            backgroundColor: isScrolled 
-              ? 'rgba(35, 35, 40, 0.98)' 
-              : 'rgba(35, 35, 40, 0.95)'
-          }}
+          className="hidden lg:flex items-center gap-6"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}

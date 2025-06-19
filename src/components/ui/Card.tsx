@@ -9,7 +9,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant = 'default', children, ...props }, ref) => {
     const variants = {
       default: 'bg-white border border-border-color shadow-custom',
-      glass: 'bg-glass-light backdrop-blur-glass border border-glass-medium shadow-glass',
+      glass: 'bg-glass-light backdrop-blur-glass border border-[rgba(255,255,255,0.1)] shadow-[0_4px_10px_rgba(0,0,0,0.15)]',
       obsidian: 'bg-obsidian-darker border border-obsidian-light shadow-obsidian',
       hover:
         'bg-white border border-border-color shadow-custom hover:shadow-custom-hover hover:-translate-y-1 transition-all duration-300',

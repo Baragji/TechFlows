@@ -128,8 +128,8 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
       <section className="relative py-24 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className={`absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br ${heroGradient} opacity-10 rounded-full blur-3xl`}></div>
-          <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br ${heroGradient} opacity-5 rounded-full blur-3xl`}></div>
+          <div className={`absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-br ${heroGradient} opacity-10 rounded-full blur-3xl`}></div>
+          <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-linear-to-br ${heroGradient} opacity-5 rounded-full blur-3xl`}></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -157,7 +157,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className={`w-24 h-24 bg-gradient-to-br ${heroGradient} rounded-2xl flex items-center justify-center mx-auto shadow-2xl`}>
+              <div className={`w-24 h-24 bg-linear-to-br ${heroGradient} rounded-2xl flex items-center justify-center mx-auto shadow-2xl`}>
                 <IconComponent className="w-12 h-12 text-white" />
               </div>
             </motion.div>
@@ -200,7 +200,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             >
               <Link
                 href="/contact"
-                className={`inline-flex items-center px-8 py-4 bg-gradient-to-r ${heroGradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
+                className={`inline-flex items-center px-8 py-4 bg-linear-to-r ${heroGradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
               >
                 Start dit projekt
                 <svg
@@ -298,7 +298,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <div className="w-8 h-8 bg-accent-green rounded-full flex items-center justify-center">
                     <CheckIcon className="w-5 h-5 text-white" />
                   </div>
@@ -350,8 +350,8 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="flex-shrink-0">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${heroGradient} rounded-xl flex items-center justify-center text-white font-bold text-lg`}>
+                <div className="shrink-0">
+                  <div className={`w-12 h-12 bg-linear-to-br ${heroGradient} rounded-xl flex items-center justify-center text-white font-bold text-lg`}>
                     {step.step}
                   </div>
                 </div>
@@ -467,7 +467,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className={`inline-flex items-center px-8 py-4 bg-gradient-to-r ${heroGradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
+                className={`inline-flex items-center px-8 py-4 bg-linear-to-r ${heroGradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
               >
                 Få et tilbud
                 <svg

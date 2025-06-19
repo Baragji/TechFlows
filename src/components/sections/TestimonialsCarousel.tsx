@@ -102,7 +102,7 @@ const TestimonialsCarousel: React.FC = () => {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
+                <div key={testimonial.id} className="w-full shrink-0 px-4">
                   <motion.div
                     className="bg-glass-light backdrop-blur-sm rounded-2xl p-8 border border-white/10 text-center"
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -125,7 +125,7 @@ const TestimonialsCarousel: React.FC = () => {
                     {/* Author */}
                     <div className="flex items-center justify-center space-x-4">
                       <div className="w-16 h-16 bg-glass-medium rounded-full flex items-center justify-center">
-                        <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-accent-purple rounded-full flex items-center justify-center text-white font-semibold">
+                        <div className="w-12 h-12 bg-linear-to-br from-accent-blue to-accent-purple rounded-full flex items-center justify-center text-white font-semibold">
                           {testimonial.name.split(' ').map(n => n[0]).join('')}
                         </div>
                       </div>

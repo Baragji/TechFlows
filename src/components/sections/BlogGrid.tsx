@@ -53,7 +53,7 @@ const BlogGrid: React.FC = () => {
               onClick={() => setSelectedCategory('all')}
               className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                 selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-accent-blue to-accent-purple text-white'
+                  ? 'bg-linear-to-r from-accent-blue to-accent-purple text-white'
                   : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -69,7 +69,7 @@ const BlogGrid: React.FC = () => {
                 onClick={() => setSelectedCategory(category.name)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                   selectedCategory === category.name
-                    ? 'bg-gradient-to-r from-accent-blue to-accent-purple text-white'
+                    ? 'bg-linear-to-r from-accent-blue to-accent-purple text-white'
                     : 'bg-glass-light text-white/70 hover:text-white hover:bg-glass-medium'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -127,7 +127,7 @@ const BlogGrid: React.FC = () => {
                 setSelectedCategory('all');
                 setSearchTerm('');
               }}
-              className="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+              className="px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -164,7 +164,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
             alt={post.title}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
           
           {/* Category Badge */}
           <div className="absolute top-4 left-4">
@@ -177,7 +177,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
           {/* Featured Badge */}
           {post.featured && (
             <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-accent-gold to-accent-orange text-white">
+              <span className="px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-accent-gold to-accent-orange text-white">
                 ⭐ Featured
               </span>
             </div>

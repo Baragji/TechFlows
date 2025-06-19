@@ -80,7 +80,7 @@ const FeaturedEvents: React.FC = () => {
                     alt={event.title}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                   
                   {/* Date Badge */}
                   <div className="absolute top-4 left-4">
@@ -96,7 +96,7 @@ const FeaturedEvents: React.FC = () => {
 
                   {/* Event Type Badge */}
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-accent-blue to-accent-purple text-white">
+                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-accent-blue to-accent-purple text-white">
                       {event.type === 'webinar' && '💻 Webinar'}
                       {event.type === 'workshop' && '🛠️ Workshop'}
                       {event.type === 'conference' && '🎤 Konference'}
@@ -204,7 +204,7 @@ const FeaturedEvents: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="/events"
-                className="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+                className="px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

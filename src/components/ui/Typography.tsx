@@ -26,7 +26,7 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
       hero: 'text-hero font-bold text-text-dark',
       'hero-sm': 'text-hero-sm font-bold text-text-dark',
       section: 'text-section font-semibold text-text-dark',
-      h1: 'text-4xl font-bold text-text-dark',
+      h1: 'text-4xl font-light italic text-text-dark',
       h2: 'text-3xl font-semibold text-text-dark',
       h3: 'text-2xl font-semibold text-text-dark',
       h4: 'text-xl font-medium text-text-dark',

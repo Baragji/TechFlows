@@ -128,7 +128,7 @@ const AboutContent = () => {
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.02 }}
                     >
-                      <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center shrink-0">
                         <IconComponent className="w-6 h-6 text-accent-blue" />
                       </div>
                       <div>
