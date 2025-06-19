@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-06-19T14:32:37.281Z",
+  "summary": {
+    "successes": 18,
+    "warnings": 1,
+    "issues": 1
+  },
+  "details": {
+    "successes": [
+      "Page exists: /case-studies",
+      "Page exists: /",
+      "Page exists: /case-studies/digital-transformation-hero",
+      "Page exists: /contact",
+      "Page exists: /prisberegner",
+      "Page exists: /events",
+      "Page exists: /testimonials",
+      "Page exists: /blog",
+      "No unoptimized <img> tags found",
+      "CSS file structure looks good",
+      "Tailwind config exists",
+      "Compression enabled",
+      "Image optimization configured",
+      "Experimental optimizations enabled",
+      "Bundle analyzer script available",
+      "Strict TypeScript mode enabled",
+      "TypeScript configuration exists",
+      "No high-severity security vulnerabilities found"
+    ],
+    "warnings": [
+      "Some dependencies are outdated - run \"npm outdated\" for details"
+    ],
+    "issues": [
+      "Found invalid CSS property \"or\" in globals.css"
+    ]
+  }
+}

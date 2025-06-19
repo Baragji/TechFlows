@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { BuildingOfficeIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image'
 
 interface Testimonial {
   id: string;
@@ -121,11 +122,7 @@ export default function TestimonialsGrid() {
 
               {/* Author Info */}
               <div className="flex items-center space-x-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
+                <Image src="" alt="" width={800} height={600} className="w-12 h-12 rounded-full object-cover" />
                 <div>
                   <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
                   <p className="text-sm text-gray-600">{testimonial.position}</p>

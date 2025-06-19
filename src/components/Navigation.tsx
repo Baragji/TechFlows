@@ -5,12 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavigationProps, NavItem, NavDropdown } from '@/types/navigation';
-import { useNavbarScroll } from '@/hooks/useScrollAnimation';
 import { Icon } from '@/components/ui';
 
 const Navigation: React.FC<NavigationProps> = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const isScrolled = useNavbarScroll(50);
   const pathname = usePathname();
 
   // Navigation items
@@ -103,7 +101,7 @@ const Navigation: React.FC<NavigationProps> = () => {
       <div className="max-w-[1280px] mx-auto flex items-center justify-between">
         {/* Left Navigation Group */}
         <motion.div 
-          className="flex items-center gap-6 px-6 py-2.5 rounded-full border border-white/10 bg-[rgba(35,35,40,0.85)] backdrop-blur-[20px]"
+          className="flex items-center gap-6 px-6 py-2.5 rounded-full backdrop-blur-[20px] bg-white/10 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.15)]"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -171,7 +169,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 bg-[rgba(35,35,40,0.85)] backdrop-blur-[20px] rounded-2xl border border-white/10 shadow-2xl overflow-hidden"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 backdrop-blur-[20px] bg-white/10 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-4">
@@ -228,7 +226,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
         {/* Right Navigation Group */}
         <motion.div 
-          className="hidden lg:flex items-center gap-6 px-6 py-2.5 rounded-full border border-white/10 bg-[rgba(35,35,40,0.85)] backdrop-blur-[20px]"
+          className="hidden lg:flex items-center gap-6 px-6 py-2.5 rounded-full backdrop-blur-[20px] bg-white/10 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.15)]"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}

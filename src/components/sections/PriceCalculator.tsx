@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CheckIcon, ArrowPathIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 
 interface ProjectType {
@@ -150,7 +150,7 @@ export default function PriceCalculator() {
   const [selectedTimeline, setSelectedTimeline] = useState<string>('standard');
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
-  const getCurrentOptions = (): Option[] => {
+  const getCurrentOptions = useCallback((): Option[] => {
     switch (selectedProjectType) {
       case 'website':
         return websiteOptions;
@@ -163,9 +163,9 @@ export default function PriceCalculator() {
       default:
         return [];
     }
-  };
+  }, [selectedProjectType]);
 
-  const calculatePrice = () => {
+  const calculatePrice = useCallback(() => {
     if (!selectedProjectType) {
       setTotalPrice(0);
       return;
@@ -190,11 +190,11 @@ export default function PriceCalculator() {
 
     const total = (basePrice + addonsPrice) * timelineMultiplier;
     setTotalPrice(Math.round(total));
-  };
+  }, [selectedProjectType, selectedOptions, selectedTimeline, getCurrentOptions]);
 
   useEffect(() => {
     calculatePrice();
-  }, [selectedProjectType, selectedOptions, selectedTimeline]);
+  }, [calculatePrice]);
 
   const handleProjectTypeChange = (projectTypeId: string) => {
     setSelectedProjectType(projectTypeId);

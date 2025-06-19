@@ -11,6 +11,7 @@ import {
   ArrowRightIcon
 } from '@heroicons/react/24/outline';
 import { getFeaturedEvents } from '@/data/events';
+import Image from 'next/image'
 
 const FeaturedEvents: React.FC = () => {
   const featuredEvents = getFeaturedEvents().slice(0, 3);
@@ -75,11 +76,7 @@ const FeaturedEvents: React.FC = () => {
             >
               <Link href={`/events/${event.slug}`}>
                 <div className="relative">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
+                  <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                   
                   {/* Date Badge */}

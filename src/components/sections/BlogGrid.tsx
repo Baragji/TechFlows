@@ -5,6 +5,7 @@ import { CalendarIcon, ClockIcon, UserIcon, TagIcon, FunnelIcon } from '@heroico
 import Link from 'next/link';
 import { useState } from 'react';
 import { getPublishedPosts, blogCategories, BlogPost } from '@/data/blogPosts';
+import Image from 'next/image'
 
 const BlogGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -159,11 +160,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
     >
       <Link href={`/blog/${post.slug}`}>
         <div className="relative">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-          />
+          <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
           <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
           
           {/* Category Badge */}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 export interface TypewriterOptions {
   speed?: number;
@@ -19,7 +19,7 @@ export const useTypewriter = (texts: string | string[], options: TypewriterOptio
   const [isStarted, setIsStarted] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const textArray = Array.isArray(texts) ? texts : [texts];
+  const textArray = useMemo(() => Array.isArray(texts) ? texts : [texts], [texts]);
   const currentText = textArray[currentIndex];
 
   useEffect(() => {

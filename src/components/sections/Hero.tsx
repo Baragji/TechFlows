@@ -79,7 +79,7 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 py-32 relative z-20 flex justify-end">
         <motion.div
-          className="w-1/2 text-left glass-hero p-6 rounded-xl"
+          className="w-1/2 text-left backdrop-blur-[20px] bg-white/10 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.15)] p-6 rounded-xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

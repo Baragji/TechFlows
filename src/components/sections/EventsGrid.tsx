@@ -13,6 +13,7 @@ import {
   MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 import { getUpcomingEvents, eventCategories, Event } from '@/data/events';
+import Image from 'next/image'
 
 const EventsGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -237,11 +238,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
     >
       <Link href={`/events/${event.slug}`}>
         <div className="relative">
-          <img
-            src={event.image}
-            alt={event.title}
-            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-          />
+          <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
           <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
           
           {/* Event Type Badge */}
