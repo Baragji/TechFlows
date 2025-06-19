@@ -98,6 +98,8 @@ export const useParallax = (speed: number = 0.5) => {
   const elementRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       setOffset(scrolled * speed);
@@ -129,6 +131,8 @@ export const useNavbarScroll = (scrollThreshold: number = 100) => {
 
   useEffect(() => {
     setHasMounted(true);
+    
+    if (typeof window === 'undefined') return;
     
     const handleScroll = () => {
       setIsScrolled(window.scrollY > scrollThreshold);

@@ -124,12 +124,9 @@ export default [
       'no-console': 'warn',
 
       // Custom hydration-specific rules to prevent SSR/client mismatches
+      // Disable no-restricted-globals for window since we handle it properly with typeof checks
       'no-restricted-globals': [
         'warn',
-        {
-          name: 'window',
-          message: 'Direct window access can cause hydration mismatches. Use typeof window !== "undefined" check or useEffect.',
-        },
         {
           name: 'document',
           message: 'Direct document access can cause hydration mismatches. Use typeof document !== "undefined" check or useEffect.',

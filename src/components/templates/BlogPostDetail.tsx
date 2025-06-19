@@ -25,13 +25,13 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
     .slice(0, 3);
 
   const handleShare = () => {
-    if (navigator.share) {
+    if (typeof window !== 'undefined' && navigator.share) {
       navigator.share({
         title: post.title,
         text: post.excerpt,
         url: window.location.href,
       });
-    } else {
+    } else if (typeof window !== 'undefined') {
       // Fallback for browsers that don't support native sharing
       navigator.clipboard.writeText(window.location.href);
       // You could show a toast notification here

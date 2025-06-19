@@ -72,9 +72,12 @@ const Navigation: React.FC<NavigationProps> = () => {
       setActiveDropdown(null);
     };
 
+    // eslint-disable-next-line no-restricted-globals
     if (activeDropdown && typeof document !== 'undefined') {
-      document.addEventListener('click', handleClickOutside);
-      return () => document.removeEventListener('click', handleClickOutside);
+      // eslint-disable-next-line no-restricted-globals
+      const doc = document;
+      doc.addEventListener('click', handleClickOutside);
+      return () => doc.removeEventListener('click', handleClickOutside);
     }
   }, [activeDropdown]);
 
@@ -86,9 +89,12 @@ const Navigation: React.FC<NavigationProps> = () => {
       }
     };
 
+    // eslint-disable-next-line no-restricted-globals
     if (typeof document !== 'undefined') {
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
+      // eslint-disable-next-line no-restricted-globals
+      const doc = document;
+      doc.addEventListener('keydown', handleKeyDown);
+      return () => doc.removeEventListener('keydown', handleKeyDown);
     }
   }, []);
 

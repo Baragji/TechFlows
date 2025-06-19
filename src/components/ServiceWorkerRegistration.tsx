@@ -16,6 +16,7 @@ const ServiceWorkerRegistration: React.FC = () => {
             scope: '/',
           });
 
+          // eslint-disable-next-line no-console
           console.log('Service Worker registered successfully:', registration);
 
           // Handle updates
@@ -39,6 +40,7 @@ const ServiceWorkerRegistration: React.FC = () => {
           }, 60000); // Check every minute
 
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error('Service Worker registration failed:', error);
         }
       };
@@ -48,17 +50,20 @@ const ServiceWorkerRegistration: React.FC = () => {
       // Handle service worker messages
       navigator.serviceWorker.addEventListener('message', (event) => {
         if (event.data && event.data.type === 'CACHE_UPDATED') {
+          // eslint-disable-next-line no-console
           console.log('Cache updated:', event.data.payload);
         }
       });
 
       // Handle online/offline status
       const handleOnline = () => {
+        // eslint-disable-next-line no-console
         console.log('App is online');
         // You could show a notification here
       };
 
       const handleOffline = () => {
+        // eslint-disable-next-line no-console
         console.log('App is offline');
         // You could show an offline banner here
       };

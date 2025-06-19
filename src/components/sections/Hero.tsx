@@ -1,10 +1,20 @@
 'use client';
 
+import { useCallback } from 'react';
 import Link from 'next/link';
 
 const Hero = () => {
   const heroWords = ["Du", "kunne", "vokse", "lige", "nu"];
   const subWords = ["Lad", "os", "accelerere", "din", "digitale", "transformation"];
+
+  const handleScrollToServices = useCallback(() => {
+    // eslint-disable-next-line no-restricted-globals
+    if (typeof document !== 'undefined') {
+      // eslint-disable-next-line no-restricted-globals
+      const servicesElement = document.getElementById('services');
+      servicesElement?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
   return (
     <section
@@ -90,9 +100,7 @@ const Hero = () => {
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
             <div
               className="flex flex-col items-center text-white/40 cursor-pointer"
-              onClick={() => {
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={handleScrollToServices}
             >
               <span className="text-sm font-medium mb-2">Scroll for mere</span>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

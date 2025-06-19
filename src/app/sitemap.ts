@@ -70,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog posts
   const blogPosts = getPublishedPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: staticLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
@@ -86,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Events
   const eventPages = getUpcomingEvents().map((event) => ({
     url: `${baseUrl}/events/${event.slug}`,
-    lastModified: new Date(event.date),
+    lastModified: staticLastModified,
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));

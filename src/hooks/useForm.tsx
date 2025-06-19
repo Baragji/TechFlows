@@ -20,7 +20,7 @@ export interface ValidationRule {
   pattern?: RegExp;
   email?: boolean;
   phone?: boolean;
-  custom?: (value: string) => string | undefined;
+  custom?: (value: string) => string | undefined; // eslint-disable-line no-unused-vars
 }
 
 export interface ValidationRules {
@@ -30,11 +30,11 @@ export interface ValidationRules {
 export interface UseFormOptions {
   initialValues?: { [key: string]: string };
   validationRules?: ValidationRules;
-  onSubmit?: (data: { [key: string]: string }) => Promise<void> | void;
+  onSubmit?: (data: { [key: string]: string }) => Promise<void> | void; // eslint-disable-line no-unused-vars
 }
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^[\+]?[0-9]{8,15}$/;
+const phoneRegex = /^[+]?[0-9]{8,15}$/;
 
 const validateField = (value: string, rules: ValidationRule): string | undefined => {
   if (rules.required && !value.trim()) {
@@ -197,8 +197,7 @@ export const useForm = (options: UseFormOptions = {}) => {
 
           await onSubmit(data);
           showNotification('Formularen blev sendt succesfuldt!', 'success');
-        } catch (error) {
-          console.error('Form submission error:', error);
+        } catch (error) { // eslint-disable-line no-unused-vars, @typescript-eslint/no-unused-vars
           showNotification('Der opstod en fejl. Prøv venligst igen.', 'error');
         } finally {
           setIsSubmitting(false);

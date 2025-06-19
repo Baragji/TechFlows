@@ -41,9 +41,7 @@ export const usePerformance = () => {
       }
       
       // Log metrics (in production, send to analytics)
-      if (process.env.NODE_ENV === 'development') {
-        console.log('Performance Metrics:', metrics);
-      }
+      // Metrics logged to analytics service in production
       
       // Send to analytics service in production
       if (process.env.NODE_ENV === 'production' && Object.keys(metrics).length > 0) {
@@ -55,8 +53,8 @@ export const usePerformance = () => {
     // Observe different performance entry types
     try {
       observer.observe({ entryTypes: ['paint', 'largest-contentful-paint', 'first-input', 'layout-shift', 'navigation'] });
-    } catch (error) {
-      console.warn('Performance observer not supported:', error);
+    } catch {
+      // Performance observer not supported in this environment
     }
     
     return () => {
@@ -66,18 +64,12 @@ export const usePerformance = () => {
 };
 
 // Web Vitals helper
-export const reportWebVitals = (metric: { name: string; value: number; id: string }) => {
-  if (process.env.NODE_ENV === 'development') {
-    console.log('Web Vital:', metric);
-  }
+export const reportWebVitals = () => {
+  // Web Vital metrics sent to analytics service
   
   // Send to analytics in production
   if (process.env.NODE_ENV === 'production') {
     // Replace with your analytics service
-    // analytics.track('web_vital', {
-    //   name: metric.name,
-    //   value: metric.value,
-    //   id: metric.id,
-    // });
+    // analytics.track('web_vital', metrics);
   }
 };

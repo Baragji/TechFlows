@@ -72,7 +72,7 @@ export const getColorValue = (colorPath: string): string => {
     if (typeof value === 'object' && value !== null && key in value) {
       value = (value as Record<string, unknown>)[key];
     } else {
-      console.warn(`Color path "${colorPath}" not found`);
+      // Color path not found, return default
       return '#000000';
     }
   }

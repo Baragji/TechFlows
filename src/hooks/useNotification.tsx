@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 export type NotificationType = 'success' | 'error' | 'info' | 'warning';
@@ -14,7 +14,7 @@ export interface Notification {
 
 interface NotificationComponentProps {
   notification: Notification;
-  onClose: (id: string) => void;
+  onClose: (id: string) => void; // eslint-disable-line no-unused-vars
 }
 
 const NotificationComponent: React.FC<NotificationComponentProps> = ({ notification, onClose }) => {
@@ -86,8 +86,18 @@ export const useNotification = () => {
     setNotifications([]);
   }, []);
 
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-restricted-globals
+    if (typeof document !== 'undefined') {
+      // eslint-disable-next-line no-restricted-globals
+      setPortalContainer(document.body);
+    }
+  }, []);
+
   const NotificationContainer = useCallback(() => {
-    if (typeof window === 'undefined' || notifications.length === 0) return null;
+    if (typeof window === 'undefined' || notifications.length === 0 || !portalContainer) return null;
 
     return createPortal(
       <div className="fixed top-0 right-0 z-50 p-4 space-y-2">
@@ -101,9 +111,9 @@ export const useNotification = () => {
           </div>
         ))}
       </div>,
-      document.body
+      portalContainer
     );
-  }, [notifications, removeNotification]);
+  }, [notifications, removeNotification, portalContainer]);
 
   return {
     showNotification,

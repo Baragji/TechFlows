@@ -51,19 +51,18 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
   const handleRegistration = async (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the registration to your backend
-    console.log('Registration submitted:', registrationData);
     setShowRegistrationModal(false);
     // Show success message or redirect
   };
 
   const handleShare = () => {
-    if (navigator.share) {
+    if (typeof window !== 'undefined' && navigator.share) {
       navigator.share({
         title: event.title,
         text: event.description,
         url: window.location.href,
       });
-    } else {
+    } else if (typeof window !== 'undefined') {
       navigator.clipboard.writeText(window.location.href);
     }
   };
