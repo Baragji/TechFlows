@@ -9,12 +9,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, className = '' }) => {
   return (
-    <div className={`min-h-screen flex flex-col ${className}`}>
+    <div className={`min-h-screen flex flex-col bg-obsidian-dark ${className}`}>
       {/* Navigation */}
       <Navigation />
 
       {/* Main Content */}
-      <main className="grow pt-[var(--navbar-height)]">{children}</main>
+      <main className="grow bg-obsidian-dark">{children}</main>
 
       {/* Enhanced Footer */}
       <FooterEnhanced />

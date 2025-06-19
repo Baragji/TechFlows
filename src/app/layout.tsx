@@ -58,8 +58,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="da">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="da" className="bg-obsidian-dark">
+      <body className={`${inter.variable} font-sans antialiased bg-obsidian-dark`}>
         <PerformanceMonitor />
         <ServiceWorkerRegistration />
         <Layout>{children}</Layout>

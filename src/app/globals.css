@@ -81,6 +81,7 @@ body {
   box-sizing: border-box;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   font-optical-sizing: auto;
+  background-color: #0a0a0a; /* Tilføjet mørk baggrund */
 }
 
 *, *::before, *::after {
@@ -143,6 +144,7 @@ p {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  background-color: #0a0a0a; /* Tilføjet mørk baggrund */
 }
 
 /* Custom scrollbar */
