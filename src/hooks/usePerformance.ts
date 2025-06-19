@@ -27,11 +27,11 @@ export const usePerformance = () => {
             metrics.lcp = entry.startTime;
             break;
           case 'first-input':
-            metrics.fid = (entry as PerformanceEntry & { processingStart: number }).processingStart - entry.startTime;
+            metrics.fid = (entry as any).processingStart - entry.startTime;
             break;
           case 'layout-shift':
-            if (!(entry as PerformanceEntry & { hadRecentInput?: boolean }).hadRecentInput) {
-              metrics.cls = (metrics.cls || 0) + (entry as PerformanceEntry & { value: number }).value;
+            if (!(entry as any).hadRecentInput) {
+              metrics.cls = (metrics.cls || 0) + (entry as any).value;
             }
             break;
           case 'navigation':
@@ -41,7 +41,9 @@ export const usePerformance = () => {
       }
       
       // Log metrics (in production, send to analytics)
-      // Metrics logged to analytics service in production
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Performance Metrics:', metrics);
+      }
       
       // Send to analytics service in production
       if (process.env.NODE_ENV === 'production' && Object.keys(metrics).length > 0) {
@@ -53,8 +55,8 @@ export const usePerformance = () => {
     // Observe different performance entry types
     try {
       observer.observe({ entryTypes: ['paint', 'largest-contentful-paint', 'first-input', 'layout-shift', 'navigation'] });
-    } catch {
-      // Performance observer not supported in this environment
+    } catch (error) {
+      console.warn('Performance observer not supported:', error);
     }
     
     return () => {
@@ -64,12 +66,18 @@ export const usePerformance = () => {
 };
 
 // Web Vitals helper
-export const reportWebVitals = () => {
-  // Web Vital metrics sent to analytics service
+export const reportWebVitals = (metric: any) => {
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Web Vital:', metric);
+  }
   
   // Send to analytics in production
   if (process.env.NODE_ENV === 'production') {
     // Replace with your analytics service
-    // analytics.track('web_vital', metrics);
+    // analytics.track('web_vital', {
+    //   name: metric.name,
+    //   value: metric.value,
+    //   id: metric.id,
+    // });
   }
 };

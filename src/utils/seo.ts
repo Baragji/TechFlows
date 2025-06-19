@@ -6,7 +6,7 @@ interface SEOConfig {
   keywords?: string;
   image?: string;
   url?: string;
-  type?: 'website' | 'article';
+  type?: 'website' | 'article' | 'product';
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
@@ -66,7 +66,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
         },
       ],
       locale: defaultConfig.locale,
-      type,
+      type: type === 'product' ? 'website' : type,
       publishedTime,
       modifiedTime,
       authors: author ? [author] : undefined,

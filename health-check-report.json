@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-06-19T14:32:37.281Z",
+  "timestamp": "2025-06-19T18:56:14.960Z",
   "summary": {
     "successes": 18,
     "warnings": 1,
-    "issues": 1
+    "issues": 0
   },
   "details": {
     "successes": [
@@ -29,8 +29,6 @@
     "warnings": [
       "Some dependencies are outdated - run \"npm outdated\" for details"
     ],
-    "issues": [
-      "Found invalid CSS property \"or\" in globals.css"
-    ]
+    "issues": []
   }
 }

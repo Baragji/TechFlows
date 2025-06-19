@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 console.log('🔍 TechFlow Next.js Health Check Starting...\n');
 
@@ -139,8 +144,9 @@ function checkCSSConsistency() {
     const customProps = globalsContent.match(/--[\w-]+:/g) || [];
     logInfo(`Found ${customProps.length} CSS custom properties`);
     
-    // Check for potential issues
-    if (globalsContent.includes('or')) {
+    // Check for potential CSS issues
+    const invalidCssPattern = /\bor\s*:/g;
+    if (invalidCssPattern.test(globalsContent)) {
       logError('Found invalid CSS property "or" in globals.css');
     }
     
