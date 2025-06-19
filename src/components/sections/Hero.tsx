@@ -49,16 +49,13 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-obsidian-dark"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Hero Background Image - optimized with bg-fixed only */}
       <div 
-        className="absolute inset-0 bg-cover bg-fixed bg-obsidian-dark"
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: "url('/images/hero/obsidian-bg.jpg')",
-          backgroundColor: "#0a0a0a", /* Fallback color before image loads */
-          backgroundPosition: "center top",
-          backgroundSize: "cover"
+          backgroundImage: "url('/images/hero/obsidian-bg.jpg')"
         }}
       />
       

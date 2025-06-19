@@ -94,20 +94,16 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <motion.nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[1440px] rounded-full backdrop-blur-[20px] border border-white/10 ${
-        isScrolled 
-          ? 'bg-black/70' 
-          : 'bg-[rgba(35,35,40,0.85)]'
-      }`}
+      className="fixed top-5 left-0 w-full z-50 transition-all duration-300"
       style={{ '--navbar-height': '72px' } as React.CSSProperties}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="flex items-center justify-between px-6 py-3">
+      <div className="max-w-[1280px] mx-auto flex items-center justify-between">
         {/* Left Navigation Group */}
         <motion.div 
-          className="flex items-center gap-6"
+          className="flex items-center gap-6 px-6 py-2.5 rounded-full border border-white/10 bg-[rgba(35,35,40,0.85)] backdrop-blur-[20px]"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -232,7 +228,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
         {/* Right Navigation Group */}
         <motion.div 
-          className="hidden lg:flex items-center gap-6"
+          className="hidden lg:flex items-center gap-6 px-6 py-2.5 rounded-full border border-white/10 bg-[rgba(35,35,40,0.85)] backdrop-blur-[20px]"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}

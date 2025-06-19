@@ -125,8 +125,11 @@ export const useParallax = (speed: number = 0.5) => {
 // Hook for navbar scroll effect
 export const useNavbarScroll = (scrollThreshold: number = 100) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > scrollThreshold);
     };
@@ -149,7 +152,8 @@ export const useNavbarScroll = (scrollThreshold: number = 100) => {
     return () => window.removeEventListener('scroll', throttledScrollHandler);
   }, [scrollThreshold]);
 
-  return isScrolled;
+  // Return false during SSR to match initial server render
+  return hasMounted ? isScrolled : false;
 };
 
 export default useScrollAnimation;

@@ -454,20 +454,3 @@ html {
     page-break-inside: avoid;
   }
 }
-
-@layer utilities {
-  .glass-nav   { 
-    @apply backdrop-blur-[20px] border border-white/10; 
-    background-color: rgba(35, 35, 40, 0.85);
-  }
-  .glass-hero  { @apply backdrop-blur-[20px] bg-black/30 border border-white/10; }
-  
-  /* ⬇︎ NY ⬇︎ — centreret, afrundet bar */
-  .nav-shell {
-    @apply w-[calc(100%-2rem)]       /* 1 rem margin i begge sider */
-           max-w-[1440px]            /* stop på store skærme */
-           mx-auto                   /* horisontal centrering */
-           rounded-3xl               /* pill-form */
-           glass-nav;                /* frost + bg */
-  }
-}
