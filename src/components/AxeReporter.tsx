@@ -1,0 +1,34 @@
+'use client'
+
+import { useEffect } from 'react'
+import React from 'react'
+
+const AxeReporter = () => {
+  useEffect(() => {
+    if (
+      typeof window !== 'undefined' &&
+      process.env.NODE_ENV !== 'production'
+    ) {
+      const initAxe = async () => {
+        try {
+          const axe = await import('@axe-core/react')
+          const ReactDOM = await import('react-dom')
+          
+          axe.default(React, ReactDOM, 1000)
+          
+          // eslint-disable-next-line no-console
+          console.log('🔍 Axe-core accessibility monitoring enabled')
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.warn('Failed to initialize axe-core:', error)
+        }
+      }
+      
+      initAxe()
+    }
+  }, [])
+
+  return null
+}
+
+export default AxeReporter

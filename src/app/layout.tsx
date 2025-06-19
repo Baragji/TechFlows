@@ -4,6 +4,7 @@ import './globals.css';
 import Layout from '@/components/Layout';
 import PerformanceMonitor from '@/components/analytics/PerformanceMonitor';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
+import AxeReporter from '@/components/AxeReporter';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -61,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="da" className="bg-obsidian-dark">
       <body className={`${inter.variable} font-sans antialiased bg-obsidian-dark`}>
+        <AxeReporter />
         <PerformanceMonitor />
         <ServiceWorkerRegistration />
         <Layout>{children}</Layout>

@@ -1,0 +1,315 @@
+{
+  "name": "Next.js Testing & Accessibility Setup",
+  "version": "1.0.0",
+  "description": "Complete testing and accessibility setup for Next.js projects",
+  "created": "2024-12-19",
+  "lastUpdated": "2024-12-19",
+  "compatibility": {
+    "nextjs": ">=13.0.0",
+    "react": ">=18.0.0",
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "testing": {
+      "@testing-library/react": "^14.1.2",
+      "@testing-library/jest-dom": "^6.1.5",
+      "@testing-library/user-event": "^14.5.1",
+      "jest": "^29.7.0",
+      "jest-environment-jsdom": "^29.7.0",
+      "@types/jest": "^29.5.8"
+    },
+    "accessibility": {
+      "jest-axe": "^8.0.0",
+      "@types/jest-axe": "^3.5.9",
+      "axe-core": "^4.8.3",
+      "pa11y": "^8.0.0",
+      "html-validate": "^8.7.4"
+    },
+    "development": {
+      "eslint": "^8.54.0",
+      "eslint-plugin-jest": "^27.6.0",
+      "eslint-plugin-testing-library": "^6.2.0",
+      "eslint-plugin-jsx-a11y": "^6.8.0"
+    }
+  },
+  "peerDependencies": {
+    "next": ">=13.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "typescript": ">=4.9.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --watchAll=false",
+    "test:debug": "jest --verbose --no-cache",
+    "test:accessibility": "jest --testPathPattern=accessibility",
+    "validate:html": "html-validate \"**/*.html\"",
+    "validate:a11y": "pa11y http://localhost:3000",
+    "lint:test": "eslint **/*.test.{js,jsx,ts,tsx}"
+  },
+  "configuration": {
+    "jest": {
+      "file": "jest.config.mjs",
+      "description": "Main Jest configuration with Next.js support",
+      "features": [
+        "TypeScript support",
+        "ES Modules support",
+        "Path mapping (@/ aliases)",
+        "JSDOM environment",
+        "Coverage reporting",
+        "Next.js mocking"
+      ]
+    },
+    "jestSetup": {
+      "file": "jest.setup.js",
+      "description": "Jest setup file with global mocks and utilities",
+      "features": [
+        "Jest DOM matchers",
+        "Jest-Axe setup",
+        "Next.js router mock",
+        "Next.js Image mock",
+        "Next.js Link mock",
+        "Browser API mocks",
+        "Global test utilities"
+      ]
+    },
+    "htmlValidate": {
+      "file": ".htmlvalidate.json",
+      "description": "HTML validation rules",
+      "features": [
+        "Accessibility rules",
+        "HTML5 validation",
+        "WCAG compliance",
+        "Custom rule configuration"
+      ]
+    },
+    "pa11y": {
+      "file": ".pa11yrc.json",
+      "description": "Pa11y accessibility testing configuration",
+      "features": [
+        "WCAG 2.1 AA standard",
+        "Custom viewport",
+        "Wait conditions",
+        "Ignore patterns"
+      ]
+    }
+  },
+  "templates": {
+    "exampleTest": {
+      "file": "templates/example.test.tsx",
+      "description": "Comprehensive test example",
+      "covers": [
+        "Component rendering",
+        "User interactions",
+        "Accessibility testing",
+        "Mock data handling",
+        "Async operations",
+        "Error boundaries"
+      ]
+    }
+  },
+  "documentation": {
+    "setup": "README.md",
+    "testing": "docs/testing-guide.md",
+    "accessibility": "docs/accessibility-guide.md",
+    "troubleshooting": "docs/troubleshooting.md"
+  },
+  "automation": {
+    "setupScript": {
+      "file": "setup-script.sh",
+      "description": "Automated setup script",
+      "actions": [
+        "Install dependencies",
+        "Copy configuration files",
+        "Update package.json scripts",
+        "Create example tests",
+        "Verify installation"
+      ]
+    },
+    "packageUpdater": {
+      "file": "scripts/update-package-json.js",
+      "description": "Package.json script updater",
+      "features": [
+        "Merge existing scripts",
+        "Preserve custom configurations",
+        "Backup original file",
+        "Validation checks"
+      ]
+    }
+  },
+  "testing": {
+    "frameworks": {
+      "jest": {
+        "version": "^29.7.0",
+        "purpose": "Test runner and assertion library",
+        "features": ["Snapshot testing", "Mocking", "Coverage", "Watch mode"]
+      },
+      "testingLibrary": {
+        "version": "^14.1.2",
+        "purpose": "React component testing utilities",
+        "features": ["User-centric queries", "Event simulation", "Async utilities"]
+      },
+      "jestAxe": {
+        "version": "^8.0.0",
+        "purpose": "Accessibility testing integration",
+        "features": ["WCAG compliance", "Automated a11y checks", "Custom rules"]
+      }
+    },
+    "patterns": {
+      "unitTests": "Test individual components in isolation",
+      "integrationTests": "Test component interactions",
+      "accessibilityTests": "Automated accessibility validation",
+      "visualTests": "Snapshot testing for UI consistency",
+      "userFlowTests": "End-to-end user interaction testing"
+    }
+  },
+  "accessibility": {
+    "standards": {
+      "wcag": "2.1 AA",
+      "section508": "Supported",
+      "aria": "1.2"
+    },
+    "tools": {
+      "axeCore": {
+        "version": "^4.8.3",
+        "purpose": "Automated accessibility testing engine",
+        "coverage": ["WCAG 2.1", "Section 508", "Best practices"]
+      },
+      "pa11y": {
+        "version": "^8.0.0",
+        "purpose": "Command-line accessibility testing",
+        "features": ["CI integration", "Multiple standards", "Custom rules"]
+      },
+      "htmlValidate": {
+        "version": "^8.7.4",
+        "purpose": "HTML validation and accessibility checks",
+        "features": ["Semantic HTML", "ARIA validation", "Custom rules"]
+      }
+    },
+    "checks": {
+      "automated": [
+        "Color contrast",
+        "Keyboard navigation",
+        "ARIA attributes",
+        "Semantic HTML",
+        "Focus management",
+        "Alternative text"
+      ],
+      "manual": [
+        "Screen reader testing",
+        "Keyboard-only navigation",
+        "Voice control",
+        "Cognitive accessibility",
+        "Mobile accessibility"
+      ]
+    }
+  },
+  "cicd": {
+    "github": {
+      "workflow": ".github/workflows/test.yml",
+      "features": [
+        "Automated testing",
+        "Coverage reporting",
+        "Accessibility checks",
+        "Multi-node testing"
+      ]
+    },
+    "commands": {
+      "test": "npm run test:ci",
+      "accessibility": "npm run validate:a11y",
+      "html": "npm run validate:html",
+      "coverage": "npm run test:coverage"
+    }
+  },
+  "migration": {
+    "fromJest27": {
+      "changes": [
+        "Update to Jest 29",
+        "ESM support improvements",
+        "New snapshot format",
+        "Updated mocking syntax"
+      ],
+      "breaking": [
+        "Node.js 14+ required",
+        "Some matcher changes",
+        "Configuration updates"
+      ]
+    },
+    "fromTestingLibrary13": {
+      "changes": [
+        "Updated to Testing Library 14",
+        "Improved TypeScript support",
+        "New query methods",
+        "Better error messages"
+      ]
+    }
+  },
+  "performance": {
+    "optimization": {
+      "parallelization": "Jest runs tests in parallel by default",
+      "caching": "Jest caches transformed modules",
+      "watchMode": "Only runs tests related to changed files",
+      "coverage": "Incremental coverage collection"
+    },
+    "benchmarks": {
+      "smallProject": "<100 tests: ~5-10 seconds",
+      "mediumProject": "100-500 tests: ~30-60 seconds",
+      "largeProject": "500+ tests: ~2-5 minutes"
+    }
+  },
+  "support": {
+    "browsers": [
+      "Chrome >= 90",
+      "Firefox >= 88",
+      "Safari >= 14",
+      "Edge >= 90"
+    ],
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Linux",
+      "Docker"
+    ],
+    "editors": [
+      "VS Code",
+      "WebStorm",
+      "Vim/Neovim",
+      "Sublime Text"
+    ]
+  },
+  "changelog": {
+    "1.0.0": {
+      "date": "2024-12-19",
+      "changes": [
+        "Initial release",
+        "Complete Jest setup",
+        "Accessibility testing integration",
+        "Next.js 13+ support",
+        "TypeScript support",
+        "Comprehensive documentation",
+        "Automated setup script"
+      ]
+    }
+  },
+  "roadmap": {
+    "1.1.0": {
+      "planned": [
+        "Playwright integration",
+        "Visual regression testing",
+        "Performance testing",
+        "Storybook integration"
+      ]
+    },
+    "1.2.0": {
+      "planned": [
+        "Docker support",
+        "CI/CD templates",
+        "Advanced mocking utilities",
+        "Custom Jest matchers"
+      ]
+    }
+  }
+}

@@ -76,7 +76,17 @@ const FeaturedEvents: React.FC = () => {
             >
               <Link href={`/events/${event.slug}`}>
                 <div className="relative">
-                  <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <Image 
+                    src={event.image || '/images/events/default-event.svg'} 
+                    alt={event.title || 'Event billede'} 
+                    width={800} 
+                    height={600} 
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/events/default-event.svg';
+                    }}
+                  />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                   
                   {/* Date Badge */}

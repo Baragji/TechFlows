@@ -8,6 +8,23 @@ interface PerformanceMetrics {
   ttfb?: number; // Time to First Byte
 }
 
+interface FirstInputEntry extends PerformanceEntry {
+  processingStart: number;
+}
+
+interface LayoutShiftEntry extends PerformanceEntry {
+  hadRecentInput: boolean;
+  value: number;
+}
+
+interface WebVitalMetric {
+  name: string;
+  value: number;
+  id: string;
+  delta?: number;
+  entries?: PerformanceEntry[];
+}
+
 export const usePerformance = () => {
   useEffect(() => {
     // Only run in browser
@@ -27,11 +44,11 @@ export const usePerformance = () => {
             metrics.lcp = entry.startTime;
             break;
           case 'first-input':
-            metrics.fid = (entry as any).processingStart - entry.startTime;
+            metrics.fid = (entry as FirstInputEntry).processingStart - entry.startTime;
             break;
           case 'layout-shift':
-            if (!(entry as any).hadRecentInput) {
-              metrics.cls = (metrics.cls || 0) + (entry as any).value;
+            if (!(entry as LayoutShiftEntry).hadRecentInput) {
+              metrics.cls = (metrics.cls || 0) + (entry as LayoutShiftEntry).value;
             }
             break;
           case 'navigation':
@@ -42,6 +59,7 @@ export const usePerformance = () => {
       
       // Log metrics (in production, send to analytics)
       if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
         console.log('Performance Metrics:', metrics);
       }
       
@@ -56,6 +74,7 @@ export const usePerformance = () => {
     try {
       observer.observe({ entryTypes: ['paint', 'largest-contentful-paint', 'first-input', 'layout-shift', 'navigation'] });
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn('Performance observer not supported:', error);
     }
     
@@ -66,8 +85,9 @@ export const usePerformance = () => {
 };
 
 // Web Vitals helper
-export const reportWebVitals = (metric: any) => {
+export const reportWebVitals = (metric: WebVitalMetric) => {
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
     console.log('Web Vital:', metric);
   }
   
