@@ -135,13 +135,14 @@ const CaseStudiesShowcase = () => {
               <Link href={caseStudy.href} className="block">
                 <div className="relative h-full bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10 hover:transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20">
                   {/* Case Study Image */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden" suppressHydrationWarning>
                     <Image
                       src={caseStudy.image}
                       alt={caseStudy.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={index < 3}
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-obsidian-darker/80 via-transparent to-transparent"></div>
                     

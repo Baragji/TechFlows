@@ -44,22 +44,29 @@ export default function BlogHero() {
 
       {/* Animated Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+        {[
+          { left: '10%', top: '20%', duration: 4, delay: 0 },
+          { left: '80%', top: '10%', duration: 3.5, delay: 0.5 },
+          { left: '20%', top: '80%', duration: 4.5, delay: 1 },
+          { left: '90%', top: '70%', duration: 3, delay: 1.5 },
+          { left: '60%', top: '30%', duration: 5, delay: 0.8 },
+          { left: '30%', top: '60%', duration: 3.8, delay: 1.2 },
+        ].map((item, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-white rounded-full opacity-20"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: item.left,
+              top: item.top,
             }}
             animate={{
               y: [-20, 20, -20],
               opacity: [0.2, 0.5, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: item.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: item.delay,
             }}
           />
         ))}

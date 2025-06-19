@@ -114,22 +114,31 @@ export default function Newsletter() {
 
       {/* Background Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {[
+          { left: '15%', top: '25%', duration: 3, delay: 0 },
+          { left: '85%', top: '15%', duration: 2.5, delay: 0.3 },
+          { left: '25%', top: '75%', duration: 3.5, delay: 0.6 },
+          { left: '75%', top: '85%', duration: 2.8, delay: 0.9 },
+          { left: '45%', top: '35%', duration: 4, delay: 1.2 },
+          { left: '65%', top: '55%', duration: 3.2, delay: 1.5 },
+          { left: '35%', top: '45%', duration: 2.7, delay: 1.8 },
+          { left: '55%', top: '65%', duration: 3.8, delay: 0.4 },
+        ].map((item, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full opacity-30"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: item.left,
+              top: item.top,
             }}
             animate={{
               y: [-10, 10, -10],
               opacity: [0.3, 0.7, 0.3],
             }}
             transition={{
-              duration: 2 + Math.random() * 2,
+              duration: item.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: item.delay,
             }}
           />
         ))}

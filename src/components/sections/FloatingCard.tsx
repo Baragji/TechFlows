@@ -17,6 +17,7 @@ export const FloatingCard: React.FC<FloatingCardProps> = ({ title, subtitle, ima
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1.5, ease: 'easeOut' }}
+      suppressHydrationWarning
     >
       <div className="backdrop-blur-[20px] bg-white/10 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.15)] rounded-[12px] p-3 flex items-center gap-4">
         {imageUrl ? (
@@ -25,7 +26,9 @@ export const FloatingCard: React.FC<FloatingCardProps> = ({ title, subtitle, ima
             alt={title} 
             width={64} 
             height={64} 
+            sizes="64px"
             className="w-16 h-16 rounded-lg object-cover" 
+            priority={false}
           />
         ) : (
           <div className="w-16 h-16 bg-glass-light rounded-lg flex items-center justify-center">
