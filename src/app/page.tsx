@@ -30,7 +30,7 @@ export default function Home() {
       <FloatingCard 
         title="Featured Case Study"
         subtitle="Digital Transformation"
-        imageUrl="/api/placeholder/80/80" 
+        imageUrl="/images/case-studies/digital-transformation-hero/hero.jpg" 
         linkText="Læs mere"
         href="/case-studies/digital-transformation-hero"
       />

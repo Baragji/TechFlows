@@ -18,7 +18,11 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "build:analyze": "ANALYZE=true npm run build",
     "test:lighthouse": "npm run build && npm start & sleep 5 && npm run lighthouse && kill %1",
-    "precommit": "npm run type-check && npm run lint && npm run format:check"
+    "precommit": "npm run type-check && npm run lint && npm run format:check",
+    "fix-runtime": "node scripts/fix-runtime-issues.js",
+    "validate-images": "node scripts/validate-images.js",
+    "dev:safe": "npm run fix-runtime && npm run dev",
+    "build:safe": "npm run fix-runtime && npm run build"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

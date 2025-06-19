@@ -289,7 +289,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
                   &ldquo;{caseStudy.testimonial.quote}&rdquo;
                 </blockquote>
                 <div className="flex items-center justify-center space-x-4">
-                  {caseStudy.testimonial.avatar && (
+                  {caseStudy.testimonial.avatar ? (
                     <Image
                       src={caseStudy.testimonial.avatar}
                       alt={caseStudy.testimonial.author}
@@ -297,6 +297,12 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
                       height={60}
                       className="rounded-full"
                     />
+                  ) : (
+                    <div className="w-15 h-15 bg-glass-light rounded-full flex items-center justify-center">
+                      <span className="text-white font-semibold text-lg">
+                        {caseStudy.testimonial.author.charAt(0)}
+                      </span>
+                    </div>
                   )}
                   <div className="text-left">
                     <div className="text-white font-semibold">

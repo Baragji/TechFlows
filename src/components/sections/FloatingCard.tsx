@@ -19,7 +19,19 @@ export const FloatingCard: React.FC<FloatingCardProps> = ({ title, subtitle, ima
       transition={{ duration: 0.8, delay: 1.5, ease: 'easeOut' }}
     >
       <div className="backdrop-blur-[20px] bg-white/10 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.15)] rounded-[12px] p-3 flex items-center gap-4">
-        <Image src={imageUrl} alt={title} width={800} height={600} className="w-16 h-16 rounded-lg object-cover" />
+        {imageUrl ? (
+          <Image 
+            src={imageUrl} 
+            alt={title} 
+            width={64} 
+            height={64} 
+            className="w-16 h-16 rounded-lg object-cover" 
+          />
+        ) : (
+          <div className="w-16 h-16 bg-glass-light rounded-lg flex items-center justify-center">
+            <span className="text-white/60 text-xs">📄</span>
+          </div>
+        )}
         <div>
           <p className="text-sm text-white/70">{subtitle}</p>
           <h3 className="font-semibold text-white">{title}</h3>

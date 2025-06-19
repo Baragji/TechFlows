@@ -14,6 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://techflowsolutions.dk'),
   title: 'TechFlow Solutions - Innovative teknologiløsninger til moderne virksomheder',
   description:
     'Moderne teknologivirksomhed specialiseret i udvikling af apps, hjemmesider og automatisering af arbejdsprocesser. Innovative løsninger der skaber værdi.',
