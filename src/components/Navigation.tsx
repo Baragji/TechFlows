@@ -11,7 +11,6 @@ import { Icon } from '@/components/ui';
 const Navigation: React.FC<NavigationProps> = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const isScrolled = useNavbarScroll(50);
-  console.log('Navigation scroll state:', isScrolled); // Temporary usage to avoid lint error
   const pathname = usePathname();
 
   // Navigation items
@@ -95,7 +94,11 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <motion.nav
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 nav-shell"
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[1440px] rounded-full backdrop-blur-[20px] border border-white/10 ${
+        isScrolled 
+          ? 'bg-black/70' 
+          : 'bg-[rgba(35,35,40,0.85)]'
+      }`}
       style={{ '--navbar-height': '72px' } as React.CSSProperties}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -172,7 +175,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 bg-obsidian-nav-hover backdrop-blur-[20px] rounded-2xl border border-glass-light shadow-2xl overflow-hidden"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 bg-[rgba(35,35,40,0.85)] backdrop-blur-[20px] rounded-2xl border border-white/10 shadow-2xl overflow-hidden"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-4">
