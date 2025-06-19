@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { SSRSafeMotion } from '@/components/ui/SSRSafeMotion';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 export default function Newsletter() {
@@ -23,7 +24,7 @@ export default function Newsletter() {
   return (
     <section className="py-20 bg-linear-to-r from-blue-600 to-purple-600">
       <div className="container mx-auto px-6">
-        <motion.div
+        <SSRSafeMotion
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -31,7 +32,7 @@ export default function Newsletter() {
           className="max-w-4xl mx-auto text-center"
         >
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12">
-            <motion.div
+            <SSRSafeMotion
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -39,9 +40,10 @@ export default function Newsletter() {
               className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6"
             >
               <EnvelopeIcon className="w-8 h-8 text-white" />
-            </motion.div>
+            </SSRSafeMotion>
 
-            <motion.h2
+            <SSRSafeMotion
+              as="h2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -49,9 +51,10 @@ export default function Newsletter() {
               className="text-3xl md:text-4xl font-bold text-white mb-4"
             >
               Hold dig opdateret
-            </motion.h2>
+            </SSRSafeMotion>
 
-            <motion.p
+            <SSRSafeMotion
+              as="p"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -60,10 +63,11 @@ export default function Newsletter() {
             >
               Tilmeld dig vores nyhedsbrev og få de seneste artikler, tips og indsigter direkte i
               din indbakke.
-            </motion.p>
+            </SSRSafeMotion>
 
             {!isSubmitted ? (
-              <motion.form
+              <SSRSafeMotion
+                as="form"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
@@ -85,9 +89,9 @@ export default function Newsletter() {
                 >
                   Tilmeld dig
                 </button>
-              </motion.form>
+              </SSRSafeMotion>
             ) : (
-              <motion.div
+              <SSRSafeMotion
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="bg-green-500/20 border border-green-400/30 rounded-lg p-4 max-w-md mx-auto"
@@ -95,10 +99,11 @@ export default function Newsletter() {
                 <p className="text-white font-medium">
                   ✓ Tak for din tilmelding! Du vil snart modtage vores nyhedsbrev.
                 </p>
-              </motion.div>
+              </SSRSafeMotion>
             )}
 
-            <motion.p
+            <SSRSafeMotion
+              as="p"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -106,9 +111,9 @@ export default function Newsletter() {
               className="text-sm text-blue-200 mt-4"
             >
               Vi respekterer din privatliv. Ingen spam, kun værdifuldt indhold.
-            </motion.p>
+            </SSRSafeMotion>
           </div>
-        </motion.div>
+        </SSRSafeMotion>
       </div>
 
       {/* Background Animation */}

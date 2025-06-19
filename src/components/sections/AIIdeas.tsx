@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { LightBulbIcon, SparklesIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
+import { SSRSafeMotion } from '@/components/ui/SSRSafeMotion';
+import { LightBulbIcon, RocketLaunchIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { useEffect, useState } from 'react';
 
 interface AIIdea {
   id: string;
@@ -113,7 +113,7 @@ const AIIdeas = () => {
     <section id="ideas" className="py-20 bg-obsidian-dark">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <motion.div
+        <SSRSafeMotion
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ const AIIdeas = () => {
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Lad dig inspirere af de nyeste trends og muligheder inden for teknologi
           </p>
-        </motion.div>
+        </SSRSafeMotion>
 
         {/* Ideas Grid */}
         {loading ? (
@@ -149,7 +149,7 @@ const AIIdeas = () => {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {ideas.map((idea, index) => (
-              <motion.div
+              <SSRSafeMotion
                 key={idea.id}
                 className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent-blue/30 hover:bg-white/10 transition-all duration-300 group"
                 initial={{ opacity: 0, y: 30 }}
@@ -183,13 +183,13 @@ const AIIdeas = () => {
                 </div>
 
                 <div className="text-sm text-text-light font-medium">{idea.category}</div>
-              </motion.div>
+              </SSRSafeMotion>
             ))}
           </div>
         )}
 
         {/* CTA */}
-        <motion.div
+        <SSRSafeMotion
           className="text-center mt-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -204,7 +204,7 @@ const AIIdeas = () => {
             Lad os tale om det
             <SparklesIcon className="w-5 h-5 ml-2" />
           </a>
-        </motion.div>
+        </SSRSafeMotion>
       </div>
     </section>
   );

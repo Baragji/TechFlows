@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useHydration } from './useHydration';
 
 export interface TypewriterOptions {
   speed?: number;
@@ -13,6 +14,7 @@ export interface TypewriterOptions {
 export const useTypewriter = (texts: string | string[], options: TypewriterOptions = {}) => {
   const { speed = 100, delay = 1000, loop = false, deleteSpeed = 50, pauseTime = 2000 } = options;
 
+  const isHydrated = useHydration();
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -22,8 +24,14 @@ export const useTypewriter = (texts: string | string[], options: TypewriterOptio
   const textArray = useMemo(() => Array.isArray(texts) ? texts : [texts], [texts]);
   const currentText = textArray[currentIndex];
 
+  // Return first text immediately during SSR to prevent hydration mismatch
+  const staticText = textArray[0] || '';
+
+  // Don't start animations until after hydration
+  const shouldAnimate = isHydrated && isStarted;
+
   useEffect(() => {
-    if (!isStarted) {
+    if (!shouldAnimate) {
       return;
     }
 
@@ -75,7 +83,7 @@ export const useTypewriter = (texts: string | string[], options: TypewriterOptio
     pauseTime,
     loop,
     textArray,
-    isStarted,
+    shouldAnimate,
   ]);
 
   const start = () => {
@@ -97,11 +105,12 @@ export const useTypewriter = (texts: string | string[], options: TypewriterOptio
   };
 
   return {
-    displayText,
+    displayText: isHydrated ? displayText : staticText,
     start,
     stop,
     reset,
     isStarted,
+    isHydrated,
   };
 };
 

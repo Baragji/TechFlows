@@ -1,24 +1,37 @@
 {
   "recommendations": [
+    // Core development tools
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-typescript-next",
+
+    // Next.js and React development
+    "bradlc.vscode-tailwindcss",
+    "usernamehw.errorlens",
+    "dsznajder.es7-react-js-snippets",
+
+    // Testing and quality
     "orta.vscode-jest",
     "ms-vscode.test-adapter-converter",
     "deque-systems.vscode-axe-linter",
+    "ms-playwright.playwright",
+
+    // Code quality and productivity
     "streetsidesoftware.code-spell-checker",
     "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
     "christian-kohler.path-intellisense",
+
+    // File format support
     "ms-vscode.vscode-json",
     "redhat.vscode-yaml",
     "ms-vscode.vscode-css-peek",
-    "bradlc.vscode-tailwindcss",
-    "formulahendry.auto-close-tag",
-    "ms-vscode.vscode-typescript-next",
+
+    // AI assistance
     "github.copilot",
     "github.copilot-chat",
-    "ms-playwright.playwright",
+
+    // Development utilities
     "humao.rest-client"
   ],
   "unwantedRecommendations": [

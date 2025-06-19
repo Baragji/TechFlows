@@ -1,18 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { 
-  CalendarIcon, 
-  ClockIcon, 
-  MapPinIcon,
-  UsersIcon,
-  GlobeAltIcon,
-  ArrowRightIcon
-} from '@heroicons/react/24/outline';
 import { getFeaturedEvents } from '@/data/events';
+import { getDayNumber, getMonthName, useFormattedDate, useMonthName } from '@/utils/dateUtils';
+import {
+  ArrowRightIcon,
+  CalendarIcon,
+  ClockIcon,
+  GlobeAltIcon,
+  MapPinIcon,
+  UsersIcon
+} from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useFormattedDate, useMonthName } from '@/utils/dateUtils';
+import Link from 'next/link';
 
 // Define types for the event data
 interface EventLocation {
@@ -73,7 +73,7 @@ const FeaturedEvents: React.FC = () => {
             Kommende Events
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
-            Deltag i vores eksklusive webinarer, workshops og konferencer. 
+            Deltag i vores eksklusive webinarer, workshops og konferencer.
             Lær fra eksperter og netværk med andre professionelle.
           </p>
           <motion.div
@@ -141,21 +141,21 @@ const FeaturedEvents: React.FC = () => {
 
 // Event Card Component
 const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
-  // Use our custom hooks for date formatting
-  const formattedDate = useFormattedDate(event.date, { 
+  // Use our custom hooks for date formatting (progressive enhancement)
+  const formattedDate = useFormattedDate(event.date, {
     day: 'numeric',
     month: 'short',
     year: 'numeric'
   });
-  
-  const monthName = useMonthName(event.date);
-  
-  // Server-safe date extraction
-  const date = new Date(event.date);
-  const day = date.getDate();
-  
+
+  const _monthName = useMonthName(event.date); // Legacy - using monthShort instead
+
+  // Server-safe date extraction - no direct new Date() in render
+  const day = getDayNumber(event.date);
+  const monthShort = getMonthName(event.date);
+
   const spotsLeft = event.capacity - event.registered;
-  
+
   return (
     <motion.article
       key={event.id}
@@ -167,11 +167,11 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
     >
       <Link href={`/events/${event.slug}`}>
         <div className="relative">
-          <Image 
-            src={event.image || '/images/events/default-event.svg'} 
-            alt={event.title || 'Event billede'} 
-            width={800} 
-            height={600} 
+          <Image
+            src={event.image || '/images/events/default-event.svg'}
+            alt={event.title || 'Event billede'}
+            width={800}
+            height={600}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
@@ -179,7 +179,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
             }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-          
+
           {/* Date Badge */}
           <div className="absolute top-4 left-4">
             <div className="bg-glass-dark/80 backdrop-blur-sm rounded-xl p-3 text-center">
@@ -187,7 +187,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 {day}
               </div>
               <div className="text-accent-blue text-xs font-medium uppercase">
-                {monthName}
+                {monthShort}
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
             </span>
           </div>
         </div>
-        
+
         <div className="p-6">
           {/* Title */}
           <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors duration-300 line-clamp-2">
@@ -238,7 +238,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 <MapPinIcon className="w-4 h-4 mr-2 text-accent-orange" />
               )}
               <span>
-                {event.location.type === 'online' ? 'Online Event' : 
+                {event.location.type === 'online' ? 'Online Event' :
                  event.location.type === 'physical' ? event.location.city :
                  'Hybrid Event'}
               </span>
@@ -271,7 +271,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </motion.svg>
             </div>
-            
+
             {!event.registration.isOpen && (
               <span className="text-xs text-white/50">
                 Tilmelding lukket

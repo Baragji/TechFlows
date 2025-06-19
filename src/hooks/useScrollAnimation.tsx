@@ -97,13 +97,18 @@ export const useCounterAnimation = (
 // Hook for parallax effects
 export const useParallax = (speed: number = 0.5) => {
   const [offset, setOffset] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || typeof window === 'undefined') {
       return;
     }
-    
+
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       setOffset(scrolled * speed);
@@ -122,10 +127,15 @@ export const useParallax = (speed: number = 0.5) => {
     };
 
     window.addEventListener('scroll', throttledScrollHandler);
-    return () => window.removeEventListener('scroll', throttledScrollHandler);
-  }, [speed]);
 
-  return { elementRef, offset };
+    // Set initial scroll position
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', throttledScrollHandler);
+  }, [speed, isMounted]);
+
+  // Return 0 during SSR to prevent hydration mismatch
+  return { elementRef, offset: isMounted ? offset : 0 };
 };
 
 // Hook for navbar scroll effect
@@ -135,11 +145,11 @@ export const useNavbarScroll = (scrollThreshold: number = 100) => {
 
   useEffect(() => {
     setHasMounted(true);
-    
+
     if (typeof window === 'undefined') {
       return;
     }
-    
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > scrollThreshold);
     };

@@ -1,13 +1,14 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import nextPlugin from '@next/eslint-plugin-next';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+// import ssrFriendlyPlugin from 'eslint-plugin-ssr-friendly'; // Temporarily disabled - ESLint v9 compatibility issue
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -83,6 +84,7 @@ const eslintConfig = [
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
+      // 'ssr-friendly': ssrFriendlyPlugin, // Temporarily disabled - ESLint v9 compatibility issue
       '@typescript-eslint': typescriptEslint,
     },
     rules: {
@@ -92,7 +94,7 @@ const eslintConfig = [
       '@next/next/no-head-element': 'error',
       '@next/next/no-sync-scripts': 'error',
       '@next/next/no-page-custom-font': 'error',
-      
+
       // React rules
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
@@ -104,27 +106,27 @@ const eslintConfig = [
       'react/no-unescaped-entities': 'warn',
       'react/self-closing-comp': 'warn',
       'react/display-name': 'off',
-      
+
       // React Hooks rules
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      
+
       // Accessibility rules
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/aria-props': 'error',
       'jsx-a11y/aria-proptypes': 'error',
       'jsx-a11y/role-has-required-aria-props': 'error',
       'jsx-a11y/role-supports-aria-props': 'error',
-      
+
       // TypeScript rules
-      '@typescript-eslint/no-unused-vars': ['error', { 
+      '@typescript-eslint/no-unused-vars': ['error', {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
-        ignoreRestSiblings: true 
+        ignoreRestSiblings: true
       }],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-var-requires': 'error',
-      
+
       // General JavaScript rules
       'prefer-const': 'error',
       'no-var': 'error',
@@ -135,7 +137,7 @@ const eslintConfig = [
       'no-implied-eval': 'error',
       'no-new-func': 'error',
       'no-script-url': 'error',
-      
+
       // Code quality rules
       'eqeqeq': ['error', 'always'],
       'curly': ['error', 'all'],
@@ -145,18 +147,25 @@ const eslintConfig = [
       'no-unreachable-loop': 'error',
       'array-callback-return': 'error',
       'consistent-return': 'off', // Disabled due to false positives with useEffect cleanup functions
-      
+
       // Performance rules
       'no-await-in-loop': 'warn',
       'prefer-template': 'warn',
       'prefer-spread': 'warn',
-      
-      // Hydration-specific rules
+
+      // Custom SSR-Friendly rules (replacing eslint-plugin-ssr-friendly)
+      // These rules help prevent hydration mismatches
+
+      // Enhanced hydration-specific rules
       'no-restricted-globals': [
         'warn',
         {
           name: 'document',
           message: 'Direct document access can cause hydration mismatches. Use typeof document !== "undefined" check or useEffect.',
+        },
+        {
+          name: 'window',
+          message: 'Direct window access can cause hydration mismatches. Use typeof window !== "undefined" check or useEffect.',
         },
         {
           name: 'localStorage',
@@ -166,8 +175,12 @@ const eslintConfig = [
           name: 'sessionStorage',
           message: 'sessionStorage access can cause hydration mismatches. Use useEffect or client-side check.',
         },
+        {
+          name: 'navigator',
+          message: 'Navigator access can cause hydration mismatches. Use useEffect or client-side check.',
+        },
       ],
-      
+
       'no-restricted-syntax': [
         'warn',
         {
@@ -177,6 +190,14 @@ const eslintConfig = [
         {
           selector: 'NewExpression[callee.name="Date"][arguments.length=0]',
           message: 'new Date() without arguments can cause hydration mismatches. Pass a specific date or move to useEffect.',
+        },
+        {
+          selector: "CallExpression[callee.object.name='Date'][callee.property.name='now']",
+          message: 'Date.now() can cause hydration mismatches. Use a deterministic timestamp or move to useEffect.',
+        },
+        {
+          selector: "MemberExpression[object.name='performance'][property.name='now']",
+          message: 'performance.now() can cause hydration mismatches. Move to useEffect or use a deterministic value.',
         },
       ],
     },
