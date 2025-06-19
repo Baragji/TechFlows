@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const AxeReporter = () => {
   useEffect(() => {
@@ -19,7 +18,7 @@ const AxeReporter = () => {
           // eslint-disable-next-line no-console
           console.log('🔍 Axe-core accessibility monitoring enabled')
         } catch (error) {
-          // eslint-disable-next-line no-console
+           
           console.warn('Failed to initialize axe-core:', error)
         }
       }

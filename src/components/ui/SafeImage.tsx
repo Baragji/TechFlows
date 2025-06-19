@@ -52,7 +52,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
 
   return (
     <Image
-      src={imageSrc}
+      src={imageSrc || '/images/placeholder.svg'}
       alt={alt}
       width={width}
       height={height}

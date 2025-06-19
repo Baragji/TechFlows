@@ -55,7 +55,7 @@ function Counter({ end, duration = 2000 }: CounterProps) {
     let animationFrame: number;
 
     const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
+      if (!startTime) {startTime = currentTime;}
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
       setCount(Math.floor(progress * end));

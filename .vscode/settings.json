@@ -18,7 +18,7 @@
     },
     "files.saveConflictResolution": "overwriteFileOnDisk",
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit",
         "source.organizeImports": "explicit"
@@ -49,10 +49,7 @@
         ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
     ],
     "jest.jestCommandLine": "npm test --",
-    "jest.autoRun": {
-        "watch": false,
-        "onStartup": ["all-tests"]
-    },
+    "jest.runMode": "on-demand",
     "testing.automaticallyOpenPeekView": "never",
     "html.validate.styles": false,
     "css.validate": false,
@@ -79,5 +76,18 @@
     "files.trimTrailingWhitespace": true,
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l"]
+        },
+        "bash": {
+            "path": "/bin/bash",
+            "args": ["-l"]
+        }
+    },
+    "terminal.integrated.inheritEnv": true,
+    "terminal.integrated.shellIntegration.enabled": true
 }

@@ -7,7 +7,9 @@ import { useEffect } from 'react';
 const PerformanceMonitor: React.FC = () => {
   useEffect(() => {
     // Only run in production
-    if (process.env.NODE_ENV !== 'production') return;
+    if (process.env.NODE_ENV !== 'production') {
+      return;
+    }
 
     // Counter for generating unique IDs (avoiding Date.now() for hydration consistency)
     let idCounter = 0;
@@ -114,14 +116,14 @@ const PerformanceMonitor: React.FC = () => {
 
     // Memory usage monitoring (if available)
     if ('memory' in performance && process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const memory = (performance as any).memory;
       // Memory metrics tracked for development
     }
 
     // Connection quality monitoring
     if ('connection' in navigator && process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const connection = (navigator as any).connection;
       // Connection metrics tracked for development
     }

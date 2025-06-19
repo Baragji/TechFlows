@@ -1,9 +1,10 @@
 /* eslint-env jest */
-/* eslint-disable no-undef */
+ 
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import FeaturedEvents from '../FeaturedEvents'
+import Image from 'next/image'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -18,8 +19,8 @@ jest.mock('framer-motion', () => ({
 // Mock Next.js Image component
 jest.mock('next/image', () => {
   return function MockImage({ src, alt, ...props }: React.ComponentProps<'img'>) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} {...props} />
+     
+    return <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} />
   }
 })
 

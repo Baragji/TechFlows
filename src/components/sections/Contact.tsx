@@ -35,7 +35,7 @@ const Contact = () => {
       email: { required: true, email: true },
       message: { required: true, minLength: 10 },
     },
-    onSubmit: async (data) => { // eslint-disable-line @typescript-eslint/no-unused-vars, no-unused-vars
+    onSubmit: async (data) => { // eslint-disable-line @typescript-eslint/no-unused-vars
       // Simuler API kald
       await new Promise((resolve) => setTimeout(resolve, 2000));
 

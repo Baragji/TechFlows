@@ -13,7 +13,8 @@ import {
   MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 import { getUpcomingEvents, eventCategories, Event } from '@/data/events';
-import Image from 'next/image'
+import Image from 'next/image';
+import { formatDateString, useFormattedDate } from '@/utils/dateUtils';
 
 const EventsGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -205,6 +206,14 @@ interface EventCardProps {
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
+  // Use our custom hook for date formatting
+  const formattedDate = useFormattedDate(event.date, { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+  
   const getEventTypeColor = (type: string) => {
     switch (type) {
       case 'webinar': return 'from-accent-blue to-accent-purple';
@@ -213,16 +222,6 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
       case 'meetup': return 'from-accent-orange to-accent-gold';
       default: return 'from-accent-blue to-accent-purple';
     }
-  };
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('da-DK', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
   };
 
   const spotsLeft = event.capacity - event.registered;
@@ -238,7 +237,13 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
     >
       <Link href={`/events/${event.slug}`}>
         <div className="relative">
-          <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
+          <Image 
+            src={event.image || "/images/events/default-event.svg"} 
+            alt={event.title || "Event billede"} 
+            width={800} 
+            height={600} 
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" 
+          />
           <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
           
           {/* Event Type Badge */}
@@ -283,7 +288,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
           <div className="space-y-2 mb-4">
             <div className="flex items-center text-sm text-white/70">
               <CalendarIcon className="w-4 h-4 mr-2 text-accent-blue" />
-              <span>{formatDate(event.date)}</span>
+              <span>{formattedDate || formatDateString(event.date)}</span>
             </div>
             <div className="flex items-center text-sm text-white/70">
               <ClockIcon className="w-4 h-4 mr-2 text-accent-green" />

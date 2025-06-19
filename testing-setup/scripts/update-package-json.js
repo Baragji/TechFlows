@@ -51,7 +51,7 @@ function updatePackageJson() {
     // Write updated package.json
     fs.writeFileSync(
       PACKAGE_JSON_PATH, 
-      JSON.stringify(packageJson, null, 2) + '\n'
+      `${JSON.stringify(packageJson, null, 2)  }\n`
     )
     
     console.log('\n✅ Package.json opdateret succesfuldt!')

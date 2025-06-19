@@ -60,12 +60,22 @@ const eslintConfig = [
         HTMLSelectElement: 'readonly',
         HTMLFormElement: 'readonly',
         HTMLImageElement: 'readonly',
+        HTMLInputElement: 'readonly',
+        HTMLParagraphElement: 'readonly',
+        HTMLHeadingElement: 'readonly',
+        SVGElement: 'readonly',
+        SVGSVGElement: 'readonly',
         IntersectionObserver: 'readonly',
         PerformanceObserver: 'readonly',
+        PerformanceEntry: 'readonly',
+        PerformanceNavigationTiming: 'readonly',
         performance: 'readonly',
         KeyboardEvent: 'readonly',
         URL: 'readonly',
         NodeJS: 'readonly',
+        Event: 'readonly',
+        EventTarget: 'readonly',
+        confirm: 'readonly',
       },
     },
     plugins: {
@@ -81,6 +91,7 @@ const eslintConfig = [
       '@next/next/no-html-link-for-pages': 'error',
       '@next/next/no-head-element': 'error',
       '@next/next/no-sync-scripts': 'error',
+      '@next/next/no-page-custom-font': 'error',
       
       // React rules
       'react/react-in-jsx-scope': 'off',
@@ -92,6 +103,7 @@ const eslintConfig = [
       'react/no-direct-mutation-state': 'error',
       'react/no-unescaped-entities': 'warn',
       'react/self-closing-comp': 'warn',
+      'react/display-name': 'off',
       
       // React Hooks rules
       'react-hooks/rules-of-hooks': 'error',
@@ -111,7 +123,6 @@ const eslintConfig = [
         ignoreRestSiblings: true 
       }],
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/prefer-const': 'error',
       '@typescript-eslint/no-var-requires': 'error',
       
       // General JavaScript rules
@@ -133,7 +144,7 @@ const eslintConfig = [
       'no-unreachable': 'error',
       'no-unreachable-loop': 'error',
       'array-callback-return': 'error',
-      'consistent-return': 'error',
+      'consistent-return': 'off', // Disabled due to false positives with useEffect cleanup functions
       
       // Performance rules
       'no-await-in-loop': 'warn',
@@ -180,7 +191,7 @@ const eslintConfig = [
   },
   // Test files configuration
   {
-    files: ['**/*.test.{js,jsx,ts,tsx}', '**/*.spec.{js,jsx,ts,tsx}', '**/jest.setup.js'],
+    files: ['**/*.test.{js,jsx,ts,tsx}', '**/*.spec.{js,jsx,ts,tsx}', '**/jest.setup.js', 'testing-setup/**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       globals: {
         jest: 'readonly',
@@ -194,6 +205,9 @@ const eslintConfig = [
         afterAll: 'readonly',
         vi: 'readonly',
         vitest: 'readonly',
+        global: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
       },
     },
     rules: {
@@ -201,6 +215,7 @@ const eslintConfig = [
       'no-console': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       'react/display-name': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
   // JavaScript files configuration
@@ -214,11 +229,17 @@ const eslintConfig = [
   },
   // Configuration files
   {
-    files: ['*.config.{js,mjs,ts}', 'scripts/**/*.js'],
+    files: ['*.config.{js,mjs,ts}', 'scripts/**/*.js', 'jest.setup.js', 'verify-workflows.js'],
     rules: {
       'no-console': 'off',
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-duplicate-imports': 'off',
+      'no-restricted-syntax': 'off',
+      'no-useless-escape': 'off',
+      'no-alert': 'off',
     },
   },
   {
@@ -230,10 +251,11 @@ const eslintConfig = [
       'dist/**',
       'public/**',
       'coverage/**',
-      '*.config.js',
-      '*.config.mjs',
-      '*.config.ts',
-      'scripts/**',
+      '.swc/**',
+      '.qodo/**',
+      '.repomix/**',
+      'docs/**',
+      'Udseende/**',
       'testing-setup/**',
     ],
   },

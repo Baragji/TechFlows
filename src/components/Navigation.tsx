@@ -77,8 +77,12 @@ const Navigation: React.FC<NavigationProps> = () => {
       // eslint-disable-next-line no-restricted-globals
       const doc = document;
       doc.addEventListener('click', handleClickOutside);
-      return () => doc.removeEventListener('click', handleClickOutside);
+      return () => {
+        doc.removeEventListener('click', handleClickOutside);
+      };
     }
+    
+    return undefined;
   }, [activeDropdown]);
 
   // Close dropdown on escape key
@@ -94,8 +98,12 @@ const Navigation: React.FC<NavigationProps> = () => {
       // eslint-disable-next-line no-restricted-globals
       const doc = document;
       doc.addEventListener('keydown', handleKeyDown);
-      return () => doc.removeEventListener('keydown', handleKeyDown);
+      return () => {
+        doc.removeEventListener('keydown', handleKeyDown);
+      };
     }
+    
+    return undefined;
   }, []);
 
   return (

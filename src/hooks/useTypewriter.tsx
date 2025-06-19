@@ -23,7 +23,9 @@ export const useTypewriter = (texts: string | string[], options: TypewriterOptio
   const currentText = textArray[currentIndex];
 
   useEffect(() => {
-    if (!isStarted) return;
+    if (!isStarted) {
+      return;
+    }
 
     const typeCharacter = () => {
       if (!isDeleting) {
@@ -115,7 +117,9 @@ export const useTypewriterOnScroll = (
 
   useEffect(() => {
     const element = elementRef.current;
-    if (!element || hasStarted) return;
+    if (!element || hasStarted) {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

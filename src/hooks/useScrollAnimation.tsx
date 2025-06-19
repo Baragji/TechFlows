@@ -23,7 +23,9 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
 
   useEffect(() => {
     const element = elementRef.current;
-    if (!element) return;
+    if (!element) {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -98,7 +100,9 @@ export const useParallax = (speed: number = 0.5) => {
   const elementRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
@@ -132,7 +136,9 @@ export const useNavbarScroll = (scrollThreshold: number = 100) => {
   useEffect(() => {
     setHasMounted(true);
     
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     
     const handleScroll = () => {
       setIsScrolled(window.scrollY > scrollThreshold);

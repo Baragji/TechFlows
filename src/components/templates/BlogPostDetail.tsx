@@ -53,7 +53,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="" alt="" width={800} height={600} className="w-full h-full object-cover opacity-20" />
+          <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background" />
         </div>
         
@@ -210,7 +210,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
                 >
                   <Link href={`/blog/${relatedPost.slug}`}>
                     <div className="relative">
-                      <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
+                      <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                       
                       <div className="absolute top-4 left-4">

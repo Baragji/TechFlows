@@ -172,7 +172,7 @@ export default function PriceCalculator() {
     }
 
     const projectType = projectTypes.find((p) => p.id === selectedProjectType);
-    if (!projectType) return;
+    if (!projectType) {return;}
 
     const basePrice = projectType.basePrice;
     let addonsPrice = 0;

@@ -37,7 +37,7 @@ const ClientMarquee: React.FC = () => {
           <motion.div
             className="flex space-x-16"
             animate={{
-              x: [0, -50 * clients.length + '%']
+              x: [0, `${-50 * clients.length  }%`]
             }}
             transition={{
               x: {

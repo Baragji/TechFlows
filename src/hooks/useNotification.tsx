@@ -14,7 +14,7 @@ export interface Notification {
 
 interface NotificationComponentProps {
   notification: Notification;
-  onClose: (id: string) => void; // eslint-disable-line no-unused-vars
+  onClose: (id: string) => void;  
 }
 
 const NotificationComponent: React.FC<NotificationComponentProps> = ({ notification, onClose }) => {
@@ -97,7 +97,7 @@ export const useNotification = () => {
   }, []);
 
   const NotificationContainer = useCallback(() => {
-    if (typeof window === 'undefined' || notifications.length === 0 || !portalContainer) return null;
+    if (typeof window === 'undefined' || notifications.length === 0 || !portalContainer) {return null;}
 
     return createPortal(
       <div className="fixed top-0 right-0 z-50 p-4 space-y-2">

@@ -51,7 +51,9 @@ const TestimonialsCarousel: React.FC = () => {
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlay) return;
+    if (!isAutoPlay) {
+      return;
+    }
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);

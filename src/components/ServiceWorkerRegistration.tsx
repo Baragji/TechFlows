@@ -40,7 +40,7 @@ const ServiceWorkerRegistration: React.FC = () => {
           }, 60000); // Check every minute
 
         } catch (error) {
-          // eslint-disable-next-line no-console
+           
           console.error('Service Worker registration failed:', error);
         }
       };
@@ -76,6 +76,8 @@ const ServiceWorkerRegistration: React.FC = () => {
         window.removeEventListener('offline', handleOffline);
       };
     }
+    
+    return undefined;
   }, []);
 
   return null; // This component doesn't render anything

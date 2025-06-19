@@ -100,7 +100,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="" alt="" width={800} height={600} className="w-full h-full object-cover opacity-20" />
+          <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background" />
         </div>
         
@@ -386,7 +386,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                 {event.speakers.map((speaker, index) => (
                   <div key={index} className="bg-glass-light backdrop-blur-sm rounded-xl p-6 border border-white/10">
                     <div className="flex items-start space-x-4">
-                      <Image src="" alt="" width={800} height={600} className="w-16 h-16 rounded-full object-cover" />
+                      <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-16 h-16 rounded-full object-cover" />
                       <div className="flex-1">
                         <h3 className="text-lg font-semibold text-white mb-1">
                           {speaker.name}
@@ -454,7 +454,7 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
                 >
                   <Link href={`/events/${relatedEvent.slug}`}>
                     <div className="relative">
-                      <Image src="" alt="" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
+                      <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                       
                       <div className="absolute top-4 left-4">

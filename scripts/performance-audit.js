@@ -90,7 +90,7 @@ function analyzeComponents() {
   let lazyLoadedComponents = 0;
   
   function scanComponents(dir) {
-    if (!fs.existsSync(dir)) return;
+    if (!fs.existsSync(dir)) {return;}
     
     const files = fs.readdirSync(dir);
     
@@ -127,7 +127,7 @@ function analyzeSEO() {
   let totalPages = 0;
   
   function scanPages(dir) {
-    if (!fs.existsSync(dir)) return;
+    if (!fs.existsSync(dir)) {return;}
     
     const files = fs.readdirSync(dir);
     

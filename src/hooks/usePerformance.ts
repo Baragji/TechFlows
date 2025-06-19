@@ -8,27 +8,27 @@ interface PerformanceMetrics {
   ttfb?: number; // Time to First Byte
 }
 
-interface FirstInputEntry extends PerformanceEntry {
-  processingStart: number;
-}
-
 interface LayoutShiftEntry extends PerformanceEntry {
   hadRecentInput: boolean;
   value: number;
+}
+
+interface FirstInputEntry extends PerformanceEntry {
+  processingStart: number;
 }
 
 interface WebVitalMetric {
   name: string;
   value: number;
   id: string;
-  delta?: number;
-  entries?: PerformanceEntry[];
 }
 
-export const usePerformance = () => {
+export const usePerformance = (): void => {
   useEffect(() => {
     // Only run in browser
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     
     const observer = new PerformanceObserver((list) => {
       const metrics: PerformanceMetrics = {};
@@ -43,24 +43,22 @@ export const usePerformance = () => {
           case 'largest-contentful-paint':
             metrics.lcp = entry.startTime;
             break;
-          case 'first-input':
-            metrics.fid = (entry as FirstInputEntry).processingStart - entry.startTime;
+          case 'first-input': {
+            const firstInputEntry = entry as FirstInputEntry;
+            metrics.fid = firstInputEntry.processingStart - firstInputEntry.startTime;
             break;
-          case 'layout-shift':
-            if (!(entry as LayoutShiftEntry).hadRecentInput) {
-              metrics.cls = (metrics.cls || 0) + (entry as LayoutShiftEntry).value;
+          }
+          case 'layout-shift': {
+            const layoutShiftEntry = entry as LayoutShiftEntry;
+            if (!layoutShiftEntry.hadRecentInput) {
+              metrics.cls = (metrics.cls || 0) + layoutShiftEntry.value;
             }
             break;
+          }
           case 'navigation':
             metrics.ttfb = (entry as PerformanceNavigationTiming).responseStart;
             break;
         }
-      }
-      
-      // Log metrics (in production, send to analytics)
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.log('Performance Metrics:', metrics);
       }
       
       // Send to analytics service in production
@@ -73,9 +71,9 @@ export const usePerformance = () => {
     // Observe different performance entry types
     try {
       observer.observe({ entryTypes: ['paint', 'largest-contentful-paint', 'first-input', 'layout-shift', 'navigation'] });
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.warn('Performance observer not supported:', error);
+    } catch {
+      // Performance observer not supported - silently fail
+      // This is expected in some environments
     }
     
     return () => {
@@ -85,12 +83,7 @@ export const usePerformance = () => {
 };
 
 // Web Vitals helper
-export const reportWebVitals = (metric: WebVitalMetric) => {
-  if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.log('Web Vital:', metric);
-  }
-  
+export const reportWebVitals = (_metric: WebVitalMetric): void => {
   // Send to analytics in production
   if (process.env.NODE_ENV === 'production') {
     // Replace with your analytics service
