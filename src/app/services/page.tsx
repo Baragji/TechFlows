@@ -79,8 +79,8 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-obsidian-950">
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -170,7 +170,7 @@ export default function ServicesPage() {
                   viewport={{ once: true }}
                 >
                   <div className="relative h-full bg-glass-light backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 group-hover:bg-glass-medium overflow-hidden">
-                    <div className={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+                    <div className={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
                     
                     <div className="relative mb-6">
                       <div className={`w-16 h-16 bg-linear-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg`}>
@@ -194,7 +194,7 @@ export default function ServicesPage() {
                               key={featureIndex}
                               className="flex items-center text-sm text-white/60 group-hover:text-white/70 transition-colors duration-300"
                             >
-                              <div className="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2 group-hover:bg-accent-purple transition-colors duration-300"></div>
+                              <div className="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2 group-hover:bg-accent-purple transition-colors duration-300" />
                               {feature}
                             </div>
                           ))}
@@ -240,7 +240,7 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     </div>
                   </div>
                 </motion.div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 export type NotificationType = 'success' | 'error' | 'info' | 'warning';
@@ -59,10 +59,11 @@ const NotificationComponent: React.FC<NotificationComponentProps> = ({ notificat
 
 export const useNotification = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const idCounter = useRef(0);
 
   const showNotification = useCallback(
     (message: string, type: NotificationType = 'info', duration: number = 5000) => {
-      const id = Math.random().toString(36).substr(2, 9);
+      const id = `notification-${++idCounter.current}`;
       const notification: Notification = { id, message, type, duration };
 
       setNotifications((prev) => [...prev, notification]);

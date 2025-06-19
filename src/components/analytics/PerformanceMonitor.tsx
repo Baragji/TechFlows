@@ -9,10 +9,16 @@ const PerformanceMonitor: React.FC = () => {
     // Only run in production
     if (process.env.NODE_ENV !== 'production') return;
 
+    // Counter for generating unique IDs (avoiding Date.now() for hydration consistency)
+    let idCounter = 0;
+    const generateId = (prefix: string) => `${prefix}-${++idCounter}`;
+
     // Web Vitals monitoring
     const reportWebVitals = (metric: { name: string; value: number; id: string }) => {
       // You can send this to your analytics service
-      console.log('Web Vital:', metric);
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Web Vital:', metric);
+      }
       
       // Example: Send to Google Analytics
       if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -34,7 +40,7 @@ const PerformanceMonitor: React.FC = () => {
         reportWebVitals({
           name: 'LCP',
           value: lastEntry.startTime,
-          id: 'lcp-' + Date.now(),
+          id: generateId('lcp'),
         });
       });
       lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
@@ -46,7 +52,7 @@ const PerformanceMonitor: React.FC = () => {
           reportWebVitals({
             name: 'FID',
             value: entry.processingStart - entry.startTime,
-            id: 'fid-' + Date.now(),
+            id: generateId('fid'),
           });
         });
       });
@@ -64,7 +70,7 @@ const PerformanceMonitor: React.FC = () => {
         reportWebVitals({
           name: 'CLS',
           value: clsValue,
-          id: 'cls-' + Date.now(),
+          id: generateId('cls'),
         });
       });
       clsObserver.observe({ entryTypes: ['layout-shift'] });
@@ -81,7 +87,7 @@ const PerformanceMonitor: React.FC = () => {
         reportWebVitals({
           name: 'TTFB',
           value: ttfb,
-          id: 'ttfb-' + Date.now(),
+          id: generateId('ttfb'),
         });
 
         // First Contentful Paint (FCP)
@@ -91,7 +97,7 @@ const PerformanceMonitor: React.FC = () => {
           reportWebVitals({
             name: 'FCP',
             value: fcpEntry.startTime,
-            id: 'fcp-' + Date.now(),
+            id: generateId('fcp'),
           });
         }
       }
@@ -102,7 +108,7 @@ const PerformanceMonitor: React.FC = () => {
       const entries = list.getEntries();
       entries.forEach((entry: any) => {
         // Monitor slow resources (> 1 second)
-        if (entry.duration > 1000) {
+        if (entry.duration > 1000 && process.env.NODE_ENV === 'development') {
           console.warn('Slow resource detected:', {
             name: entry.name,
             duration: entry.duration,
@@ -114,7 +120,7 @@ const PerformanceMonitor: React.FC = () => {
     resourceObserver.observe({ entryTypes: ['resource'] });
 
     // Memory usage monitoring (if available)
-    if ('memory' in performance) {
+    if ('memory' in performance && process.env.NODE_ENV === 'development') {
       const memory = (performance as any).memory;
       console.log('Memory usage:', {
         used: Math.round(memory.usedJSHeapSize / 1048576) + ' MB',
@@ -124,7 +130,7 @@ const PerformanceMonitor: React.FC = () => {
     }
 
     // Connection quality monitoring
-    if ('connection' in navigator) {
+    if ('connection' in navigator && process.env.NODE_ENV === 'development') {
       const connection = (navigator as any).connection;
       console.log('Connection info:', {
         effectiveType: connection.effectiveType,

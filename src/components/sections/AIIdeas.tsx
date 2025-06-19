@@ -136,12 +136,12 @@ const AIIdeas = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, index) => (
               <div key={index} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 animate-pulse">
-                <div className="h-4 bg-white/20 rounded mb-4"></div>
-                <div className="h-3 bg-white/20 rounded mb-2"></div>
-                <div className="h-3 bg-white/20 rounded mb-4"></div>
+                <div className="h-4 bg-white/20 rounded mb-4" />
+                <div className="h-3 bg-white/20 rounded mb-2" />
+                <div className="h-3 bg-white/20 rounded mb-4" />
                 <div className="flex gap-2">
-                  <div className="h-6 w-16 bg-white/20 rounded-full"></div>
-                  <div className="h-6 w-16 bg-white/20 rounded-full"></div>
+                  <div className="h-6 w-16 bg-white/20 rounded-full" />
+                  <div className="h-6 w-16 bg-white/20 rounded-full" />
                 </div>
               </div>
             ))}

@@ -6,59 +6,62 @@ import { caseStudies } from '@/data/caseStudies';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://techflow.dk';
   
+  // Use a fixed date for static pages to avoid hydration mismatches
+  const staticLastModified = new Date('2024-01-01T00:00:00.000Z');
+  
   // Static pages
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/case-studies`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/events`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      lastModified: staticLastModified,
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     }
@@ -75,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Case studies
   const caseStudyPages = caseStudies.map((caseStudy) => ({
     url: `${baseUrl}/case-studies/${caseStudy.slug}`,
-    lastModified: new Date(),
+    lastModified: staticLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));

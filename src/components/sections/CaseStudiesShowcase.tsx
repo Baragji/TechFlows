@@ -83,8 +83,8 @@ const CaseStudiesShowcase = () => {
     <section className="py-24 bg-obsidian-darker relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/6 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/6 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -135,16 +135,16 @@ const CaseStudiesShowcase = () => {
               <Link href={caseStudy.href} className="block">
                 <div className="relative h-full bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10 hover:transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20">
                   {/* Case Study Image */}
-                  <div className="relative h-64 overflow-hidden" suppressHydrationWarning>
+                  <div className="relative h-64 overflow-hidden">
                     <Image
                       src={caseStudy.image}
                       alt={caseStudy.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      priority={index < 3}
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-obsidian-darker/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-obsidian-darker/80 via-transparent to-transparent" />
                     
                     {/* Tags */}
                     <div className="absolute top-4 left-4 flex flex-wrap gap-2">
@@ -180,7 +180,7 @@ const CaseStudiesShowcase = () => {
                           key={resultIndex}
                           className="flex items-center text-sm text-white/60 group-hover:text-accent-green transition-colors duration-300"
                         >
-                          <div className="w-1.5 h-1.5 bg-accent-green rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-accent-green rounded-full mr-2" />
                           {result}
                         </div>
                       ))}
@@ -209,7 +209,7 @@ const CaseStudiesShowcase = () => {
 
                   {/* Hover Glow Effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </div>
                 </div>
               </Link>

@@ -83,8 +83,8 @@ const Services = () => {
     <section id="services" className="py-24 bg-obsidian-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -138,7 +138,7 @@ const Services = () => {
                 {/* Card */}
                 <div className="relative h-full bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-700 hover:bg-white/10 overflow-hidden hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/20">
                   {/* Gradient Overlay on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
                   
                   {/* Icon */}
                   <div className="relative mb-6">
@@ -147,7 +147,7 @@ const Services = () => {
                     </div>
                     
                     {/* Floating particles effect */}
-                    <div className="absolute -top-2 -right-2 w-3 h-3 bg-accent-blue/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-500"></div>
+                    <div className="absolute -top-2 -right-2 w-3 h-3 bg-accent-blue/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-500" />
                   </div>
 
                   {/* Content */}
@@ -172,7 +172,7 @@ const Services = () => {
                             transition={{ duration: 0.4, delay: (index * 0.1) + (featureIndex * 0.05) }}
                             viewport={{ once: true }}
                           >
-                            <div className="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2 group-hover:bg-accent-purple transition-colors duration-300"></div>
+                            <div className="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2 group-hover:bg-accent-purple transition-colors duration-300" />
                             {feature}
                           </motion.div>
                         ))}
@@ -203,7 +203,7 @@ const Services = () => {
 
                   {/* Hover Glow Effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </div>
                 </div>
               </motion.div>
