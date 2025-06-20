@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { clients } from '@/data/clients';
+import { motion } from 'framer-motion';
 
 const ClientMarquee: React.FC = () => {
   // Duplicate clients array for seamless loop
@@ -22,7 +22,7 @@ const ClientMarquee: React.FC = () => {
             Betroet af innovative virksomheder
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Vi er stolte af at arbejde sammen med fremadtænkende virksomheder 
+            Vi er stolte af at arbejde sammen med fremadtænkende virksomheder
             der ønsker at skabe ekstraordinære digitale oplevelser.
           </p>
         </motion.div>
@@ -32,7 +32,7 @@ const ClientMarquee: React.FC = () => {
           {/* Gradient Overlays */}
           <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-obsidian-950 to-transparent z-10" />
           <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-obsidian-950 to-transparent z-10" />
-          
+
           {/* Marquee */}
           <motion.div
             className="flex space-x-16"
@@ -60,7 +60,7 @@ const ClientMarquee: React.FC = () => {
                       {client.name}
                     </span>
                   </div>
-                  
+
                   {/* Uncomment when actual logos are available */}
                   {/* <Image
                     src={client.logo}
