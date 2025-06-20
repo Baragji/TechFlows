@@ -50,6 +50,7 @@ const config: Config = {
           950: '#1a1a1a',
         },
         accent: {
+          DEFAULT: '#3b82f6', // Tilføj en standard accent farve
           blue: '#3b82f6',
           green: '#10b981',
           purple: '#8b5cf6',
@@ -83,6 +84,7 @@ const config: Config = {
         'text-light': '#6c757d',
         'background-light': '#f8f8f8',
         'border-color': '#e4e4e4',
+        'border': '#e4e4e4', // Tilføj border farve
       },
       fontFamily: {
         sans: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],

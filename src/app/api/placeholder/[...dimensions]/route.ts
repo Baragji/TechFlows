@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { dimensions: string[] } }
+  { params }: { params: Promise<{ dimensions: string[] }> }
 ) {
-  const { dimensions } = params;
+  const { dimensions } = await params;
 
   // Parse dimensions (e.g., "800/400" or "800x400")
   let width = 800;
