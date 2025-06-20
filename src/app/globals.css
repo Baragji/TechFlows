@@ -180,28 +180,62 @@ html {
 
 /* Glass hero component - Enhanced for Tailwind v4 compatibility */
 .glass-hero {
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background: rgba(17, 25, 40, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.125) !important;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   position: relative;
   /* Tailwind v4 fixes for proper stacking context */
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
 }
 
-/* Enhanced glass effect for better visibility */
-.glass-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: -1;
+/* Glass dropdown - More opaque for better readability */
+.glass-dropdown {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  background: rgba(17, 25, 40, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Text visibility utilities for glassmorphism */
+.text-glass-visible {
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.glass-text-container {
+  position: relative;
+  z-index: 10;
+}
+
+.glass-text-container * {
+  position: relative;
+  z-index: inherit;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Better glassmorphism for navigation */
+.glass-nav {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background: rgba(17, 25, 40, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
 }
 
 /* Obsidian-inspired gradients */

@@ -55,7 +55,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 py-32 relative z-[var(--z-index-hero)] flex justify-center">
-        <div className="w-full max-w-4xl text-center glass-hero p-6 pb-20 rounded-xl relative">
+        <div className="w-full max-w-4xl text-center glass-hero p-6 pb-20 rounded-xl relative glass-text-container">
           {/* Main Headline */}
           <div className="space-y-6 mb-6">
             <div className="flex flex-wrap justify-center gap-4 text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight">
@@ -99,7 +99,7 @@ const Hero = () => {
           <div className="pt-8 pb-16 text-center">
             <Link
               href="/prisberegner"
-              className="inline-flex items-center justify-center bg-accent text-white hover:bg-accent/90 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl glass-hero"
+              className="inline-flex items-center justify-center bg-accent-blue text-white hover:bg-accent-blue/90 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Kom i gang i dag
             </Link>

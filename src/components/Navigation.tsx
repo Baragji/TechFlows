@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 
 const Navigation: React.FC<NavigationProps> = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   // Navigation items
@@ -64,191 +66,311 @@ const Navigation: React.FC<NavigationProps> = () => {
   // Additional nav items
   const additionalNavItems: NavItem[] = [{ label: 'Portfolio', href: '/portfolio' }];
 
-  // Close dropdown when clicking outside
+  // Handle scroll effect
   useEffect(() => {
-    const handleClickOutside = () => {
-      setActiveDropdown(null);
-    };
-
-    // eslint-disable-next-line no-restricted-globals
-    if (activeDropdown && typeof document !== 'undefined') {
-      // eslint-disable-next-line no-restricted-globals
-      const doc = document;
-      doc.addEventListener('click', handleClickOutside);
-      return () => {
-        doc.removeEventListener('click', handleClickOutside);
-      };
+    if (typeof window === 'undefined') {
+      return;
     }
 
-    return undefined;
-  }, [activeDropdown]);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    if (!activeDropdown && !isMobileMenuOpen) {
+      return;
+    }
+
+    const handleClickOutside = () => {
+      setActiveDropdown(null);
+      setIsMobileMenuOpen(false);
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [activeDropdown, isMobileMenuOpen]);
 
   // Close dropdown on escape key
   useEffect(() => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setActiveDropdown(null);
+        setIsMobileMenuOpen(false);
       }
     };
 
-    // eslint-disable-next-line no-restricted-globals
-    if (typeof document !== 'undefined') {
-      // eslint-disable-next-line no-restricted-globals
-      const doc = document;
-      doc.addEventListener('keydown', handleKeyDown);
-      return () => {
-        doc.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-
-    return undefined;
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
-    <motion.nav
-      className="fixed top-5 left-0 w-full z-[var(--z-index-nav)] transition-all duration-300"
-      style={{ '--navbar-height': '72px' } as React.CSSProperties}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      aria-label="Hovednavigation"
-    >
-      <div className="max-w-[1280px] mx-auto flex items-center justify-between">
-        {/* Left Navigation Group */}
-        <div className="flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero overflow-visible">
-          {/* Logo */}
-          <motion.div
-            className="shrink-0"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Link
-              href="/"
-              className="text-lg font-semibold transition-all duration-300 text-white hover:text-accent-blue"
+    <>
+      {/* Main Navigation */}
+      <motion.nav
+        className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-[var(--z-index-nav)] transition-all duration-500 ease-out ${
+          isScrolled ? 'top-4' : 'top-6'
+        }`}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        aria-label="Hovednavigation"
+      >
+        {/* Glassmorphism Container */}
+        <motion.div
+          className={`
+            relative overflow-visible rounded-full glass-nav
+            transition-all duration-500 ease-out
+            ${isScrolled ? 'shadow-2xl shadow-black/30' : 'shadow-xl shadow-black/20'}
+          `}
+          whileHover={{
+            scale: 1.02,
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Animated background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 animate-pulse opacity-50" />
+
+          {/* Navigation Content */}
+          <div className="relative flex items-center px-8 py-4 gap-8 glass-text-container">
+            {/* Logo */}
+            <motion.div
+              className="shrink-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             >
-              TechFlow
-              <span className="text-accent-blue ml-1">Solutions</span>
-            </Link>
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
-            {/* Regular nav items */}
-            {navItems.map((item) => (
               <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-normal transition-all duration-300 ${
-                  pathname === item.href ? 'text-white' : 'text-white/90 hover:text-white/70'
-                }`}
+                href="/"
+                className="text-xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent hover:from-blue-200 hover:via-white hover:to-blue-200 transition-all duration-300"
               >
-                {item.label}
+                TechFlow
+                <span className="text-blue-300 ml-1">Solutions</span>
               </Link>
-            ))}
+            </motion.div>
 
-            {/* Services Mega Menu */}
-            <div className="relative">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveDropdown(activeDropdown === 'services' ? null : 'services');
-                }}
-                className={`text-sm font-normal transition-all duration-300 flex items-center ${
-                  activeDropdown === 'services' ? 'text-white' : 'text-white/90 hover:text-white/70'
-                }`}
-              >
-                {servicesDropdown.label}
-                <motion.div
-                  animate={{ rotate: activeDropdown === 'services' ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="ml-1"
-                >
-                  <Icon name="chevron-down" className="w-4 h-4" />
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-8">
+              {/* Regular nav items */}
+              {navItems.map((item) => (
+                <motion.div key={item.href} whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href={item.href}
+                    className={`
+                      text-sm font-medium transition-all duration-300 relative
+                      ${
+                        pathname === item.href
+                          ? 'text-white after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-blue-400 after:rounded-full'
+                          : 'text-white/90 hover:text-white hover:scale-105'
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </Link>
                 </motion.div>
-              </button>
+              ))}
 
               {/* Services Dropdown */}
-              <AnimatePresence>
-                {activeDropdown === 'services' && (
+              <div className="relative z-30">
+                <motion.button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveDropdown(activeDropdown === 'services' ? null : 'services');
+                  }}
+                  className={`
+                    text-sm font-medium transition-all duration-300 flex items-center gap-2
+                    ${
+                      activeDropdown === 'services'
+                        ? 'text-white scale-105'
+                        : 'text-white/90 hover:text-white hover:scale-105'
+                    }
+                  `}
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {servicesDropdown.label}
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 glass-hero rounded-2xl overflow-hidden z-[var(--z-index-dropdown)]"
-                    onClick={(e) => e.stopPropagation()}
+                    animate={{ rotate: activeDropdown === 'services' ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <div className="p-4">
-                      <div className="grid grid-cols-1 gap-2">
-                        {servicesDropdown.items.map((item, index) => (
-                          <motion.div
-                            key={item.href}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                          >
-                            <Link
-                              href={item.href}
-                              className="flex items-center p-3 rounded-xl hover:bg-white/5 transition-all duration-300 group"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              <div className="shrink-0 w-10 h-10 bg-accent-blue/10 rounded-lg flex items-center justify-center group-hover:bg-accent-blue/20 transition-colors duration-300">
-                                <Icon
-                                  name={item.icon || 'globe'}
-                                  className="w-5 h-5 text-accent-blue"
-                                />
-                              </div>
-                              <div className="ml-3">
-                                <div className="text-sm font-medium text-white group-hover:text-accent-blue transition-colors duration-300">
-                                  {item.label}
-                                </div>
-                                <div className="text-sm text-white/70 mt-1">{item.description}</div>
-                              </div>
-                            </Link>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
+                    <Icon name="chevron-down" className="w-4 h-4" />
                   </motion.div>
-                )}
-              </AnimatePresence>
+                </motion.button>
+
+                {/* Services Dropdown Menu */}
+                <AnimatePresence>
+                  {activeDropdown === 'services' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 z-[var(--z-index-dropdown)]"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="glass-dropdown rounded-3xl shadow-2xl shadow-black/50 overflow-hidden">
+                        <div className="p-6">
+                          <div className="grid grid-cols-1 gap-3">
+                            {servicesDropdown.items.map((item, index) => (
+                              <motion.div
+                                key={item.href}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.05, duration: 0.3 }}
+                              >
+                                <Link
+                                  href={item.href}
+                                  className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-white/10 hover:scale-105 group"
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 flex items-center justify-center group-hover:from-blue-400/30 group-hover:to-purple-400/30 transition-all duration-300">
+                                    <Icon
+                                      name={item.icon || 'star'}
+                                      className="w-5 h-5 text-blue-300"
+                                    />
+                                  </div>
+                                  <div className="flex-1">
+                                    <h3 className="text-white font-medium text-sm group-hover:text-blue-200 transition-colors duration-300">
+                                      {item.label}
+                                    </h3>
+                                    <p className="text-white/60 text-xs mt-1 group-hover:text-white/80 transition-colors duration-300">
+                                      {item.description}
+                                    </p>
+                                  </div>
+                                  <Icon
+                                    name="arrow-right"
+                                    className="w-4 h-4 text-white/40 group-hover:text-blue-300 group-hover:translate-x-1 transition-all duration-300"
+                                  />
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Additional nav items */}
+              {additionalNavItems.map((item) => (
+                <motion.div key={item.href} whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href={item.href}
+                    className={`
+                      text-sm font-medium transition-all duration-300 relative
+                      ${
+                        pathname === item.href
+                          ? 'text-white after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-blue-400 after:rounded-full'
+                          : 'text-white/90 hover:text-white hover:scale-105'
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Additional nav items */}
-            {additionalNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-normal transition-all duration-300 ${
-                  pathname === item.href ? 'text-white' : 'text-white/90 hover:text-white/70'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Navigation Group */}
-        <div className="hidden lg:flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero overflow-visible">
-          {/* Language Selector */}
-          <div className="flex items-center gap-1 cursor-pointer pr-4 border-r border-white/20">
-            <span className="text-sm">🌐</span>
-            <span className="text-sm text-white/90">▾</span>
-          </div>
-
-          {/* CTA Button */}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              href="/prisberegner"
-              className="text-sm font-medium text-white hover:text-white/70 transition-all duration-300"
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Få et tilbud →
-            </Link>
+              <Icon name={isMobileMenuOpen ? 'close' : 'menu'} className="w-5 h-5 text-white" />
+            </motion.button>
+          </div>
+        </motion.div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[calc(var(--z-index-nav)-5)] lg:hidden"
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+
+            {/* Mobile Menu Content */}
+            <motion.div
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -100, opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="relative top-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md"
+            >
+              <div className="glass-dropdown rounded-3xl shadow-2xl shadow-black/50 overflow-hidden">
+                <div className="p-6 space-y-4">
+                  {/* Mobile nav items */}
+                  {[...navItems, ...additionalNavItems].map((item) => (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Link
+                        href={item.href}
+                        className={`
+                          block p-4 rounded-2xl transition-all duration-300 hover:bg-white/10
+                          ${pathname === item.href ? 'bg-white/10 text-white' : 'text-white/90 hover:text-white'}
+                        `}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+
+                  {/* Mobile Services */}
+                  <div className="border-t border-white/10 pt-4">
+                    <h3 className="text-white font-medium mb-3 px-4">Services</h3>
+                    {servicesDropdown.items.map((item) => (
+                      <motion.div
+                        key={item.href}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Link
+                          href={item.href}
+                          className="flex items-center gap-3 p-3 ml-2 rounded-xl transition-all duration-300 hover:bg-white/10"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <Icon name={item.icon || 'star'} className="w-4 h-4 text-blue-300" />
+                          <span className="text-white/90 text-sm">{item.label}</span>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      </div>
-    </motion.nav>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
