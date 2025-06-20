@@ -10,7 +10,7 @@ Efter v4-opgraderingen (juni 2025) ændrede Tailwind både navngivningen af fler
 | **A. Renamede blur-utilities** | `backdrop-blur-sm` hedder nu `backdrop-blur-xs`, og “bare” `blur` hedder `blur-sm` ([tailwindcss.com][1]). Ugyldige klasser ryger derfor tilbage til *ingen* blur-radius, og pseudo-elementet fremstår som en solid halvtransparent plade.        | v4-upgrade-guiden     |
 | **B. Nye cascade-lag**         | Tailwind bruger nu native `@layer`/`@utility`; dit globale `.glass-hero::before` ligger i samme lag som de genererede util-klasser og får derfor højere specificitet end før ([tailwindcss.com][2], [tailwindcss.com][1]).                        | Release Notes + Guide |
 | **C. Manglende isolation**     | Elementet med klassen `glass-hero` i navigationen er **relative** og får et pseudo-element med `z-index:-1` . Da selve nav-baren er `fixed z-50` , havner pseudo-elementet i samme stacking-kontekst som helten (`z-20`)  og fylder hele skærmen. | dine egne filer       |
-| **D. Ny z-index-strategi**     | I v4 anbefales CSS-variabler til konstanter (`z-(--z-index-nav)`) og værdierne må *ikke* være i anførselstegn ([github.com][3]). Hvis du stadig bruger gamle `z-[60]` eller citerede variabler, kolliderer de let.                                | GitHub-diskussion     |
+| **D. Ny z-index-strategi**     | I v4 anbefales CSS-variabler til konstanter (`z-[var(--z-index-nav)]`) og værdierne må *ikke* være i anførselstegn ([github.com][3]). Hvis du stadig bruger gamle `z-[60]` eller citerede variabler, kolliderer de let.                                | GitHub-diskussion     |
 
 ---
 
@@ -52,7 +52,7 @@ Gør det samme for eventuelle “bare” `blur`, `shadow`, `rounded` osv., jf. t
 ```diff
 // Navigation.tsx (nav-wrapper)
 - <div className="flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero">
-+ <div className="flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero z-(--z-index-nav)">
++ <div className="relative flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero overflow-visible z-[var(--z-index-nav)]">
 ```
 
 ### 3.3  Brug CSS-tema-variabler til z-index
@@ -68,7 +68,7 @@ Gør det samme for eventuelle “bare” `blur`, `shadow`, `rounded` osv., jf. t
 ```diff
 // Dropdown container
 - className="absolute top-full left-1/2 ... z-50"
-+ className="absolute top-full left-1/2 ... z-(--z-index-dropdown)"
++ className="absolute top-full left-1/2 ... z-[var(--z-index-dropdown)]"
 ```
 
 ### 3.4  Ekstra (valgfrit) – stram pseudo-elementet

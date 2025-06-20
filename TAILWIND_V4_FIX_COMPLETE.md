@@ -43,17 +43,21 @@ Din guide i `BreakingChange.md` var **100% korrekt** i sin diagnosticering af Ta
 **Navigation.tsx:**
 ```tsx
 // Før: className="fixed top-5 left-0 w-full z-50"
-// Efter: className="fixed top-5 left-0 w-full z-(--z-index-nav)"
+// Efter: className="fixed top-5 left-0 w-full z-[var(--z-index-nav)]"
+
+// Nav-wrapper (intern container):
+// Før: className="flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero"
+// Efter: className="relative flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero overflow-visible z-[var(--z-index-nav)]"
 
 // Dropdown container:
 // Før: className="absolute top-full left-1/2 ... z-50"
-// Efter: className="absolute top-full left-1/2 ... z-(--z-index-dropdown)"
+// Efter: className="absolute top-full left-1/2 ... z-[var(--z-index-dropdown)]"
 ```
 
 **Hero.tsx:**
 ```tsx
 // Før: className="container mx-auto px-4 py-32 relative z-20"
-// Efter: className="container mx-auto px-4 py-32 relative z-(--z-index-hero)"
+// Efter: className="container mx-auto px-4 py-32 relative z-[var(--z-index-hero)]"
 ```
 
 ### 4. **Utility Class Renames** ✅
