@@ -73,11 +73,11 @@ const Navigation: React.FC<NavigationProps> = () => {
     }
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50); // eslint-disable-line no-restricted-globals
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll); // eslint-disable-line no-restricted-globals
+    return () => window.removeEventListener('scroll', handleScroll); // eslint-disable-line no-restricted-globals
   }, []);
 
   // Close dropdown when clicking outside
@@ -94,8 +94,8 @@ const Navigation: React.FC<NavigationProps> = () => {
       setIsMobileMenuOpen(false);
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener('click', handleClickOutside); // eslint-disable-line no-restricted-globals
+    return () => document.removeEventListener('click', handleClickOutside); // eslint-disable-line no-restricted-globals
   }, [activeDropdown, isMobileMenuOpen]);
 
   // Close dropdown on escape key
@@ -111,8 +111,8 @@ const Navigation: React.FC<NavigationProps> = () => {
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown); // eslint-disable-line no-restricted-globals
+    return () => document.removeEventListener('keydown', handleKeyDown); // eslint-disable-line no-restricted-globals
   }, []);
 
   return (
@@ -132,7 +132,7 @@ const Navigation: React.FC<NavigationProps> = () => {
           className={`
             relative overflow-visible rounded-full glass-nav
             transition-all duration-500 ease-out
-            ${isScrolled ? 'shadow-2xl shadow-black/30' : 'shadow-xl shadow-black/20'}
+            ${isScrolled ? 'shadow-2xl shadow-black/[.3]' : 'shadow-xl shadow-black/[.2]'}
           `}
           whileHover={{
             scale: 1.02,
@@ -140,8 +140,10 @@ const Navigation: React.FC<NavigationProps> = () => {
           }}
           transition={{ duration: 0.3 }}
         >
-          {/* Animated background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 animate-pulse opacity-50" />
+          {/* Animated background gradient - Wrapped to fix WebKit clipping bug */}
+          <div className="pointer-events-none absolute inset-0 rounded-full overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/[.05] via-purple-500/[.05] to-blue-500/[.05] animate-pulse opacity-50" />
+          </div>
 
           {/* Navigation Content */}
           <div className="relative flex items-center px-8 py-4 gap-8 glass-text-container">
@@ -153,7 +155,7 @@ const Navigation: React.FC<NavigationProps> = () => {
             >
               <Link
                 href="/"
-                className="text-xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent hover:from-blue-200 hover:via-white hover:to-blue-200 transition-all duration-300"
+                className="text-xl font-bold text-white hover:text-blue-200 transition-all duration-300"
               >
                 TechFlow
                 <span className="text-blue-300 ml-1">Solutions</span>
@@ -172,7 +174,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                       ${
                         pathname === item.href
                           ? 'text-white after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-blue-400 after:rounded-full'
-                          : 'text-white/90 hover:text-white hover:scale-105'
+                          : 'text-white/[.9] hover:text-white hover:scale-105'
                       }
                     `}
                   >
@@ -193,7 +195,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     ${
                       activeDropdown === 'services'
                         ? 'text-white scale-105'
-                        : 'text-white/90 hover:text-white hover:scale-105'
+                        : 'text-white/[.9] hover:text-white hover:scale-105'
                     }
                   `}
                   whileHover={{ y: -2 }}
@@ -219,7 +221,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                       className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 z-[var(--z-index-dropdown)]"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <div className="glass-dropdown rounded-3xl shadow-2xl shadow-black/50 overflow-hidden">
+                      <div className="glass-dropdown rounded-3xl shadow-2xl shadow-black/[.5] overflow-hidden">
                         <div className="p-6">
                           <div className="grid grid-cols-1 gap-3">
                             {servicesDropdown.items.map((item, index) => (
@@ -231,10 +233,10 @@ const Navigation: React.FC<NavigationProps> = () => {
                               >
                                 <Link
                                   href={item.href}
-                                  className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-white/10 hover:scale-105 group"
+                                  className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-white/[.1] hover:scale-105 group"
                                   onClick={() => setActiveDropdown(null)}
                                 >
-                                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 flex items-center justify-center group-hover:from-blue-400/30 group-hover:to-purple-400/30 transition-all duration-300">
+                                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-400/[.2] to-purple-400/[.2] flex items-center justify-center group-hover:from-blue-400/[.3] group-hover:to-purple-400/[.3] transition-all duration-300">
                                     <Icon
                                       name={item.icon || 'star'}
                                       className="w-5 h-5 text-blue-300"
@@ -244,13 +246,13 @@ const Navigation: React.FC<NavigationProps> = () => {
                                     <h3 className="text-white font-medium text-sm group-hover:text-blue-200 transition-colors duration-300">
                                       {item.label}
                                     </h3>
-                                    <p className="text-white/60 text-xs mt-1 group-hover:text-white/80 transition-colors duration-300">
+                                    <p className="text-white/[.6] text-xs mt-1 group-hover:text-white/[.8] transition-colors duration-300">
                                       {item.description}
                                     </p>
                                   </div>
                                   <Icon
                                     name="arrow-right"
-                                    className="w-4 h-4 text-white/40 group-hover:text-blue-300 group-hover:translate-x-1 transition-all duration-300"
+                                    className="w-4 h-4 text-white/[.4] group-hover:text-blue-300 group-hover:translate-x-1 transition-all duration-300"
                                   />
                                 </Link>
                               </motion.div>
@@ -273,7 +275,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                       ${
                         pathname === item.href
                           ? 'text-white after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-blue-400 after:rounded-full'
-                          : 'text-white/90 hover:text-white hover:scale-105'
+                          : 'text-white/[.9] hover:text-white hover:scale-105'
                       }
                     `}
                   >
@@ -285,7 +287,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/[.1] hover:bg-white/[.2] transition-all duration-300"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -310,7 +312,7 @@ const Navigation: React.FC<NavigationProps> = () => {
             className="fixed inset-0 z-[calc(var(--z-index-nav)-5)] lg:hidden"
           >
             {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-black/[.5] backdrop-blur-sm" />
 
             {/* Mobile Menu Content */}
             <motion.div
@@ -320,7 +322,7 @@ const Navigation: React.FC<NavigationProps> = () => {
               transition={{ duration: 0.4, ease: 'easeOut' }}
               className="relative top-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md"
             >
-              <div className="glass-dropdown rounded-3xl shadow-2xl shadow-black/50 overflow-hidden">
+              <div className="glass-dropdown rounded-3xl shadow-2xl shadow-black/[.5] overflow-hidden">
                 <div className="p-6 space-y-4">
                   {/* Mobile nav items */}
                   {[...navItems, ...additionalNavItems].map((item) => (
@@ -333,8 +335,8 @@ const Navigation: React.FC<NavigationProps> = () => {
                       <Link
                         href={item.href}
                         className={`
-                          block p-4 rounded-2xl transition-all duration-300 hover:bg-white/10
-                          ${pathname === item.href ? 'bg-white/10 text-white' : 'text-white/90 hover:text-white'}
+                          block p-4 rounded-2xl transition-all duration-300 hover:bg-white/[.1]
+                          ${pathname === item.href ? 'bg-white/[.1] text-white' : 'text-white/[.9] hover:text-white'}
                         `}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
@@ -344,7 +346,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                   ))}
 
                   {/* Mobile Services */}
-                  <div className="border-t border-white/10 pt-4">
+                  <div className="border-t border-white/[.1] pt-4">
                     <h3 className="text-white font-medium mb-3 px-4">Services</h3>
                     {servicesDropdown.items.map((item) => (
                       <motion.div
@@ -355,11 +357,11 @@ const Navigation: React.FC<NavigationProps> = () => {
                       >
                         <Link
                           href={item.href}
-                          className="flex items-center gap-3 p-3 ml-2 rounded-xl transition-all duration-300 hover:bg-white/10"
+                          className="flex items-center gap-3 p-3 ml-2 rounded-xl transition-all duration-300 hover:bg-white/[.1]"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <Icon name={item.icon || 'star'} className="w-4 h-4 text-blue-300" />
-                          <span className="text-white/90 text-sm">{item.label}</span>
+                          <span className="text-white/[.9] text-sm">{item.label}</span>
                         </Link>
                       </motion.div>
                     ))}

@@ -30,7 +30,7 @@ const categoryLabels = {
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) => {
   return (
     <motion.div
-      className="group relative bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500"
+      className="group relative bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/[.1] hover:border-white/[.2] transition-all duration-500"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -79,7 +79,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
         </h3>
 
         {/* Description */}
-        <p className="text-white/70 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-white/[.7] text-sm leading-relaxed mb-4 line-clamp-3">
           {caseStudy.shortDescription}
         </p>
 
@@ -88,7 +88,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
           {caseStudy.metrics.slice(0, 2).map((metric, idx) => (
             <div key={idx} className="text-center">
               <div className="text-lg font-bold text-accent-green">{metric.value}</div>
-              <div className="text-xs text-white/60">{metric.label}</div>
+              <div className="text-xs text-white/[.6]">{metric.label}</div>
             </div>
           ))}
         </div>
@@ -96,12 +96,15 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-6">
           {caseStudy.technologies.slice(0, 3).map((tech, idx) => (
-            <span key={idx} className="px-2 py-1 bg-glass-medium text-white/80 text-xs rounded-md">
+            <span
+              key={idx}
+              className="px-2 py-1 bg-glass-medium text-white/[.8] text-xs rounded-md"
+            >
               {tech}
             </span>
           ))}
           {caseStudy.technologies.length > 3 && (
-            <span className="px-2 py-1 bg-glass-medium text-white/60 text-xs rounded-md">
+            <span className="px-2 py-1 bg-glass-medium text-white/[.6] text-xs rounded-md">
               +{caseStudy.technologies.length - 3} mere
             </span>
           )}

@@ -8,7 +8,7 @@ const ClientMarquee: React.FC = () => {
   const duplicatedClients = [...clients, ...clients];
 
   return (
-    <section className="py-16 bg-glass-dark/20 overflow-hidden">
+    <section className="py-16 bg-glass-dark/[.2] overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -21,7 +21,7 @@ const ClientMarquee: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Betroet af innovative virksomheder
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <p className="text-white/[.7] max-w-2xl mx-auto">
             Vi er stolte af at arbejde sammen med fremadtænkende virksomheder der ønsker at skabe
             ekstraordinære digitale oplevelser.
           </p>
@@ -53,10 +53,10 @@ const ClientMarquee: React.FC = () => {
                 key={`${client.id}-${index}`}
                 className="shrink-0 w-40 h-20 flex items-center justify-center group"
               >
-                <div className="relative w-full h-full flex items-center justify-center bg-glass-light backdrop-blur-xs rounded-xl border border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:bg-glass-medium">
+                <div className="relative w-full h-full flex items-center justify-center bg-glass-light backdrop-blur-xs rounded-xl border border-white/[.1] group-hover:border-white/[.2] transition-all duration-300 group-hover:bg-glass-medium">
                   {/* Placeholder for client logo */}
-                  <div className="w-24 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                    <span className="text-white/60 text-xs font-medium text-center px-2">
+                  <div className="w-24 h-12 bg-white/[.1] rounded-lg flex items-center justify-center">
+                    <span className="text-white/[.6] text-xs font-medium text-center px-2">
                       {client.name}
                     </span>
                   </div>
@@ -85,19 +85,19 @@ const ClientMarquee: React.FC = () => {
         >
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-accent-blue mb-2">50+</div>
-            <div className="text-white/70 text-sm">Tilfredse klienter</div>
+            <div className="text-white/[.7] text-sm">Tilfredse klienter</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-accent-green mb-2">200+</div>
-            <div className="text-white/70 text-sm">Projekter leveret</div>
+            <div className="text-white/[.7] text-sm">Projekter leveret</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-accent-purple mb-2">98%</div>
-            <div className="text-white/70 text-sm">Klient tilfredshed</div>
+            <div className="text-white/[.7] text-sm">Klient tilfredshed</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-accent-gold mb-2">5+</div>
-            <div className="text-white/70 text-sm">År erfaring</div>
+            <div className="text-white/[.7] text-sm">År erfaring</div>
           </div>
         </motion.div>
 
@@ -125,7 +125,7 @@ const ClientMarquee: React.FC = () => {
             ].map((industry, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-glass-light backdrop-blur-xs rounded-full text-white/80 text-sm border border-white/10 hover:border-white/20 hover:text-white transition-all duration-300"
+                className="px-4 py-2 bg-glass-light backdrop-blur-xs rounded-full text-white/[.8] text-sm border border-white/[.1] hover:border-white/[.2] hover:text-white transition-all duration-300"
               >
                 {industry}
               </span>

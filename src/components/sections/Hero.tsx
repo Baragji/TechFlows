@@ -49,8 +49,8 @@ const Hero = () => {
 
         {/* Very subtle geometric shapes - static for performance */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-accent-blue/3 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/6 w-48 h-48 bg-accent-purple/3 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-accent-blue/[.03] rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/6 w-48 h-48 bg-accent-purple/[.03] rounded-full blur-3xl" />
         </div>
       </div>
 
@@ -66,7 +66,7 @@ const Hero = () => {
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3 text-2xl md:text-4xl lg:text-5xl font-medium text-white/90 leading-tight">
+            <div className="flex flex-wrap justify-center gap-3 text-2xl md:text-4xl lg:text-5xl font-medium text-white/[.9] leading-tight">
               {subWords.map((word, index) => (
                 <span key={index} className="inline-block">
                   {word}
@@ -76,7 +76,7 @@ const Hero = () => {
           </div>
 
           {/* Tagline */}
-          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-light mb-8">
+          <p className="text-lg md:text-xl text-white/[.7] max-w-2xl mx-auto leading-relaxed font-light mb-8">
             Vi skaber digitale løsninger der ikke bare ser godt ud – de leverer målbare resultater.
             Fra apps der engagerer til hjemmesider der konverterer og automatisering der sparer tid.
           </p>
@@ -87,7 +87,7 @@ const Hero = () => {
               (tag, index) => (
                 <span
                   key={index}
-                  className="bg-transparent border border-white/30 hover:bg-white/10 text-white/90 px-3 py-1 text-xs rounded-full transition-colors duration-300"
+                  className="bg-transparent border border-white/[.3] hover:bg-white/[.1] text-white/[.9] px-3 py-1 text-xs rounded-full transition-colors duration-300"
                 >
                   {tag}
                 </span>
@@ -99,7 +99,7 @@ const Hero = () => {
           <div className="pt-8 pb-16 text-center">
             <Link
               href="/prisberegner"
-              className="inline-flex items-center justify-center bg-accent-blue text-white hover:bg-accent-blue/90 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center bg-accent-blue text-white hover:bg-accent-blue/[.9] px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Kom i gang i dag
             </Link>
@@ -108,7 +108,7 @@ const Hero = () => {
           {/* Scroll Indicator */}
           <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2">
             <div
-              className="flex flex-col items-center text-white/40 cursor-pointer hover:text-white/60 transition-colors duration-300"
+              className="flex flex-col items-center text-white/[.4] cursor-pointer hover:text-white/[.6] transition-colors duration-300"
               onClick={handleScrollToServices}
             >
               <span className="text-xs md:text-sm font-medium mb-2">Scroll for mere</span>
