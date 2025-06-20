@@ -89,5 +89,6 @@
         }
     },
     "terminal.integrated.inheritEnv": true,
-    "terminal.integrated.shellIntegration.enabled": true
+    "terminal.integrated.shellIntegration.enabled": true,
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }
