@@ -5,7 +5,7 @@ import { ArrowRightIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/out
 
 export default function ContactCTA() {
   return (
-    <section className="py-20 bg-linear-to-br from-blue-600 via-purple-600 to-blue-800">
+    <section className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center text-white">
           <motion.h2

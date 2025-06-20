@@ -30,10 +30,10 @@ const EventsHero: React.FC = () => {
   ];
 
   return (
-    <section className="relative min-h-screen bg-linear-to-br from-background via-background to-glass-dark flex items-center overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-background via-background to-glass-dark flex items-center overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-linear-to-r from-accent-blue/20 to-accent-purple/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/20 to-accent-purple/20" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/10 rounded-full blur-3xl" />
       </div>
@@ -61,7 +61,7 @@ const EventsHero: React.FC = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
               Udvid din
-              <span className="bg-linear-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
                 {' '}
                 viden
               </span>
@@ -99,7 +99,7 @@ const EventsHero: React.FC = () => {
                       • {nextEvent.time}
                     </p>
                   </div>
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-accent-gold to-accent-orange text-white">
+                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-accent-gold to-accent-orange text-white">
                     {nextEvent.price.type === 'free' ? 'Gratis' : `${nextEvent.price.amount} DKK`}
                   </span>
                 </div>
@@ -126,7 +126,7 @@ const EventsHero: React.FC = () => {
 
                   <motion.a
                     href={`/events/${nextEvent.slug}`}
-                    className="px-6 py-3 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+                    className="px-6 py-3 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -145,7 +145,7 @@ const EventsHero: React.FC = () => {
             >
               <motion.a
                 href="#events"
-                className="px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 text-center"
+                className="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -172,7 +172,7 @@ const EventsHero: React.FC = () => {
             >
               {/* Main Stats Card */}
               <div className="bg-glass-light backdrop-blur-xs rounded-3xl p-8 border border-white/10 relative overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-accent-blue/5 to-accent-purple/5" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-purple/5" />
 
                 <div className="relative">
                   <h3 className="text-2xl font-bold text-white mb-8 text-center">
@@ -205,12 +205,12 @@ const EventsHero: React.FC = () => {
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-6 -right-6 w-24 h-24 bg-linear-to-r from-accent-blue to-accent-purple rounded-full opacity-20 blur-xl"
+                className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full opacity-20 blur-xl"
               />
               <motion.div
                 animate={{ y: [10, -10, 10] }}
                 transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-6 -left-6 w-32 h-32 bg-linear-to-r from-accent-green to-accent-blue rounded-full opacity-20 blur-xl"
+                className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-r from-accent-green to-accent-blue rounded-full opacity-20 blur-xl"
               />
             </motion.div>
           </div>

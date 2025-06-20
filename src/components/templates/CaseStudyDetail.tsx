@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { CaseStudy, caseStudies } from '@/data/caseStudies';
 import CaseStudyCard from '@/components/ui/CaseStudyCard';
+import { CaseStudy, caseStudies } from '@/data/caseStudies';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface CaseStudyDetailProps {
   caseStudy: CaseStudy;
@@ -39,10 +39,10 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div
-            className={`absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-br ${categoryColors[caseStudy.category]} opacity-10 rounded-full blur-3xl`}
+            className={`absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br ${categoryColors[caseStudy.category]} opacity-[.1] rounded-full blur-3xl`}
           />
           <div
-            className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-linear-to-br ${categoryColors[caseStudy.category]} opacity-5 rounded-full blur-3xl`}
+            className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br ${categoryColors[caseStudy.category]} opacity-5 rounded-full blur-3xl`}
           />
         </div>
 
@@ -72,7 +72,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <span
-                className={`px-4 py-2 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white font-medium rounded-full`}
+                className={`px-4 py-2 bg-gradient-to-r ${categoryColors[caseStudy.category]} text-white font-medium rounded-full`}
               >
                 {categoryLabels[caseStudy.category]}
               </span>
@@ -133,7 +133,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <div className="absolute inset-0 bg-linear-to-br from-obsidian-900/50 to-obsidian-950/50 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/[.5] to-gray-950/[.5] z-10" />
             <Image
               src={caseStudy.heroImage}
               alt={caseStudy.title}
@@ -346,7 +346,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className={`inline-flex items-center px-8 py-4 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
+                className={`inline-flex items-center px-8 py-4 bg-gradient-to-r ${categoryColors[caseStudy.category]} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
               >
                 Start dit projekt
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

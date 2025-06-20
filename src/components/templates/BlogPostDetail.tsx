@@ -48,7 +48,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
   };
 
   return (
-    <article className="min-h-screen bg-linear-to-br from-background via-background to-glass-dark">
+    <article className="min-h-screen bg-gradient-to-br from-background via-background to-glass-dark">
       <StructuredData type="Article" data={articleData} />
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
@@ -60,7 +60,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
             height={600}
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
         </div>
 
         <div className="relative container mx-auto px-4">
@@ -231,7 +231,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
                         height={600}
                         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
                       <div className="absolute top-4 left-4">
                         <span
@@ -283,7 +283,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="/contact"
-                className="px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+                className="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

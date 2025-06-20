@@ -119,7 +119,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Teknologiske løsninger
-              <span className="block bg-linear-to-r from-accent-blue via-accent-purple to-accent-green bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-accent-blue via-accent-purple to-accent-green bg-clip-text text-transparent">
                 der driver vækst
               </span>
             </motion.h1>
@@ -142,7 +142,7 @@ export default function ServicesPage() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
               >
                 Start dit projekt
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,12 +182,12 @@ export default function ServicesPage() {
                 >
                   <div className="relative h-full bg-glass-light backdrop-blur-xs rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 group-hover:bg-glass-medium overflow-hidden">
                     <div
-                      className={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
+                      className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
                     />
 
                     <div className="relative mb-6">
                       <div
-                        className={`w-16 h-16 bg-linear-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg`}
+                        className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg`}
                       >
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
@@ -261,7 +261,7 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     </div>
                   </div>
                 </motion.div>
@@ -290,7 +290,7 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
               >
                 Få et tilbud
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -6,7 +6,7 @@ const AboutHero = () => {
   return (
     <section className="relative min-h-[60vh] flex items-center overflow-hidden">
       {/* About Hero Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('/images/hero/About-hero.png')",
@@ -47,16 +47,16 @@ const AboutHero = () => {
                     aspect-square rounded-2xl
                     ${
                       index === 0
-                        ? 'bg-linear-to-br from-primary to-accent'
+                        ? 'bg-gradient-to-br from-primary to-accent'
                         : index === 1
-                          ? 'bg-linear-to-br from-secondary to-primary'
+                          ? 'bg-gradient-to-br from-secondary to-primary'
                           : index === 2
-                            ? 'bg-linear-to-br from-accent to-secondary'
+                            ? 'bg-gradient-to-br from-accent to-secondary'
                             : index === 3
-                              ? 'bg-linear-to-br from-primary to-secondary'
+                              ? 'bg-gradient-to-br from-primary to-secondary'
                               : index === 4
-                                ? 'bg-linear-to-br from-secondary to-accent'
-                                : 'bg-linear-to-br from-accent to-primary'
+                                ? 'bg-gradient-to-br from-secondary to-accent'
+                                : 'bg-gradient-to-br from-accent to-primary'
                     }
                   `}
                   initial={{ opacity: 0, y: 20 }}

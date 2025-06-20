@@ -1,10 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
 import { CaseStudy } from '@/data/caseStudies';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -30,7 +30,7 @@ const categoryLabels = {
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) => {
   return (
     <motion.div
-      className="group relative bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/[.1] hover:border-white/[.2] transition-all duration-500"
+      className="group relative glass-surface rounded-2xl overflow-hidden hover:border-white/[.2] transition-all duration-500"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -39,7 +39,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
     >
       {/* Hero Image */}
       <div className="relative h-48 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-obsidian-900/50 to-obsidian-950/50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/[.5] to-gray-950/[.5] z-10" />
         <Image
           src={caseStudy.heroImage}
           alt={caseStudy.title}
@@ -52,7 +52,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
         {/* Category Badge */}
         <div className="absolute top-4 left-4 z-20">
           <span
-            className={`px-3 py-1 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white text-sm font-medium rounded-full`}
+            className={`px-3 py-1 bg-gradient-to-r ${categoryColors[caseStudy.category]} text-white text-sm font-medium rounded-full`}
           >
             {categoryLabels[caseStudy.category]}
           </span>
@@ -98,13 +98,13 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
           {caseStudy.technologies.slice(0, 3).map((tech, idx) => (
             <span
               key={idx}
-              className="px-2 py-1 bg-glass-medium text-white/[.8] text-xs rounded-md"
+              className="px-2 py-1 glass-surface-medium text-white/[.8] text-xs rounded-md"
             >
               {tech}
             </span>
           ))}
           {caseStudy.technologies.length > 3 && (
-            <span className="px-2 py-1 bg-glass-medium text-white/[.6] text-xs rounded-md">
+            <span className="px-2 py-1 glass-surface-medium text-white/[.6] text-xs rounded-md">
               +{caseStudy.technologies.length - 3} mere
             </span>
           )}
@@ -121,7 +121,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
       </div>
 
       {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-linear-to-br from-accent-blue/5 to-accent-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-accent-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </motion.div>
   );
 };

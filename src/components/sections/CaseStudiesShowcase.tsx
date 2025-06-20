@@ -103,7 +103,7 @@ const CaseStudiesShowcase = () => {
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Case Studies der
-            <span className="block bg-linear-to-r from-accent-blue via-accent-green to-accent-purple bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-accent-blue via-accent-green to-accent-purple bg-clip-text text-transparent">
               inspirerer
             </span>
           </h2>
@@ -137,7 +137,7 @@ const CaseStudiesShowcase = () => {
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-obsidian-darker/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian-darker/80 via-transparent to-transparent" />
 
                     {/* Tags */}
                     <div className="absolute top-4 left-4 flex flex-wrap gap-2">
@@ -204,7 +204,7 @@ const CaseStudiesShowcase = () => {
 
                   {/* Hover Glow Effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </div>
                 </div>
               </Link>
@@ -223,7 +223,7 @@ const CaseStudiesShowcase = () => {
           <p className="text-white/60 mb-6">Vil du se alle vores projekter?</p>
           <Link
             href="/case-studies"
-            className="inline-flex items-center px-8 py-4 bg-linear-to-r from-accent-green to-accent-blue text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-green/25 transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent-green to-accent-blue text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-green/25 transition-all duration-300 hover:scale-105"
           >
             Se alle case studies
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

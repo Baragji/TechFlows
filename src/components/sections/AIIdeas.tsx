@@ -162,7 +162,7 @@ const AIIdeas = () => {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-accent-blue to-accent-purple rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-accent-purple rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <LightBulbIcon className="w-6 h-6 text-white" />
                   </div>
                   <RocketLaunchIcon className="w-5 h-5 text-white/60 group-hover:text-accent-blue transition-colors duration-300" />
@@ -202,7 +202,7 @@ const AIIdeas = () => {
           <p className="text-text-light mb-6">Har du en idé du gerne vil realisere?</p>
           <a
             href="#contact"
-            className="inline-flex items-center px-8 py-4 bg-linear-to-r from-primary to-accent text-white font-semibold rounded-lg hover:from-primary/80 hover:to-accent/80 transition-all duration-300 shadow-custom hover:shadow-custom-lg"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-lg hover:from-primary/80 hover:to-accent/80 transition-all duration-300 shadow-custom hover:shadow-custom-lg"
           >
             Lad os tale om det
             <SparklesIcon className="w-5 h-5 ml-2" />

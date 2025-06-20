@@ -19,23 +19,17 @@ const FeaturedCaseStudies: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Succeshistorier
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Succeshistorier</h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Se hvordan vi har hjulpet virksomheder med at transformere deres 
-            digitale tilstedeværelse og opnå ekstraordinære resultater.
+            Se hvordan vi har hjulpet virksomheder med at transformere deres digitale
+            tilstedeværelse og opnå ekstraordinære resultater.
           </p>
         </motion.div>
 
         {/* Featured Case Studies Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {featuredCaseStudies.map((caseStudy, index) => (
-            <CaseStudyCard
-              key={caseStudy.id}
-              caseStudy={caseStudy}
-              index={index}
-            />
+            <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} index={index} />
           ))}
         </div>
 
@@ -52,15 +46,10 @@ const FeaturedCaseStudies: React.FC = () => {
           </p>
           <Link
             href="/case-studies"
-            className="inline-flex items-center px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
           >
             Se alle case studies
-            <svg
-              className="w-5 h-5 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

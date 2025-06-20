@@ -153,57 +153,242 @@ html {
   background: #a8a8a8;
 }
 
-/* Glassmorphism utilities */
+/* Glassmorphism utilities - WebKit-safe with pseudo-elements */
 .glass {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   background: var(--glass-light);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-medium);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .glass-dark {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   background: var(--glass-dark);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-darker);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glass variants for common use cases */
+.glass-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glass-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-medium);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover::before {
+  background: var(--glass-light);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Replacement for bg-glass-light + backdrop-blur-xs */
+.glass-surface {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-light);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Replacement for bg-glass-medium + backdrop-blur-xs */
+.glass-surface-medium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-surface-medium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-medium);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Replacement for bg-glass-dark/XX + backdrop-blur-xs */
+.glass-surface-dark {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-surface-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-dark);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Interactive glass surfaces */
+.glass-surface:hover::before {
+  background: var(--glass-medium);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-surface-medium:hover::before {
+  background: var(--glass-light);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Utility for text readability on glass backgrounds */
+.glass-content {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-overlay {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .glass-hover {
   transition: all 0.3s ease;
 }
 
-.glass-hover:hover {
+.glass-hover:hover::before {
   background: var(--glass-medium);
   box-shadow: var(--shadow-glass);
+}
+
+.glass-hover:hover {
   transform: translateY(-2px);
 }
 
-/* Glass hero component - Enhanced for Tailwind v4 compatibility */
+/* Glass hero component - WebKit-safe with pseudo-element */
 .glass-hero {
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  background: rgba(17, 25, 40, 0.65) !important;
-  border: 1px solid rgba(255, 255, 255, 0.125) !important;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   position: relative;
-  /* Tailwind v4 fixes for proper stacking context */
   overflow: visible;
   isolation: isolate;
 }
 
-/* Glass dropdown - More opaque for better readability */
+.glass-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(17, 25, 40, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glass dropdown - WebKit-safe with pseudo-element */
 .glass-dropdown {
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  background: rgba(17, 25, 40, 0.85) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-dropdown::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(17, 25, 40, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-  position: relative;
-  isolation: isolate;
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Text visibility utilities for glassmorphism */
@@ -224,18 +409,28 @@ html {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* Better glassmorphism for navigation */
+/* Better glassmorphism for navigation - WebKit-safe with pseudo-element */
 .glass-nav {
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  background: rgba(17, 25, 40, 0.75) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  /* Kun layout-egenskaber her - INGEN backdrop-filter! */
+  position: relative;
+  overflow: visible; /* dropdown må stadig stikke ud */
+  isolation: isolate; /* ny stacking-context */
+}
+
+.glass-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit; /* klip til pill-form */
+  background: rgba(17, 25, 40, 0.75); /* samme farve som før */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-  position: relative;
-  overflow: visible;
-  isolation: isolate;
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1; /* læg den bag indholdet */
 }
 
 /* Obsidian-inspired gradients */

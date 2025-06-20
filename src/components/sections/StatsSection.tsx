@@ -205,7 +205,7 @@ const StatsSection: React.FC = () => {
           <p className="text-white/70 mb-6">Vil du være den næste succeshistorie?</p>
           <motion.a
             href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

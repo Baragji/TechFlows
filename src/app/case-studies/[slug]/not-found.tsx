@@ -21,23 +21,21 @@ export default function NotFound() {
               />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-4">
-            Case Study Ikke Fundet
-          </h1>
+          <h1 className="text-3xl font-bold text-white mb-4">Case Study Ikke Fundet</h1>
           <p className="text-white/70 mb-8">
             Den case study du leder efter eksisterer ikke eller er blevet flyttet.
           </p>
         </div>
-        
+
         <div className="space-y-4">
           <Link
             href="/case-studies"
-            className="inline-flex items-center px-6 py-3 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Tilbage til Case Studies
           </Link>
-          
+
           <div className="text-center">
             <Link
               href="/"

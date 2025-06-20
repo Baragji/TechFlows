@@ -40,7 +40,7 @@ const Hero = () => {
       <div className="absolute inset-0 -z-10">
         {/* Subtle Obsidian-style dots pattern */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-[.1]"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
             backgroundSize: '60px 60px',
@@ -132,8 +132,8 @@ const Hero = () => {
 
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 border border-blue-100 rounded-full opacity-20" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 border border-purple-100 rounded-full opacity-20" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 border border-blue-100 rounded-full opacity-[.2]" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 border border-purple-100 rounded-full opacity-[.2]" />
       </div>
     </section>
   );

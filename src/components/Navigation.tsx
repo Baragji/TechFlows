@@ -142,7 +142,7 @@ const Navigation: React.FC<NavigationProps> = () => {
         >
           {/* Animated background gradient - Wrapped to fix WebKit clipping bug */}
           <div className="pointer-events-none absolute inset-0 rounded-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/[.05] via-purple-500/[.05] to-blue-500/[.05] animate-pulse opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/[.05] via-purple-500/[.05] to-blue-500/[.05] animate-pulse opacity-[.5]" />
           </div>
 
           {/* Navigation Content */}
@@ -312,7 +312,7 @@ const Navigation: React.FC<NavigationProps> = () => {
             className="fixed inset-0 z-[calc(var(--z-index-nav)-5)] lg:hidden"
           >
             {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/[.5] backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-black/[.5] backdrop-blur-xs" />
 
             {/* Mobile Menu Content */}
             <motion.div

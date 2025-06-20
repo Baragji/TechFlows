@@ -130,7 +130,7 @@ const TestimonialsCarousel: React.FC = () => {
                     {/* Author */}
                     <div className="flex items-center justify-center space-x-4">
                       <div className="w-16 h-16 bg-glass-medium rounded-full flex items-center justify-center">
-                        <div className="w-12 h-12 bg-linear-to-br from-accent-blue to-accent-purple rounded-full flex items-center justify-center text-white font-semibold">
+                        <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-accent-purple rounded-full flex items-center justify-center text-white font-semibold">
                           {testimonial.name
                             .split(' ')
                             .map((n) => n[0])
