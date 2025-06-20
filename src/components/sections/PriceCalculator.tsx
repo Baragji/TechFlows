@@ -239,7 +239,7 @@ export default function PriceCalculator() {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-obsidian-dark">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -265,8 +265,8 @@ export default function PriceCalculator() {
                         whileTap={{ scale: 0.98 }}
                         className={`p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
                           selectedProjectType === type.id
-                            ? 'border-blue-500 bg-blue-50'
-                            : 'border-gray-200 hover:border-blue-300'
+                            ? 'border-accent-blue bg-accent-blue/10'
+                            : 'border-slate-300 hover:border-accent-blue/50'
                         }`}
                         onClick={() => handleProjectTypeChange(type.id)}
                       >
@@ -275,12 +275,12 @@ export default function PriceCalculator() {
                           <div className="flex-1">
                             <h4 className="font-semibold text-text-dark">{type.name}</h4>
                             <p className="text-sm text-text-light mb-2">{type.description}</p>
-                            <p className="text-lg font-bold text-blue-600">
+                            <p className="text-lg font-bold text-accent-blue">
                               Fra {type.basePrice.toLocaleString('da-DK')} DKK
                             </p>
                           </div>
                           {selectedProjectType === type.id && (
-                            <CheckIcon className="w-6 h-6 text-blue-500" />
+                            <CheckIcon className="w-6 h-6 text-accent-blue" />
                           )}
                         </div>
                       </motion.div>
@@ -305,8 +305,8 @@ export default function PriceCalculator() {
                           key={option.id}
                           className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
                             selectedOptions.includes(option.id)
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-blue-300'
+                              ? 'border-accent-blue bg-accent-blue/10'
+                              : 'border-slate-300 hover:border-accent-blue/50'
                           }`}
                           onClick={() => handleOptionToggle(option.id)}
                         >
@@ -316,13 +316,13 @@ export default function PriceCalculator() {
                               <p className="text-sm text-text-light">{option.description}</p>
                             </div>
                             <div className="flex items-center space-x-2">
-                              <span className="font-semibold text-blue-600">
+                              <span className="font-semibold text-accent-blue">
                                 {option.price > 0
                                   ? `+${option.price.toLocaleString('da-DK')}`
                                   : 'Inkluderet'}
                               </span>
                               {selectedOptions.includes(option.id) && (
-                                <CheckIcon className="w-5 h-5 text-blue-500" />
+                                <CheckIcon className="w-5 h-5 text-accent-blue" />
                               )}
                             </div>
                           </div>
@@ -347,15 +347,15 @@ export default function PriceCalculator() {
                           key={timeline.id}
                           className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
                             selectedTimeline === timeline.id
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-blue-300'
+                              ? 'border-accent-blue bg-accent-blue/10'
+                              : 'border-slate-300 hover:border-accent-blue/50'
                           }`}
                           onClick={() => setSelectedTimeline(timeline.id)}
                         >
                           <div className="text-center">
                             <h4 className="font-medium text-text-dark mb-1">{timeline.name}</h4>
                             <p className="text-sm text-text-light mb-2">{timeline.description}</p>
-                            <p className="text-sm font-semibold text-blue-600">
+                            <p className="text-sm font-semibold text-accent-blue">
                               {timeline.multiplier === 1
                                 ? 'Standard pris'
                                 : timeline.multiplier > 1
@@ -413,27 +413,27 @@ export default function PriceCalculator() {
 
                     <div className="flex justify-between items-center py-4 border-t-2 border-gray-300">
                       <span className="text-xl font-bold text-text-dark">Total</span>
-                      <span className="text-2xl font-bold text-blue-600">
+                      <span className="text-2xl font-bold text-accent-blue">
                         {totalPrice.toLocaleString('da-DK')} DKK
                       </span>
                     </div>
 
-                    <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                      <p className="text-sm text-blue-800">
+                    <div className="bg-accent-blue/10 rounded-lg p-4 mb-6">
+                      <p className="text-sm text-accent-blue">
                         <strong>Bemærk:</strong> Dette er et estimat. Den endelige pris kan variere
                         baseret på specifikke krav og kompleksitet.
                       </p>
                     </div>
 
                     <div className="space-y-3">
-                      <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold flex items-center justify-center space-x-2">
+                      <button className="w-full bg-accent-blue text-white py-3 px-6 rounded-lg hover:bg-accent-blue/90 transition-colors duration-300 font-semibold flex items-center justify-center space-x-2">
                         <DocumentTextIcon className="w-5 h-5" />
                         <span>Få detaljeret tilbud</span>
                       </button>
 
                       <button
                         onClick={resetCalculator}
-                        className="w-full bg-gray-200 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors duration-300 font-semibold flex items-center justify-center space-x-2"
+                        className="w-full bg-slate-200 text-slate-700 py-3 px-6 rounded-lg hover:bg-slate-300 transition-colors duration-300 font-semibold flex items-center justify-center space-x-2"
                       >
                         <ArrowPathIcon className="w-5 h-5" />
                         <span>Start forfra</span>
@@ -441,8 +441,8 @@ export default function PriceCalculator() {
                     </div>
                   </div>
                 ) : (
-                  <div className="text-center text-gray-500">
-                    <div className="w-16 h-16 mx-auto mb-4 text-gray-300 flex items-center justify-center">
+                  <div className="text-center text-slate-400">
+                    <div className="w-16 h-16 mx-auto mb-4 text-slate-300 flex items-center justify-center">
                       <svg
                         className="w-full h-full"
                         fill="none"
