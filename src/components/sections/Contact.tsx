@@ -3,10 +3,10 @@
 import { useForm } from '@/hooks/useForm';
 import { useNotification } from '@/hooks/useNotification';
 import {
-    EnvelopeIcon,
-    MapPinIcon,
-    PaperAirplaneIcon,
-    PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  PaperAirplaneIcon,
+  PhoneIcon,
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
@@ -61,8 +61,8 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Lad os tale sammen</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-4">Lad os tale sammen</h2>
+          <p className="text-lg text-text-light max-w-2xl mx-auto">
             Klar til at tage næste skridt? Kontakt os i dag
           </p>
         </motion.div>
@@ -77,7 +77,7 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Kontakt information</h3>
+              <h3 className="text-2xl font-semibold text-text-dark mb-6">Kontakt information</h3>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -85,7 +85,7 @@ const Contact = () => {
                     <EnvelopeIcon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
+                    <h4 className="font-semibold text-text-dark mb-1">Email</h4>
                     <a
                       href="mailto:kontakt@techflowsolutions.dk"
                       className="text-accent hover:text-hover transition-colors duration-300"
@@ -100,7 +100,7 @@ const Contact = () => {
                     <PhoneIcon className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Telefon</h4>
+                    <h4 className="font-semibold text-text-dark mb-1">Telefon</h4>
                     <a
                       href="tel:+4512345678"
                       className="text-secondary hover:text-secondary/80 transition-colors duration-300"
@@ -115,8 +115,8 @@ const Contact = () => {
                     <MapPinIcon className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Adresse</h4>
-                    <p className="text-gray-600">
+                    <h4 className="font-semibold text-text-dark mb-1">Adresse</h4>
+                    <p className="text-text-light">
                       Teknologivej 1<br />
                       2800 Kongens Lyngby
                     </p>
@@ -136,7 +136,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-text-dark mb-2">
                     Navn *
                   </label>
                   <input
@@ -157,7 +157,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-text-dark mb-2">
                     Email *
                   </label>
                   <input
@@ -182,7 +182,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="company"
-                    className="block text-sm font-medium text-gray-900 mb-2"
+                    className="block text-sm font-medium text-text-dark mb-2"
                   >
                     Virksomhed
                   </label>
@@ -201,7 +201,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="service"
-                    className="block text-sm font-medium text-gray-900 mb-2"
+                    className="block text-sm font-medium text-text-dark mb-2"
                   >
                     Interesseret i
                   </label>
@@ -224,7 +224,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-text-dark mb-2">
                   Besked *
                 </label>
                 <textarea

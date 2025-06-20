@@ -77,7 +77,7 @@ export default function TestimonialsCTA() {
 
             <a
               href="tel:+4512345678"
-              className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 group"
+              className="bg-transparent border-2 border-white hover:bg-white hover:text-text-dark text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 group"
             >
               <PhoneIcon className="w-5 h-5" />
               <span>Ring Nu: +45 12 34 56 78</span>

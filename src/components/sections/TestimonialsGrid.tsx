@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { StarIcon } from '@heroicons/react/24/solid';
 import { BuildingOfficeIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image'
+import { StarIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Testimonial {
   id: string;
@@ -89,8 +89,8 @@ export default function TestimonialsGrid() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Hvad Siger Vores Kunder</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-text-dark mb-4">Hvad Siger Vores Kunder</h2>
+          <p className="text-xl text-text-light max-w-2xl mx-auto">
             Læs erfaringerne fra virksomheder der har valgt os som deres teknologipartner
           </p>
         </motion.div>
@@ -124,8 +124,8 @@ export default function TestimonialsGrid() {
               <div className="flex items-center space-x-4">
                 <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-12 h-12 rounded-full object-cover" />
                 <div>
-                  <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-600">{testimonial.position}</p>
+                  <h4 className="font-semibold text-text-dark">{testimonial.name}</h4>
+                  <p className="text-sm text-text-light">{testimonial.position}</p>
                   <div className="flex items-center space-x-1 text-sm text-blue-600">
                     <BuildingOfficeIcon className="w-4 h-4" />
                     <span>{testimonial.company}</span>
@@ -145,10 +145,10 @@ export default function TestimonialsGrid() {
           className="text-center mt-16"
         >
           <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-text-dark mb-4">
               Vil du også være en del af vores succeshistorier?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-text-light mb-6">
               Kontakt os i dag og lad os hjælpe dig med at realisere dit næste projekt
             </p>
             <a

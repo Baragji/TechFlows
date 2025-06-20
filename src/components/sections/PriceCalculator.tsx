@@ -1,8 +1,8 @@
 'use client';
 
+import { ArrowPathIcon, CheckIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
-import { useState, useEffect, useCallback } from 'react';
-import { CheckIcon, ArrowPathIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import { useCallback, useEffect, useState } from 'react';
 
 interface ProjectType {
   id: string;
@@ -252,11 +252,11 @@ export default function PriceCalculator() {
             {/* Calculator Form */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-xl shadow-lg p-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Konfigurer Dit Projekt</h2>
+                <h2 className="text-3xl font-bold text-text-dark mb-8">Konfigurer Dit Projekt</h2>
 
                 {/* Project Type Selection */}
                 <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Vælg Projekttype</h3>
+                  <h3 className="text-xl font-semibold text-text-dark mb-4">Vælg Projekttype</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     {projectTypes.map((type) => (
                       <motion.div
@@ -273,8 +273,8 @@ export default function PriceCalculator() {
                         <div className="flex items-center space-x-4">
                           <div className="text-3xl">{type.icon}</div>
                           <div className="flex-1">
-                            <h4 className="font-semibold text-gray-900">{type.name}</h4>
-                            <p className="text-sm text-gray-600 mb-2">{type.description}</p>
+                            <h4 className="font-semibold text-text-dark">{type.name}</h4>
+                            <p className="text-sm text-text-light mb-2">{type.description}</p>
                             <p className="text-lg font-bold text-blue-600">
                               Fra {type.basePrice.toLocaleString('da-DK')} DKK
                             </p>
@@ -296,7 +296,7 @@ export default function PriceCalculator() {
                     transition={{ duration: 0.5 }}
                     className="mb-8"
                   >
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    <h3 className="text-xl font-semibold text-text-dark mb-4">
                       Tilpasningsmuligheder
                     </h3>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -312,8 +312,8 @@ export default function PriceCalculator() {
                         >
                           <div className="flex items-center justify-between">
                             <div className="flex-1">
-                              <h4 className="font-medium text-gray-900">{option.name}</h4>
-                              <p className="text-sm text-gray-600">{option.description}</p>
+                              <h4 className="font-medium text-text-dark">{option.name}</h4>
+                              <p className="text-sm text-text-light">{option.description}</p>
                             </div>
                             <div className="flex items-center space-x-2">
                               <span className="font-semibold text-blue-600">
@@ -340,7 +340,7 @@ export default function PriceCalculator() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="mb-8"
                   >
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Leveringstid</h3>
+                    <h3 className="text-xl font-semibold text-text-dark mb-4">Leveringstid</h3>
                     <div className="grid md:grid-cols-3 gap-4">
                       {timelines.map((timeline) => (
                         <div
@@ -353,8 +353,8 @@ export default function PriceCalculator() {
                           onClick={() => setSelectedTimeline(timeline.id)}
                         >
                           <div className="text-center">
-                            <h4 className="font-medium text-gray-900 mb-1">{timeline.name}</h4>
-                            <p className="text-sm text-gray-600 mb-2">{timeline.description}</p>
+                            <h4 className="font-medium text-text-dark mb-1">{timeline.name}</h4>
+                            <p className="text-sm text-text-light mb-2">{timeline.description}</p>
                             <p className="text-sm font-semibold text-blue-600">
                               {timeline.multiplier === 1
                                 ? 'Standard pris'
@@ -377,12 +377,12 @@ export default function PriceCalculator() {
             {/* Price Summary */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-xl shadow-lg p-8 sticky top-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Prisestimering</h3>
+                <h3 className="text-2xl font-bold text-text-dark mb-6">Prisestimering</h3>
 
                 {selectedProjectType ? (
                   <div className="space-y-4">
                     <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-gray-600">Grundpris</span>
+                      <span className="text-text-light">Grundpris</span>
                       <span className="font-semibold">
                         {getBasePrice().toLocaleString('da-DK')} DKK
                       </span>
@@ -390,7 +390,7 @@ export default function PriceCalculator() {
 
                     {getAddonsPrice() > 0 && (
                       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                        <span className="text-gray-600">Tilvalg</span>
+                        <span className="text-text-light">Tilvalg</span>
                         <span className="font-semibold">
                           +{getAddonsPrice().toLocaleString('da-DK')} DKK
                         </span>
@@ -399,7 +399,7 @@ export default function PriceCalculator() {
 
                     {getTimelineAdjustment() !== 0 && (
                       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                        <span className="text-gray-600">Leveringstid</span>
+                        <span className="text-text-light">Leveringstid</span>
                         <span
                           className={`font-semibold ${
                             getTimelineAdjustment() > 0 ? 'text-red-600' : 'text-green-600'
@@ -412,7 +412,7 @@ export default function PriceCalculator() {
                     )}
 
                     <div className="flex justify-between items-center py-4 border-t-2 border-gray-300">
-                      <span className="text-xl font-bold text-gray-900">Total</span>
+                      <span className="text-xl font-bold text-text-dark">Total</span>
                       <span className="text-2xl font-bold text-blue-600">
                         {totalPrice.toLocaleString('da-DK')} DKK
                       </span>
