@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { 
-  EnvelopeIcon, 
-  PhoneIcon, 
+import {
+  EnvelopeIcon,
+  PhoneIcon,
   MapPinIcon,
   ArrowRightIcon,
   GlobeAltIcon,
-  ShieldCheckIcon
+  ShieldCheckIcon,
 } from '@heroicons/react/24/outline';
 
 const FooterEnhanced: React.FC = () => {
@@ -19,10 +19,10 @@ const FooterEnhanced: React.FC = () => {
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate newsletter signup
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     setEmail('');
     setIsSubmitting(false);
     // Here you would typically send to your newsletter service
@@ -56,15 +56,14 @@ const FooterEnhanced: React.FC = () => {
       { name: 'Twitter', href: '#', icon: '🐦' },
       { name: 'Facebook', href: '#', icon: '📘' },
       { name: 'Instagram', href: '#', icon: '📸' },
-    ]
+    ],
   };
 
   return (
-    <footer className="bg-glass-dark/50 backdrop-blur-sm border-t border-white/10">
+    <footer className="bg-glass-dark/50 backdrop-blur-xs border-t border-white/10">
       <div className="container mx-auto px-4 py-16">
         {/* Main Footer Content */}
         <div className="grid lg:grid-cols-12 gap-12 mb-16">
-          
           {/* Company Info & Newsletter */}
           <div className="lg:col-span-4">
             <motion.div
@@ -73,19 +72,15 @@ const FooterEnhanced: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-white mb-4">
-                TechFlow Solutions
-              </h3>
+              <h3 className="text-2xl font-bold text-white mb-4">TechFlow Solutions</h3>
               <p className="text-white/70 mb-6 leading-relaxed">
-                Vi skaber digitale løsninger der driver vækst og innovation. 
-                Fra idé til implementering leverer vi resultater der overgår forventninger.
+                Vi skaber digitale løsninger der driver vækst og innovation. Fra idé til
+                implementering leverer vi resultater der overgår forventninger.
               </p>
-              
+
               {/* Newsletter Signup */}
               <div className="mb-8">
-                <h4 className="text-lg font-semibold text-white mb-4">
-                  Hold dig opdateret
-                </h4>
+                <h4 className="text-lg font-semibold text-white mb-4">Hold dig opdateret</h4>
                 <form onSubmit={handleNewsletterSubmit} className="space-y-3">
                   <div className="relative">
                     <input
@@ -109,7 +104,7 @@ const FooterEnhanced: React.FC = () => {
                   </motion.button>
                 </form>
               </div>
-              
+
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-white/70">
@@ -242,10 +237,8 @@ const FooterEnhanced: React.FC = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="text-white/70 text-sm">
-              CVR: 12345678
-            </div>
+
+            <div className="text-white/70 text-sm">CVR: 12345678</div>
           </div>
         </div>
       </div>

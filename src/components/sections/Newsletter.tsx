@@ -31,7 +31,7 @@ export default function Newsletter() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+          <div className="bg-white/10 backdrop-blur-xs rounded-2xl p-8 md:p-12">
             <SSRSafeMotion
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}

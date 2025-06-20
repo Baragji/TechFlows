@@ -1,25 +1,32 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CalendarIcon, ClockIcon, UserIcon, TagIcon, FunnelIcon } from '@heroicons/react/24/outline';
+import {
+  CalendarIcon,
+  ClockIcon,
+  UserIcon,
+  TagIcon,
+  FunnelIcon,
+} from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useState } from 'react';
 import { getPublishedPosts, blogCategories, BlogPost } from '@/data/blogPosts';
-import Image from 'next/image'
+import Image from 'next/image';
 
 const BlogGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   const allPosts = getPublishedPosts();
-  
+
   // Filter posts based on category and search
-  const filteredPosts = allPosts.filter(post => {
+  const filteredPosts = allPosts.filter((post) => {
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return matchesCategory && matchesSearch;
   });
 
@@ -63,7 +70,7 @@ const BlogGrid: React.FC = () => {
               <FunnelIcon className="w-4 h-4 inline-block mr-2" />
               Alle
             </motion.button>
-            
+
             {blogCategories.map((category) => (
               <motion.button
                 key={category.id}
@@ -117,9 +124,7 @@ const BlogGrid: React.FC = () => {
             <div className="w-24 h-24 bg-glass-light rounded-full flex items-center justify-center mx-auto mb-6">
               <TagIcon className="w-12 h-12 text-white/50" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Ingen artikler fundet
-            </h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Ingen artikler fundet</h3>
             <p className="text-white/70 mb-8">
               Prøv at justere dine søgekriterier eller vælg en anden kategori.
             </p>
@@ -148,11 +153,11 @@ interface BlogPostCardProps {
 }
 
 const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
-  const categoryInfo = blogCategories.find(cat => cat.name === post.category);
-  
+  const categoryInfo = blogCategories.find((cat) => cat.name === post.category);
+
   return (
     <motion.article
-      className="bg-glass-light backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
+      className="bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -160,12 +165,20 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
     >
       <Link href={`/blog/${post.slug}`}>
         <div className="relative">
-          <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
+          <Image
+            src="/images/events/default-event.svg"
+            alt="Event billede"
+            width={800}
+            height={600}
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+          />
           <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
-          
+
           {/* Category Badge */}
           <div className="absolute top-4 left-4">
-            <span className={`px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-sm ${categoryInfo?.color || 'text-white'}`}>
+            <span
+              className={`px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-xs ${categoryInfo?.color || 'text-white'}`}
+            >
               <span className="mr-2">{categoryInfo?.icon}</span>
               {post.category}
             </span>
@@ -180,7 +193,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
             </div>
           )}
         </div>
-        
+
         <div className="p-6">
           {/* Meta Information */}
           <div className="flex items-center space-x-4 text-sm text-white/70 mb-4">
@@ -204,9 +217,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
           </h3>
 
           {/* Excerpt */}
-          <p className="text-white/70 mb-4 leading-relaxed">
-            {post.excerpt}
-          </p>
+          <p className="text-white/70 mb-4 leading-relaxed">{post.excerpt}</p>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-4">
@@ -231,7 +242,12 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index }) => {
               whileHover={{ x: 3 }}
               transition={{ duration: 0.2 }}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </motion.svg>
           </div>
         </div>

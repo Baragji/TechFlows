@@ -1,35 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
-/* Safelist classes for Tailwind v4 */
-@source inline(".glass-hero");
+/* Tailwind v4 theme configuration */
+@theme {
+  --z-index-nav: 60;
+  --z-index-dropdown: 65;
+  --z-index-hero: 20;
+  --z-index-modal: 100;
+}
 
 :root {
   /* Exact colors from HTML example */
   --text-color: #ffffff;
   --background-overlay: rgba(20, 20, 25, 0.7);
   --border-color: rgba(255, 255, 255, 0.4);
-  
+
   /* Obsidian-inspired color system */
   --obsidian-dark: #0a0a0a;
   --obsidian-darker: rgb(20, 20, 25); /* Updated to match HTML example */
   --obsidian-medium: rgb(35, 35, 40); /* Updated to match HTML example */
   --obsidian-light: #3a3a3a;
   --obsidian-lighter: #4a4a4a;
-  
+
   /* Accent colors */
   --accent-blue: #3b82f6;
   --accent-green: #10b981;
   --accent-purple: #8b5cf6;
   --accent-orange: #f59e0b;
-  
+
   /* Glass morphism - updated to match HTML example */
   --glass-light: rgba(255, 255, 255, 0.1); /* Exact border color from HTML */
   --glass-medium: rgba(255, 255, 255, 0.2);
   --glass-strong: rgba(255, 255, 255, 0.4); /* --border-color from HTML */
   --glass-dark: rgba(0, 0, 0, 0.1);
   --glass-darker: rgba(0, 0, 0, 0.2);
-  
+
   /* Legacy colors for backward compatibility */
   --primary-color: #1a1a1a;
   --secondary-color: #2a9d8f;
@@ -47,7 +52,6 @@
   --shadow-obsidian: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-
 /* Base styles with Obsidian influence */
 body {
   font-family: 'Poppins', 'Inter', sans-serif;
@@ -61,12 +65,19 @@ body {
   background-color: #0a0a0a; /* Tilføjet mørk baggrund */
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 /* Obsidian-inspired Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.1;
   margin-bottom: 1rem;
@@ -108,11 +119,11 @@ p {
   .text-display {
     font-size: 3rem;
   }
-  
+
   h1 {
     font-size: 2.5rem;
   }
-  
+
   h2 {
     font-size: 2rem;
   }
@@ -167,18 +178,40 @@ html {
   transform: translateY(-2px);
 }
 
-/* Glass hero component */
+/* Glass hero component - Enhanced for Tailwind v4 compatibility */
 .glass-hero {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  /* Tailwind v4 fixes for proper stacking context */
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Enhanced glass effect for better visibility */
+.glass-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Obsidian-inspired gradients */
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-green));
+  background: linear-gradient(
+    135deg,
+    var(--accent-blue),
+    var(--accent-purple),
+    var(--accent-green)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -202,7 +235,8 @@ html {
 
 /* Custom animations */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
@@ -231,8 +265,12 @@ html {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -258,13 +296,21 @@ html {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes marquee-reverse {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes blob {
@@ -296,7 +342,8 @@ html {
 }
 
 @keyframes gradientShift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -405,11 +452,12 @@ html {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -430,12 +478,12 @@ html {
   .no-print {
     display: none;
   }
-  
+
   body {
     font-size: 12pt;
     line-height: 1.4;
   }
-  
+
   section {
     page-break-inside: avoid;
   }

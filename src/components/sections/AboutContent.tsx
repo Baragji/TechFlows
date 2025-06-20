@@ -121,7 +121,7 @@ const AboutContent = () => {
                   return (
                     <motion.div
                       key={value.title}
-                      className="flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/10 transition-colors duration-300 border border-white/10"
+                      className="flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-xs rounded-xl hover:bg-white/10 transition-colors duration-300 border border-white/10"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -170,7 +170,7 @@ const AboutContent = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 sticky top-8">
+            <div className="bg-white/5 backdrop-blur-xs border border-white/10 rounded-2xl p-8 sticky top-8">
               <h3 className="text-xl font-semibold text-white mb-8 text-center">
                 Vores resultater
               </h3>

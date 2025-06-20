@@ -54,7 +54,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-32 relative z-20 flex justify-center">
+      <div className="container mx-auto px-4 py-32 relative z-(--z-index-hero) flex justify-center">
         <div className="w-full max-w-4xl text-center glass-hero p-6 pb-20 rounded-xl relative">
           {/* Main Headline */}
           <div className="space-y-6 mb-6">
@@ -99,7 +99,7 @@ const Hero = () => {
           <div className="pt-8 pb-16 text-center">
             <Link
               href="/prisberegner"
-              className="inline-flex items-center justify-center bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-lg transition-all duration-300"
+              className="inline-flex items-center justify-center bg-accent text-white hover:bg-accent/90 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl glass-hero"
             >
               Kom i gang i dag
             </Link>

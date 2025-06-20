@@ -55,7 +55,9 @@ function Counter({ end, duration = 2000 }: CounterProps) {
     let animationFrame: number;
 
     const animate = (currentTime: number) => {
-      if (!startTime) {startTime = currentTime;}
+      if (!startTime) {
+        startTime = currentTime;
+      }
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
       setCount(Math.floor(progress * end));
@@ -106,7 +108,7 @@ export default function TestimonialsStats() {
               viewport={{ once: true }}
               className="text-center group"
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
+              <div className="bg-white/10 backdrop-blur-xs rounded-xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
                 <div className="text-4xl mb-4">{stat.icon}</div>
                 <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                   <Counter end={stat.value} />
@@ -126,7 +128,7 @@ export default function TestimonialsStats() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 max-w-3xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-xs rounded-xl p-8 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4">
               Kvalitet og Tillid i Hver Detalje
             </h3>

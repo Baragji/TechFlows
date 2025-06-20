@@ -20,31 +20,34 @@ const caseStudies: CaseStudy[] = [
     id: 'eco-fashion',
     title: 'E-commerce Platform for Sustainable Fashion',
     client: 'EcoStyle Nordic',
-    description: 'Udvikling af en moderne e-commerce platform med fokus på bæredygtig mode og miljøvenlige leveringsløsninger.',
+    description:
+      'Udvikling af en moderne e-commerce platform med fokus på bæredygtig mode og miljøvenlige leveringsløsninger.',
     image: '/images/case-studies/Casestudies1.png',
     tags: ['E-commerce', 'Sustainability', 'Mobile-first'],
     results: ['300% øgning i online salg', '50% reduktion i returrate', '95% kundetilfredshed'],
-    href: '/case-studies/eco-fashion'
+    href: '/case-studies/eco-fashion',
   },
   {
     id: 'warehouse-automation',
     title: 'AI-Powered Warehouse Management',
     client: 'LogiTech Solutions',
-    description: 'Implementering af AI-drevet lagerautomatisering med robotteknologi og real-time tracking.',
+    description:
+      'Implementering af AI-drevet lagerautomatisering med robotteknologi og real-time tracking.',
     image: '/images/case-studies/Casestudies2.png',
     tags: ['AI', 'Automation', 'IoT'],
     results: ['70% hurtigere ordrebehandling', '40% reduktion i fejl', '€2M årlige besparelser'],
-    href: '/case-studies/warehouse-automation'
+    href: '/case-studies/warehouse-automation',
   },
   {
     id: 'mobile-banking',
     title: 'Next-Gen Mobile Banking App',
     client: 'Nordic Bank',
-    description: 'Udvikling af en sikker og brugervenlig mobile banking app med avancerede finansielle funktioner.',
+    description:
+      'Udvikling af en sikker og brugervenlig mobile banking app med avancerede finansielle funktioner.',
     image: '/images/case-studies/Casestudies3.png',
     tags: ['FinTech', 'Mobile App', 'Security'],
     results: ['1M+ downloads', '4.8★ app rating', '60% øgning i digital adoption'],
-    href: '/case-studies/mobile-banking'
+    href: '/case-studies/mobile-banking',
   },
   {
     id: 'fitness-tracker',
@@ -54,7 +57,7 @@ const caseStudies: CaseStudy[] = [
     image: '/images/case-studies/Casestudies4.png',
     tags: ['IoT', 'Health Tech', 'AI'],
     results: ['500K aktive brugere', '85% retention rate', '25% forbedring i fitness resultater'],
-    href: '/case-studies/fitness-tracker'
+    href: '/case-studies/fitness-tracker',
   },
   {
     id: 'ar-furniture',
@@ -64,8 +67,8 @@ const caseStudies: CaseStudy[] = [
     image: '/images/case-studies/Casestudies5.jpg',
     tags: ['AR/VR', 'E-commerce', '3D'],
     results: ['45% øgning i konvertering', '80% reduktion i returner', 'Branche innovation award'],
-    href: '/case-studies/ar-furniture'
-  }
+    href: '/case-studies/ar-furniture',
+  },
 ];
 
 const CaseStudiesShowcase = () => {
@@ -93,7 +96,7 @@ const CaseStudiesShowcase = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="px-4 py-2 bg-glass-light backdrop-blur-sm rounded-full text-sm font-medium text-white/80 border border-white/10">
+            <span className="px-4 py-2 bg-glass-light backdrop-blur-xs rounded-full text-sm font-medium text-white/80 border border-white/10">
               Vores Arbejde
             </span>
           </motion.div>
@@ -106,8 +109,8 @@ const CaseStudiesShowcase = () => {
           </h2>
 
           <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Udforsk hvordan vi har hjulpet virksomheder med at transformere deres digitale tilstedeværelse
-            og opnå målbare resultater gennem innovative teknologiløsninger.
+            Udforsk hvordan vi har hjulpet virksomheder med at transformere deres digitale
+            tilstedeværelse og opnå målbare resultater gennem innovative teknologiløsninger.
           </p>
         </motion.div>
 
@@ -123,7 +126,7 @@ const CaseStudiesShowcase = () => {
               viewport={{ once: true }}
             >
               <Link href={caseStudy.href} className="block">
-                <div className="relative h-full bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10 hover:transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20">
+                <div className="relative h-full bg-white/5 backdrop-blur-xs rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10 hover:transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20">
                   {/* Case Study Image */}
                   <div className="relative h-64 overflow-hidden">
                     <Image
@@ -141,7 +144,7 @@ const CaseStudiesShowcase = () => {
                       {caseStudy.tags.slice(0, 2).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium text-white border border-white/20"
+                          className="px-2 py-1 bg-white/10 backdrop-blur-xs rounded-full text-xs font-medium text-white border border-white/20"
                         >
                           {tag}
                         </span>
@@ -152,7 +155,9 @@ const CaseStudiesShowcase = () => {
                   {/* Content */}
                   <div className="p-6">
                     <div className="mb-2">
-                      <span className="text-accent-blue text-sm font-medium">{caseStudy.client}</span>
+                      <span className="text-accent-blue text-sm font-medium">
+                        {caseStudy.client}
+                      </span>
                     </div>
 
                     <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent-blue transition-colors duration-300">
@@ -215,20 +220,13 @@ const CaseStudiesShowcase = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="text-white/60 mb-6">
-            Vil du se alle vores projekter?
-          </p>
+          <p className="text-white/60 mb-6">Vil du se alle vores projekter?</p>
           <Link
             href="/case-studies"
             className="inline-flex items-center px-8 py-4 bg-linear-to-r from-accent-green to-accent-blue text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-green/25 transition-all duration-300 hover:scale-105"
           >
             Se alle case studies
-            <svg
-              className="w-5 h-5 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

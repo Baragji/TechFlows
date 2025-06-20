@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { 
-  ArrowLeftIcon, 
+import {
+  ArrowLeftIcon,
   CheckIcon,
   CogIcon,
   BoltIcon,
@@ -35,42 +35,42 @@ import {
   FunnelIcon,
   CloudIcon,
   BellIcon,
-  TrophyIcon
+  TrophyIcon,
 } from '@heroicons/react/24/outline';
 
 // Icon mapping
 const iconMap = {
-  'CogIcon': CogIcon,
-  'BoltIcon': BoltIcon,
-  'ChartBarIcon': ChartBarIcon,
-  'ClockIcon': ClockIcon,
-  'DocumentTextIcon': DocumentTextIcon,
-  'CloudArrowUpIcon': CloudArrowUpIcon,
-  'GlobeAltIcon': GlobeAltIcon,
-  'DevicePhoneMobileIcon': DevicePhoneMobileIcon,
-  'MagnifyingGlassIcon': MagnifyingGlassIcon,
-  'ShieldCheckIcon': ShieldCheckIcon,
-  'ShoppingCartIcon': ShoppingCartIcon,
-  'CreditCardIcon': CreditCardIcon,
-  'TruckIcon': TruckIcon,
-  'UserGroupIcon': UserGroupIcon,
-  'PresentationChartBarIcon': PresentationChartBarIcon,
-  'LightBulbIcon': LightBulbIcon,
-  'RocketLaunchIcon': RocketLaunchIcon,
-  'BookOpenIcon': BookOpenIcon,
-  'PencilIcon': PencilIcon,
-  'EyeIcon': EyeIcon,
-  'BuildingStorefrontIcon': BuildingStorefrontIcon,
-  'PaintBrushIcon': PaintBrushIcon,
-  'ComputerDesktopIcon': ComputerDesktopIcon,
-  'CubeTransparentIcon': CubeTransparentIcon,
-  'BeakerIcon': BeakerIcon,
-  'CursorArrowRaysIcon': CursorArrowRaysIcon,
-  'PresentationChartLineIcon': PresentationChartLineIcon,
-  'FunnelIcon': FunnelIcon,
-  'CloudIcon': CloudIcon,
-  'BellIcon': BellIcon,
-  'TrophyIcon': TrophyIcon,
+  CogIcon: CogIcon,
+  BoltIcon: BoltIcon,
+  ChartBarIcon: ChartBarIcon,
+  ClockIcon: ClockIcon,
+  DocumentTextIcon: DocumentTextIcon,
+  CloudArrowUpIcon: CloudArrowUpIcon,
+  GlobeAltIcon: GlobeAltIcon,
+  DevicePhoneMobileIcon: DevicePhoneMobileIcon,
+  MagnifyingGlassIcon: MagnifyingGlassIcon,
+  ShieldCheckIcon: ShieldCheckIcon,
+  ShoppingCartIcon: ShoppingCartIcon,
+  CreditCardIcon: CreditCardIcon,
+  TruckIcon: TruckIcon,
+  UserGroupIcon: UserGroupIcon,
+  PresentationChartBarIcon: PresentationChartBarIcon,
+  LightBulbIcon: LightBulbIcon,
+  RocketLaunchIcon: RocketLaunchIcon,
+  BookOpenIcon: BookOpenIcon,
+  PencilIcon: PencilIcon,
+  EyeIcon: EyeIcon,
+  BuildingStorefrontIcon: BuildingStorefrontIcon,
+  PaintBrushIcon: PaintBrushIcon,
+  ComputerDesktopIcon: ComputerDesktopIcon,
+  CubeTransparentIcon: CubeTransparentIcon,
+  BeakerIcon: BeakerIcon,
+  CursorArrowRaysIcon: CursorArrowRaysIcon,
+  PresentationChartLineIcon: PresentationChartLineIcon,
+  FunnelIcon: FunnelIcon,
+  CloudIcon: CloudIcon,
+  BellIcon: BellIcon,
+  TrophyIcon: TrophyIcon,
 };
 
 interface ServiceFeature {
@@ -128,8 +128,12 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
       <section className="relative py-24 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className={`absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-br ${heroGradient} opacity-10 rounded-full blur-3xl`} />
-          <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-linear-to-br ${heroGradient} opacity-5 rounded-full blur-3xl`} />
+          <div
+            className={`absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-br ${heroGradient} opacity-10 rounded-full blur-3xl`}
+          />
+          <div
+            className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-linear-to-br ${heroGradient} opacity-5 rounded-full blur-3xl`}
+          />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -157,7 +161,9 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className={`w-24 h-24 bg-linear-to-br ${heroGradient} rounded-2xl flex items-center justify-center mx-auto shadow-2xl`}>
+              <div
+                className={`w-24 h-24 bg-linear-to-br ${heroGradient} rounded-2xl flex items-center justify-center mx-auto shadow-2xl`}
+              >
                 <IconComponent className="w-12 h-12 text-white" />
               </div>
             </motion.div>
@@ -203,12 +209,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                 className={`inline-flex items-center px-8 py-4 bg-linear-to-r ${heroGradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
               >
                 Start dit projekt
-                <svg
-                  className="w-5 h-5 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -232,9 +233,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Hvad vi leverer
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Hvad vi leverer</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
               Omfattende løsninger tilpasset dine specifikke behov
             </p>
@@ -244,7 +243,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-glass-light backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
+                className="bg-glass-light backdrop-blur-xs rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -258,12 +257,8 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                     })()}
                   </div>
                 )}
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-white/70 leading-relaxed">
-                  {feature.description}
-                </p>
+                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                <p className="text-white/70 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -307,14 +302,10 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                   <h3 className="text-xl font-semibold text-white mb-2">
                     {benefit.title}
                     {benefit.metric && (
-                      <span className="ml-2 text-accent-green font-bold">
-                        {benefit.metric}
-                      </span>
+                      <span className="ml-2 text-accent-green font-bold">{benefit.metric}</span>
                     )}
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
-                    {benefit.description}
-                  </p>
+                  <p className="text-white/70 leading-relaxed">{benefit.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -332,9 +323,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Vores proces
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Vores proces</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
               En struktureret tilgang der sikrer succes fra start til slut
             </p>
@@ -351,17 +340,15 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                 viewport={{ once: true }}
               >
                 <div className="shrink-0">
-                  <div className={`w-12 h-12 bg-linear-to-br ${heroGradient} rounded-xl flex items-center justify-center text-white font-bold text-lg`}>
+                  <div
+                    className={`w-12 h-12 bg-linear-to-br ${heroGradient} rounded-xl flex items-center justify-center text-white font-bold text-lg`}
+                  >
                     {step.step}
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-white/70 leading-relaxed">
-                    {step.description}
-                  </p>
+                  <h3 className="text-xl font-semibold text-white mb-2">{step.title}</h3>
+                  <p className="text-white/70 leading-relaxed">{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -391,7 +378,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             {technologies.map((tech, index) => (
               <motion.div
                 key={index}
-                className="px-4 py-2 bg-glass-light backdrop-blur-sm rounded-full border border-white/10 text-white/80 hover:text-white hover:border-white/20 transition-all duration-300"
+                className="px-4 py-2 bg-glass-light backdrop-blur-xs rounded-full border border-white/10 text-white/80 hover:text-white hover:border-white/20 transition-all duration-300"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -415,12 +402,8 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                {caseStudyTitle}
-              </h2>
-              <p className="text-xl text-white/70 mb-12 leading-relaxed">
-                {caseStudyDescription}
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{caseStudyTitle}</h2>
+              <p className="text-xl text-white/70 mb-12 leading-relaxed">{caseStudyDescription}</p>
 
               {caseStudyMetrics && (
                 <div className="grid md:grid-cols-3 gap-8">
@@ -436,9 +419,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                       <div className="text-3xl md:text-4xl font-bold text-accent-green mb-2">
                         {metric.value}
                       </div>
-                      <div className="text-white/70">
-                        {metric.label}
-                      </div>
+                      <div className="text-white/70">{metric.label}</div>
                     </motion.div>
                   ))}
                 </div>
@@ -470,12 +451,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
                 className={`inline-flex items-center px-8 py-4 bg-linear-to-r ${heroGradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
               >
                 Få et tilbud
-                <svg
-                  className="w-5 h-5 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -486,7 +462,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
               </Link>
               <Link
                 href="/prisberegner"
-                className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:bg-glass-medium"
+                className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-xs text-white font-semibold rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:bg-glass-medium"
               >
                 Beregn pris
               </Link>

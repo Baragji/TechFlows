@@ -37,14 +37,14 @@ export default function TestimonialsCTA() {
             className="grid md:grid-cols-3 gap-6 mb-12"
           >
             {/* Free Consultation */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
               <ChatBubbleLeftRightIcon className="w-12 h-12 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold mb-2">Gratis Konsultation</h3>
               <p className="text-gray-300 text-sm">30 minutters gratis rådgivning om dit projekt</p>
             </div>
 
             {/* Fast Response */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
               <PhoneIcon className="w-12 h-12 text-green-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold mb-2">Hurtig Respons</h3>
               <p className="text-gray-300 text-sm">
@@ -53,7 +53,7 @@ export default function TestimonialsCTA() {
             </div>
 
             {/* Custom Solutions */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6 hover:bg-white/20 transition-all duration-300 group">
               <ArrowRightIcon className="w-12 h-12 text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold mb-2">Skræddersyede Løsninger</h3>
               <p className="text-gray-300 text-sm">Hver løsning tilpasses dine specifikke behov</p>

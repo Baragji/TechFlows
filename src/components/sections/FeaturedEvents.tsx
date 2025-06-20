@@ -8,7 +8,7 @@ import {
   ClockIcon,
   GlobeAltIcon,
   MapPinIcon,
-  UsersIcon
+  UsersIcon,
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -69,12 +69,10 @@ const FeaturedEvents: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Kommende Events
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Kommende Events</h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
-            Deltag i vores eksklusive webinarer, workshops og konferencer.
-            Lær fra eksperter og netværk med andre professionelle.
+            Deltag i vores eksklusive webinarer, workshops og konferencer. Lær fra eksperter og
+            netværk med andre professionelle.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -84,7 +82,7 @@ const FeaturedEvents: React.FC = () => {
           >
             <Link
               href="/events"
-              className="inline-flex items-center px-6 py-3 bg-glass-light backdrop-blur-sm border border-white/20 text-white font-medium rounded-xl hover:bg-glass-medium transition-all duration-300 group"
+              className="inline-flex items-center px-6 py-3 bg-glass-light backdrop-blur-xs border border-white/20 text-white font-medium rounded-xl hover:bg-glass-medium transition-all duration-300 group"
             >
               Se alle events
               <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -107,12 +105,11 @@ const FeaturedEvents: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <div className="bg-glass-light backdrop-blur-sm rounded-2xl p-8 border border-white/10 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Mist aldrig et event
-            </h3>
+          <div className="bg-glass-light backdrop-blur-xs rounded-2xl p-8 border border-white/10 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Mist aldrig et event</h3>
             <p className="text-white/70 mb-6">
-              Tilmeld dig vores nyhedsbrev og få besked om nye events, exclusive workshops og special tilbud.
+              Tilmeld dig vores nyhedsbrev og få besked om nye events, exclusive workshops og
+              special tilbud.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
@@ -125,7 +122,7 @@ const FeaturedEvents: React.FC = () => {
               </motion.a>
               <motion.a
                 href="/#newsletter"
-                className="px-8 py-4 bg-glass-medium backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-glass-light transition-all duration-300"
+                className="px-8 py-4 bg-glass-medium backdrop-blur-xs border border-white/20 text-white font-semibold rounded-xl hover:bg-glass-light transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -145,7 +142,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
   const formattedDate = useFormattedDate(event.date, {
     day: 'numeric',
     month: 'short',
-    year: 'numeric'
+    year: 'numeric',
   });
 
   const _monthName = useMonthName(event.date); // Legacy - using monthShort instead
@@ -163,7 +160,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="bg-glass-light backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
+      className="bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
     >
       <Link href={`/events/${event.slug}`}>
         <div className="relative">
@@ -182,13 +179,9 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
 
           {/* Date Badge */}
           <div className="absolute top-4 left-4">
-            <div className="bg-glass-dark/80 backdrop-blur-sm rounded-xl p-3 text-center">
-              <div className="text-white font-bold text-lg leading-none">
-                {day}
-              </div>
-              <div className="text-accent-blue text-xs font-medium uppercase">
-                {monthShort}
-              </div>
+            <div className="bg-glass-dark/80 backdrop-blur-xs rounded-xl p-3 text-center">
+              <div className="text-white font-bold text-lg leading-none">{day}</div>
+              <div className="text-accent-blue text-xs font-medium uppercase">{monthShort}</div>
             </div>
           </div>
 
@@ -204,7 +197,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
 
           {/* Price Badge */}
           <div className="absolute bottom-4 right-4">
-            <span className="px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-sm text-white">
+            <span className="px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-xs text-white">
               {event.price.type === 'free' ? 'Gratis' : `${event.price.amount} DKK`}
             </span>
           </div>
@@ -217,15 +210,15 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
           </h3>
 
           {/* Description */}
-          <p className="text-white/70 mb-4 leading-relaxed line-clamp-3">
-            {event.description}
-          </p>
+          <p className="text-white/70 mb-4 leading-relaxed line-clamp-3">{event.description}</p>
 
           {/* Event Details */}
           <div className="space-y-2 mb-4">
             <div className="flex items-center text-sm text-white/70">
               <CalendarIcon className="w-4 h-4 mr-2 text-accent-blue" />
-              <span>{formattedDate} • {event.time}</span>
+              <span>
+                {formattedDate} • {event.time}
+              </span>
             </div>
             <div className="flex items-center text-sm text-white/70">
               <ClockIcon className="w-4 h-4 mr-2 text-accent-green" />
@@ -238,9 +231,11 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 <MapPinIcon className="w-4 h-4 mr-2 text-accent-orange" />
               )}
               <span>
-                {event.location.type === 'online' ? 'Online Event' :
-                 event.location.type === 'physical' ? event.location.city :
-                 'Hybrid Event'}
+                {event.location.type === 'online'
+                  ? 'Online Event'
+                  : event.location.type === 'physical'
+                    ? event.location.city
+                    : 'Hybrid Event'}
               </span>
             </div>
             <div className="flex items-center text-sm text-white/70">
@@ -268,14 +263,17 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 whileHover={{ x: 3 }}
                 transition={{ duration: 0.2 }}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </motion.svg>
             </div>
 
             {!event.registration.isOpen && (
-              <span className="text-xs text-white/50">
-                Tilmelding lukket
-              </span>
+              <span className="text-xs text-white/50">Tilmelding lukket</span>
             )}
           </div>
         </div>

@@ -8,10 +8,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-[rgba(255,255,255,0.2)] text-white shadow rounded-[20px]',
-        destructive: 'bg-red-500 text-white shadow-sm hover:bg-red-500/90',
+        destructive: 'bg-red-500 text-white shadow-xs hover:bg-red-500/90',
         outline:
-          'border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground',
-        secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+          'border border-input bg-transparent shadow-xs hover:bg-accent hover:text-accent-foreground',
+        secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         // Obsidian-inspired variants

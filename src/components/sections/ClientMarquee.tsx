@@ -22,8 +22,8 @@ const ClientMarquee: React.FC = () => {
             Betroet af innovative virksomheder
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Vi er stolte af at arbejde sammen med fremadtænkende virksomheder
-            der ønsker at skabe ekstraordinære digitale oplevelser.
+            Vi er stolte af at arbejde sammen med fremadtænkende virksomheder der ønsker at skabe
+            ekstraordinære digitale oplevelser.
           </p>
         </motion.div>
 
@@ -37,14 +37,14 @@ const ClientMarquee: React.FC = () => {
           <motion.div
             className="flex space-x-16"
             animate={{
-              x: [0, `${-50 * clients.length  }%`]
+              x: [0, `${-50 * clients.length}%`],
             }}
             transition={{
               x: {
                 repeat: Infinity,
-                repeatType: "loop",
+                repeatType: 'loop',
                 duration: 30,
-                ease: "linear",
+                ease: 'linear',
               },
             }}
           >
@@ -53,7 +53,7 @@ const ClientMarquee: React.FC = () => {
                 key={`${client.id}-${index}`}
                 className="shrink-0 w-40 h-20 flex items-center justify-center group"
               >
-                <div className="relative w-full h-full flex items-center justify-center bg-glass-light backdrop-blur-sm rounded-xl border border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:bg-glass-medium">
+                <div className="relative w-full h-full flex items-center justify-center bg-glass-light backdrop-blur-xs rounded-xl border border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:bg-glass-medium">
                   {/* Placeholder for client logo */}
                   <div className="w-24 h-12 bg-white/10 rounded-lg flex items-center justify-center">
                     <span className="text-white/60 text-xs font-medium text-center px-2">
@@ -84,36 +84,20 @@ const ClientMarquee: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent-blue mb-2">
-              50+
-            </div>
-            <div className="text-white/70 text-sm">
-              Tilfredse klienter
-            </div>
+            <div className="text-3xl md:text-4xl font-bold text-accent-blue mb-2">50+</div>
+            <div className="text-white/70 text-sm">Tilfredse klienter</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent-green mb-2">
-              200+
-            </div>
-            <div className="text-white/70 text-sm">
-              Projekter leveret
-            </div>
+            <div className="text-3xl md:text-4xl font-bold text-accent-green mb-2">200+</div>
+            <div className="text-white/70 text-sm">Projekter leveret</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent-purple mb-2">
-              98%
-            </div>
-            <div className="text-white/70 text-sm">
-              Klient tilfredshed
-            </div>
+            <div className="text-3xl md:text-4xl font-bold text-accent-purple mb-2">98%</div>
+            <div className="text-white/70 text-sm">Klient tilfredshed</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent-gold mb-2">
-              5+
-            </div>
-            <div className="text-white/70 text-sm">
-              År erfaring
-            </div>
+            <div className="text-3xl md:text-4xl font-bold text-accent-gold mb-2">5+</div>
+            <div className="text-white/70 text-sm">År erfaring</div>
           </div>
         </motion.div>
 
@@ -125,9 +109,7 @@ const ClientMarquee: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-semibold text-white mb-6">
-            Brancher vi betjener
-          </h3>
+          <h3 className="text-xl font-semibold text-white mb-6">Brancher vi betjener</h3>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {[
               'Health & Fitness',
@@ -139,11 +121,11 @@ const ClientMarquee: React.FC = () => {
               'Financial Services',
               'Food & Beverage',
               'Technology',
-              'Renewable Energy'
+              'Renewable Energy',
             ].map((industry, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-glass-light backdrop-blur-sm rounded-full text-white/80 text-sm border border-white/10 hover:border-white/20 hover:text-white transition-all duration-300"
+                className="px-4 py-2 bg-glass-light backdrop-blur-xs rounded-full text-white/80 text-sm border border-white/10 hover:border-white/20 hover:text-white transition-all duration-300"
               >
                 {industry}
               </span>

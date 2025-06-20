@@ -11,13 +11,11 @@ const PortfolioGrid: React.FC = () => {
 
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
-    
+
     if (categoryId === 'all') {
       setFilteredCaseStudies(caseStudies);
     } else {
-      setFilteredCaseStudies(
-        caseStudies.filter(study => study.category === categoryId)
-      );
+      setFilteredCaseStudies(caseStudies.filter((study) => study.category === categoryId));
     }
   };
 
@@ -32,12 +30,10 @@ const PortfolioGrid: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Vores Portfolio
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Vores Portfolio</h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Udforsk vores succeshistorier og se hvordan vi har hjulpet virksomheder 
-            med at opnå ekstraordinære resultater gennem innovative digitale løsninger.
+            Udforsk vores succeshistorier og se hvordan vi har hjulpet virksomheder med at opnå
+            ekstraordinære resultater gennem innovative digitale løsninger.
           </p>
         </motion.div>
 
@@ -56,7 +52,7 @@ const PortfolioGrid: React.FC = () => {
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 activeCategory === category.id
                   ? 'bg-accent-blue text-white shadow-lg shadow-accent-blue/25'
-                  : 'bg-glass-light backdrop-blur-sm text-white/70 hover:text-white hover:bg-glass-medium border border-white/10 hover:border-white/20'
+                  : 'bg-glass-light backdrop-blur-xs text-white/70 hover:text-white hover:bg-glass-medium border border-white/10 hover:border-white/20'
               }`}
             >
               {category.label}
@@ -72,7 +68,8 @@ const PortfolioGrid: React.FC = () => {
           transition={{ duration: 0.4 }}
         >
           <p className="text-white/60">
-            Viser {filteredCaseStudies.length} {filteredCaseStudies.length === 1 ? 'projekt' : 'projekter'}
+            Viser {filteredCaseStudies.length}{' '}
+            {filteredCaseStudies.length === 1 ? 'projekt' : 'projekter'}
           </p>
         </motion.div>
 
@@ -87,11 +84,7 @@ const PortfolioGrid: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             {filteredCaseStudies.map((caseStudy, index) => (
-              <CaseStudyCard
-                key={caseStudy.id}
-                caseStudy={caseStudy}
-                index={index}
-              />
+              <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} index={index} />
             ))}
           </motion.div>
         </AnimatePresence>
@@ -119,9 +112,7 @@ const PortfolioGrid: React.FC = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Ingen projekter fundet
-            </h3>
+            <h3 className="text-xl font-semibold text-white mb-2">Ingen projekter fundet</h3>
             <p className="text-white/60">
               Prøv at vælge en anden kategori eller kontakt os for at høre om kommende projekter.
             </p>
@@ -140,8 +131,8 @@ const PortfolioGrid: React.FC = () => {
             Klar til at skabe din egen succeshistorie?
           </h3>
           <p className="text-white/70 mb-8 max-w-2xl mx-auto">
-            Lad os diskutere hvordan vi kan hjælpe din virksomhed med at opnå 
-            lignende resultater gennem skræddersyede digitale løsninger.
+            Lad os diskutere hvordan vi kan hjælpe din virksomhed med at opnå lignende resultater
+            gennem skræddersyede digitale løsninger.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
@@ -151,12 +142,7 @@ const PortfolioGrid: React.FC = () => {
               whileTap={{ scale: 0.95 }}
             >
               Start dit projekt
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -167,7 +153,7 @@ const PortfolioGrid: React.FC = () => {
             </motion.a>
             <motion.a
               href="/prisberegner"
-              className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:bg-glass-medium"
+              className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-xs text-white font-semibold rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:bg-glass-medium"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

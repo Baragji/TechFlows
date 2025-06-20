@@ -16,7 +16,7 @@ const categoryColors = {
   web: 'from-green-500 to-teal-600',
   automation: 'from-orange-500 to-red-600',
   analytics: 'from-purple-500 to-pink-600',
-  strategy: 'from-indigo-500 to-blue-600'
+  strategy: 'from-indigo-500 to-blue-600',
 };
 
 const categoryLabels = {
@@ -24,12 +24,12 @@ const categoryLabels = {
   web: 'Web Udvikling',
   automation: 'Automatisering',
   analytics: 'Analytics',
-  strategy: 'Digital Strategi'
+  strategy: 'Digital Strategi',
 };
 
 const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
   const relatedCaseStudies = caseStudies
-    .filter(study => study.id !== caseStudy.id && study.category === caseStudy.category)
+    .filter((study) => study.id !== caseStudy.id && study.category === caseStudy.category)
     .slice(0, 3);
 
   return (
@@ -38,8 +38,12 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
       <section className="relative pt-32 pb-20 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className={`absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-br ${categoryColors[caseStudy.category]} opacity-10 rounded-full blur-3xl`} />
-          <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-linear-to-br ${categoryColors[caseStudy.category]} opacity-5 rounded-full blur-3xl`} />
+          <div
+            className={`absolute top-1/4 left-1/4 w-96 h-96 bg-linear-to-br ${categoryColors[caseStudy.category]} opacity-10 rounded-full blur-3xl`}
+          />
+          <div
+            className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-linear-to-br ${categoryColors[caseStudy.category]} opacity-5 rounded-full blur-3xl`}
+          />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -67,12 +71,12 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className={`px-4 py-2 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white font-medium rounded-full`}>
+              <span
+                className={`px-4 py-2 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white font-medium rounded-full`}
+              >
                 {categoryLabels[caseStudy.category]}
               </span>
-              <span className="text-accent-blue font-medium">
-                {caseStudy.client}
-              </span>
+              <span className="text-accent-blue font-medium">{caseStudy.client}</span>
               {caseStudy.featured && (
                 <span className="px-3 py-1 bg-accent-gold text-obsidian-950 text-sm font-medium rounded-full">
                   Featured
@@ -107,11 +111,11 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="bg-glass-light backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="bg-glass-light backdrop-blur-xs rounded-xl p-6 border border-white/10">
                 <h3 className="text-white font-semibold mb-2">Projektvarighed</h3>
                 <p className="text-white/70">{caseStudy.timeline}</p>
               </div>
-              <div className="bg-glass-light backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="bg-glass-light backdrop-blur-xs rounded-xl p-6 border border-white/10">
                 <h3 className="text-white font-semibold mb-2">Budget</h3>
                 <p className="text-white/70">{caseStudy.budget}</p>
               </div>
@@ -151,9 +155,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Resultater
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Resultater</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
               Målbare resultater der demonstrerer projektets succes
             </p>
@@ -163,7 +165,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
             {caseStudy.metrics.map((metric, index) => (
               <motion.div
                 key={index}
-                className="text-center bg-glass-light backdrop-blur-sm rounded-xl p-6 border border-white/10"
+                className="text-center bg-glass-light backdrop-blur-xs rounded-xl p-6 border border-white/10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -172,13 +174,9 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
                 <div className="text-3xl md:text-4xl font-bold text-accent-green mb-2">
                   {metric.value}
                 </div>
-                <div className="text-white font-medium mb-2">
-                  {metric.label}
-                </div>
+                <div className="text-white font-medium mb-2">{metric.label}</div>
                 {metric.description && (
-                  <div className="text-white/60 text-sm">
-                    {metric.description}
-                  </div>
+                  <div className="text-white/60 text-sm">{metric.description}</div>
                 )}
               </motion.div>
             ))}
@@ -197,12 +195,8 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Udfordringen
-              </h2>
-              <p className="text-lg text-white/80 leading-relaxed">
-                {caseStudy.challenge}
-              </p>
+              <h2 className="text-3xl font-bold text-white mb-6">Udfordringen</h2>
+              <p className="text-lg text-white/80 leading-relaxed">{caseStudy.challenge}</p>
             </motion.div>
 
             {/* Solution */}
@@ -212,12 +206,8 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Løsningen
-              </h2>
-              <p className="text-lg text-white/80 leading-relaxed">
-                {caseStudy.solution}
-              </p>
+              <h2 className="text-3xl font-bold text-white mb-6">Løsningen</h2>
+              <p className="text-lg text-white/80 leading-relaxed">{caseStudy.solution}</p>
             </motion.div>
 
             {/* Results */}
@@ -227,12 +217,8 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Resultatet
-              </h2>
-              <p className="text-lg text-white/80 leading-relaxed">
-                {caseStudy.results}
-              </p>
+              <h2 className="text-3xl font-bold text-white mb-6">Resultatet</h2>
+              <p className="text-lg text-white/80 leading-relaxed">{caseStudy.results}</p>
             </motion.div>
           </div>
         </div>
@@ -248,9 +234,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Teknologier Brugt
-            </h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Teknologier Brugt</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
               Moderne teknologier der sikrede projektets succes
             </p>
@@ -260,7 +244,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
             {caseStudy.technologies.map((tech, index) => (
               <motion.div
                 key={index}
-                className="px-4 py-2 bg-glass-light backdrop-blur-sm rounded-full border border-white/10 text-white/80 hover:text-white hover:border-white/20 transition-all duration-300"
+                className="px-4 py-2 bg-glass-light backdrop-blur-xs rounded-full border border-white/10 text-white/80 hover:text-white hover:border-white/20 transition-all duration-300"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -284,7 +268,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="bg-glass-light backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/10">
+              <div className="bg-glass-light backdrop-blur-xs rounded-2xl p-8 md:p-12 border border-white/10">
                 <blockquote className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed italic">
                   &ldquo;{caseStudy.testimonial.quote}&rdquo;
                 </blockquote>
@@ -305,15 +289,9 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
                     </div>
                   )}
                   <div className="text-left">
-                    <div className="text-white font-semibold">
-                      {caseStudy.testimonial.author}
-                    </div>
-                    <div className="text-white/70 text-sm">
-                      {caseStudy.testimonial.position}
-                    </div>
-                    <div className="text-accent-blue text-sm">
-                      {caseStudy.testimonial.company}
-                    </div>
+                    <div className="text-white font-semibold">{caseStudy.testimonial.author}</div>
+                    <div className="text-white/70 text-sm">{caseStudy.testimonial.position}</div>
+                    <div className="text-accent-blue text-sm">{caseStudy.testimonial.company}</div>
                   </div>
                 </div>
               </div>
@@ -333,9 +311,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Relaterede Projekter
-              </h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Relaterede Projekter</h2>
               <p className="text-white/70 max-w-2xl mx-auto">
                 Udforsk andre projekter inden for {categoryLabels[caseStudy.category].toLowerCase()}
               </p>
@@ -343,11 +319,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {relatedCaseStudies.map((study, index) => (
-                <CaseStudyCard
-                  key={study.id}
-                  caseStudy={study}
-                  index={index}
-                />
+                <CaseStudyCard key={study.id} caseStudy={study} index={index} />
               ))}
             </div>
           </div>
@@ -368,8 +340,8 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               Klar til at skabe din egen succeshistorie?
             </h2>
             <p className="text-xl text-white/70 mb-8 leading-relaxed">
-              Lad os diskutere hvordan vi kan hjælpe din virksomhed med at opnå 
-              lignende resultater gennem skræddersyede digitale løsninger.
+              Lad os diskutere hvordan vi kan hjælpe din virksomhed med at opnå lignende resultater
+              gennem skræddersyede digitale løsninger.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -377,12 +349,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
                 className={`inline-flex items-center px-8 py-4 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105`}
               >
                 Start dit projekt
-                <svg
-                  className="w-5 h-5 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -393,7 +360,7 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ caseStudy }) => {
               </Link>
               <Link
                 href="/prisberegner"
-                className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:bg-glass-medium"
+                className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-xs text-white font-semibold rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:bg-glass-medium"
               >
                 Få et tilbud
               </Link>

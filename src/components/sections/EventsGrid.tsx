@@ -3,14 +3,14 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
-import { 
-  CalendarIcon, 
-  ClockIcon, 
+import {
+  CalendarIcon,
+  ClockIcon,
   MapPinIcon,
   UsersIcon,
   GlobeAltIcon,
   FunnelIcon,
-  MagnifyingGlassIcon
+  MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 import { getUpcomingEvents, eventCategories, Event } from '@/data/events';
 import Image from 'next/image';
@@ -20,17 +20,19 @@ const EventsGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   const allEvents = getUpcomingEvents();
-  
+
   // Filter events based on category, type and search
-  const filteredEvents = allEvents.filter(event => {
-    const matchesCategory = selectedCategory === 'all' || event.categories.includes(selectedCategory);
+  const filteredEvents = allEvents.filter((event) => {
+    const matchesCategory =
+      selectedCategory === 'all' || event.categories.includes(selectedCategory);
     const matchesType = selectedType === 'all' || event.type === selectedType;
-    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+    const matchesSearch =
+      event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      event.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return matchesCategory && matchesType && matchesSearch;
   });
 
@@ -39,7 +41,7 @@ const EventsGrid: React.FC = () => {
     { id: 'webinar', name: 'Webinarer', icon: '💻' },
     { id: 'workshop', name: 'Workshops', icon: '🛠️' },
     { id: 'conference', name: 'Konferencer', icon: '🎤' },
-    { id: 'meetup', name: 'Meetups', icon: '🤝' }
+    { id: 'meetup', name: 'Meetups', icon: '🤝' },
   ];
 
   return (
@@ -53,12 +55,10 @@ const EventsGrid: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Kommende Events
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Kommende Events</h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Deltag i vores webinarer, workshops og konferencer for at udvide din viden 
-            og netværk inden for teknologi og digital innovation
+            Deltag i vores webinarer, workshops og konferencer for at udvide din viden og netværk
+            inden for teknologi og digital innovation
           </p>
         </motion.div>
 
@@ -119,7 +119,7 @@ const EventsGrid: React.FC = () => {
               <FunnelIcon className="w-4 h-4 inline-block mr-2" />
               Alle Kategorier
             </motion.button>
-            
+
             {eventCategories.map((category) => (
               <motion.button
                 key={category.id}
@@ -149,8 +149,10 @@ const EventsGrid: React.FC = () => {
         >
           <p className="text-white/70">
             Viser {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''}
-            {selectedCategory !== 'all' && ` i kategorien "${eventCategories.find(c => c.id === selectedCategory)?.name}"`}
-            {selectedType !== 'all' && ` af typen "${eventTypes.find(t => t.id === selectedType)?.name}"`}
+            {selectedCategory !== 'all' &&
+              ` i kategorien "${eventCategories.find((c) => c.id === selectedCategory)?.name}"`}
+            {selectedType !== 'all' &&
+              ` af typen "${eventTypes.find((t) => t.id === selectedType)?.name}"`}
             {searchTerm && ` for "${searchTerm}"`}
           </p>
         </motion.div>
@@ -174,9 +176,7 @@ const EventsGrid: React.FC = () => {
             <div className="w-24 h-24 bg-glass-light rounded-full flex items-center justify-center mx-auto mb-6">
               <CalendarIcon className="w-12 h-12 text-white/50" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Ingen events fundet
-            </h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Ingen events fundet</h3>
             <p className="text-white/70 mb-8">
               Prøv at justere dine søgekriterier eller vælg andre filtre.
             </p>
@@ -207,29 +207,34 @@ interface EventCardProps {
 
 const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
   // Use our custom hook for date formatting
-  const formattedDate = useFormattedDate(event.date, { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  const formattedDate = useFormattedDate(event.date, {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
-  
+
   const getEventTypeColor = (type: string) => {
     switch (type) {
-      case 'webinar': return 'from-accent-blue to-accent-purple';
-      case 'workshop': return 'from-accent-green to-accent-blue';
-      case 'conference': return 'from-accent-purple to-accent-pink';
-      case 'meetup': return 'from-accent-orange to-accent-gold';
-      default: return 'from-accent-blue to-accent-purple';
+      case 'webinar':
+        return 'from-accent-blue to-accent-purple';
+      case 'workshop':
+        return 'from-accent-green to-accent-blue';
+      case 'conference':
+        return 'from-accent-purple to-accent-pink';
+      case 'meetup':
+        return 'from-accent-orange to-accent-gold';
+      default:
+        return 'from-accent-blue to-accent-purple';
     }
   };
 
   const spotsLeft = event.capacity - event.registered;
   const isAlmostFull = spotsLeft <= 10;
-  
+
   return (
     <motion.article
-      className="bg-glass-light backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
+      className="bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -237,18 +242,20 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
     >
       <Link href={`/events/${event.slug}`}>
         <div className="relative">
-          <Image 
-            src={event.image || "/images/events/default-event.svg"} 
-            alt={event.title || "Event billede"} 
-            width={800} 
-            height={600} 
-            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" 
+          <Image
+            src={event.image || '/images/events/default-event.svg'}
+            alt={event.title || 'Event billede'}
+            width={800}
+            height={600}
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-          
+
           {/* Event Type Badge */}
           <div className="absolute top-4 left-4">
-            <span className={`px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r ${getEventTypeColor(event.type)} text-white`}>
+            <span
+              className={`px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r ${getEventTypeColor(event.type)} text-white`}
+            >
               {event.type === 'webinar' && '💻 Webinar'}
               {event.type === 'workshop' && '🛠️ Workshop'}
               {event.type === 'conference' && '🎤 Konference'}
@@ -267,12 +274,14 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
 
           {/* Price Badge */}
           <div className="absolute bottom-4 right-4">
-            <span className="px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-sm text-white">
-              {event.price.type === 'free' ? 'Gratis' : `${event.price.amount} ${event.price.currency}`}
+            <span className="px-3 py-1 rounded-full text-sm font-medium bg-glass-dark/80 backdrop-blur-xs text-white">
+              {event.price.type === 'free'
+                ? 'Gratis'
+                : `${event.price.amount} ${event.price.currency}`}
             </span>
           </div>
         </div>
-        
+
         <div className="p-6">
           {/* Title */}
           <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors duration-300">
@@ -280,9 +289,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
           </h3>
 
           {/* Description */}
-          <p className="text-white/70 mb-4 leading-relaxed line-clamp-3">
-            {event.description}
-          </p>
+          <p className="text-white/70 mb-4 leading-relaxed line-clamp-3">{event.description}</p>
 
           {/* Event Details */}
           <div className="space-y-2 mb-4">
@@ -292,7 +299,9 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
             </div>
             <div className="flex items-center text-sm text-white/70">
               <ClockIcon className="w-4 h-4 mr-2 text-accent-green" />
-              <span>{event.time} • {event.duration}</span>
+              <span>
+                {event.time} • {event.duration}
+              </span>
             </div>
             <div className="flex items-center text-sm text-white/70">
               {event.location.type === 'online' ? (
@@ -301,9 +310,11 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 <MapPinIcon className="w-4 h-4 mr-2 text-accent-orange" />
               )}
               <span>
-                {event.location.type === 'online' ? 'Online Event' : 
-                 event.location.type === 'physical' ? `${event.location.venue}, ${event.location.city}` :
-                 'Hybrid Event'}
+                {event.location.type === 'online'
+                  ? 'Online Event'
+                  : event.location.type === 'physical'
+                    ? `${event.location.venue}, ${event.location.city}`
+                    : 'Hybrid Event'}
               </span>
             </div>
             <div className="flex items-center text-sm text-white/70">
@@ -322,7 +333,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
           {/* Categories */}
           <div className="flex flex-wrap gap-2 mb-4">
             {event.categories.slice(0, 2).map((categoryId, catIndex) => {
-              const categoryInfo = eventCategories.find(c => c.id === categoryId);
+              const categoryInfo = eventCategories.find((c) => c.id === categoryId);
               return (
                 <span
                   key={catIndex}
@@ -347,14 +358,17 @@ const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
                 whileHover={{ x: 3 }}
                 transition={{ duration: 0.2 }}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </motion.svg>
             </div>
-            
+
             {!event.registration.isOpen && (
-              <span className="text-xs text-white/50">
-                Tilmelding lukket
-              </span>
+              <span className="text-xs text-white/50">Tilmelding lukket</span>
             )}
           </div>
         </div>

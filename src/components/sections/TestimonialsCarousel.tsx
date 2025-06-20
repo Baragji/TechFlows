@@ -21,7 +21,8 @@ const testimonials: Testimonial[] = [
     name: 'Lars Nielsen',
     position: 'CEO',
     company: 'Nielsen & Co',
-    content: 'TechFlow Solutions leverede en fantastisk hjemmeside der overgik alle vores forventninger. Deres professionelle tilgang og tekniske ekspertise er i verdensklasse.',
+    content:
+      'TechFlow Solutions leverede en fantastisk hjemmeside der overgik alle vores forventninger. Deres professionelle tilgang og tekniske ekspertise er i verdensklasse.',
     rating: 5,
     image: '/api/placeholder/80/80',
   },
@@ -30,7 +31,8 @@ const testimonials: Testimonial[] = [
     name: 'Maria Andersen',
     position: 'Marketing Director',
     company: 'Andersen Group',
-    content: 'Vores webshop har øget salget med 250% siden TechFlow implementerede deres e-commerce løsning. Utroligt professionelt arbejde!',
+    content:
+      'Vores webshop har øget salget med 250% siden TechFlow implementerede deres e-commerce løsning. Utroligt professionelt arbejde!',
     rating: 5,
     image: '/api/placeholder/80/80',
   },
@@ -39,10 +41,11 @@ const testimonials: Testimonial[] = [
     name: 'Thomas Olsen',
     position: 'Founder',
     company: 'StartupDK',
-    content: 'Den app TechFlow udviklede har revolutioneret vores business. Kvaliteten og leveringstiden var fantastisk.',
+    content:
+      'Den app TechFlow udviklede har revolutioneret vores business. Kvaliteten og leveringstiden var fantastisk.',
     rating: 5,
     image: '/api/placeholder/80/80',
-  }
+  },
 ];
 
 const TestimonialsCarousel: React.FC = () => {
@@ -106,7 +109,7 @@ const TestimonialsCarousel: React.FC = () => {
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="w-full shrink-0 px-4">
                   <motion.div
-                    className="bg-glass-light backdrop-blur-sm rounded-2xl p-8 border border-white/10 text-center"
+                    className="bg-glass-light backdrop-blur-xs rounded-2xl p-8 border border-white/10 text-center"
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
@@ -128,19 +131,16 @@ const TestimonialsCarousel: React.FC = () => {
                     <div className="flex items-center justify-center space-x-4">
                       <div className="w-16 h-16 bg-glass-medium rounded-full flex items-center justify-center">
                         <div className="w-12 h-12 bg-linear-to-br from-accent-blue to-accent-purple rounded-full flex items-center justify-center text-white font-semibold">
-                          {testimonial.name.split(' ').map(n => n[0]).join('')}
+                          {testimonial.name
+                            .split(' ')
+                            .map((n) => n[0])
+                            .join('')}
                         </div>
                       </div>
                       <div className="text-left">
-                        <div className="text-white font-semibold text-lg">
-                          {testimonial.name}
-                        </div>
-                        <div className="text-white/70">
-                          {testimonial.position}
-                        </div>
-                        <div className="text-accent-blue font-medium">
-                          {testimonial.company}
-                        </div>
+                        <div className="text-white font-semibold text-lg">{testimonial.name}</div>
+                        <div className="text-white/70">{testimonial.position}</div>
+                        <div className="text-accent-blue font-medium">{testimonial.company}</div>
                       </div>
                     </div>
                   </motion.div>
@@ -152,7 +152,7 @@ const TestimonialsCarousel: React.FC = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-glass-light backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-glass-medium transition-all duration-300 hover:scale-110"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-glass-light backdrop-blur-xs border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-glass-medium transition-all duration-300 hover:scale-110"
             aria-label="Previous testimonial"
           >
             <ChevronLeftIcon className="w-6 h-6" />
@@ -160,7 +160,7 @@ const TestimonialsCarousel: React.FC = () => {
 
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-glass-light backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-glass-medium transition-all duration-300 hover:scale-110"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-glass-light backdrop-blur-xs border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-glass-medium transition-all duration-300 hover:scale-110"
             aria-label="Next testimonial"
           >
             <ChevronRightIcon className="w-6 h-6" />
@@ -191,12 +191,10 @@ const TestimonialsCarousel: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <p className="text-white/70 mb-6">
-            Vil du også opnå fantastiske resultater?
-          </p>
+          <p className="text-white/70 mb-6">Vil du også opnå fantastiske resultater?</p>
           <motion.a
             href="/testimonials"
-            className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-glass-medium transition-all duration-300"
+            className="inline-flex items-center px-8 py-4 bg-glass-light backdrop-blur-xs border border-white/20 text-white font-semibold rounded-xl hover:bg-glass-medium transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

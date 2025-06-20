@@ -106,7 +106,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <motion.nav
-      className="fixed top-5 left-0 w-full z-50 transition-all duration-300"
+      className="fixed top-5 left-0 w-full z-(--z-index-nav) transition-all duration-300"
       style={{ '--navbar-height': '72px' } as React.CSSProperties}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -175,7 +175,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 glass-hero rounded-2xl overflow-hidden"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 glass-hero rounded-2xl overflow-hidden z-(--z-index-dropdown)"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-4">

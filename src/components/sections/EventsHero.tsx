@@ -13,20 +13,20 @@ const EventsHero: React.FC = () => {
       value: '500+',
       label: 'Deltagere',
       icon: <UsersIcon className="w-8 h-8" />,
-      color: 'text-accent-blue'
+      color: 'text-accent-blue',
     },
     {
       value: '12+',
       label: 'Events årligt',
       icon: <CalendarIcon className="w-8 h-8" />,
-      color: 'text-accent-green'
+      color: 'text-accent-green',
     },
     {
       value: '95%',
       label: 'Tilfredse deltagere',
       icon: <GlobeAltIcon className="w-8 h-8" />,
-      color: 'text-accent-purple'
-    }
+      color: 'text-accent-purple',
+    },
   ];
 
   return (
@@ -40,7 +40,6 @@ const EventsHero: React.FC = () => {
 
       <div className="relative container mx-auto px-4 py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
           {/* Left Column - Content */}
           <div>
             <motion.div
@@ -49,7 +48,7 @@ const EventsHero: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="mb-6"
             >
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-glass-light backdrop-blur-sm text-accent-blue border border-accent-blue/20">
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-glass-light backdrop-blur-xs text-accent-blue border border-accent-blue/20">
                 <CalendarIcon className="w-4 h-4 mr-2" />
                 Kommende Events
               </span>
@@ -63,7 +62,8 @@ const EventsHero: React.FC = () => {
             >
               Udvid din
               <span className="bg-linear-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
-                {' '}viden
+                {' '}
+                viden
               </span>
             </motion.h1>
 
@@ -73,8 +73,8 @@ const EventsHero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-white/80 mb-8 max-w-xl leading-relaxed"
             >
-              Deltag i vores webinarer, workshops og konferencer. Lær fra eksperter, 
-              netværk med ligesindede og hold dig opdateret med de nyeste teknologi trends.
+              Deltag i vores webinarer, workshops og konferencer. Lær fra eksperter, netværk med
+              ligesindede og hold dig opdateret med de nyeste teknologi trends.
             </motion.p>
 
             {/* Next Event Highlight */}
@@ -83,35 +83,34 @@ const EventsHero: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-glass-light backdrop-blur-sm rounded-2xl p-6 border border-white/10 mb-8"
+                className="bg-glass-light backdrop-blur-xs rounded-2xl p-6 border border-white/10 mb-8"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      Næste Event
-                    </h3>
-                    <h4 className="text-2xl font-bold text-accent-blue mb-2">
-                      {nextEvent.title}
-                    </h4>
+                    <h3 className="text-lg font-semibold text-white mb-2">Næste Event</h3>
+                    <h4 className="text-2xl font-bold text-accent-blue mb-2">{nextEvent.title}</h4>
                     <p className="text-white/70 text-sm">
-                      {new Date(nextEvent.date).toLocaleDateString('da-DK', { 
-                        weekday: 'long', 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      })} • {nextEvent.time}
+                      {new Date(nextEvent.date).toLocaleDateString('da-DK', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}{' '}
+                      • {nextEvent.time}
                     </p>
                   </div>
                   <span className="px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-accent-gold to-accent-orange text-white">
                     {nextEvent.price.type === 'free' ? 'Gratis' : `${nextEvent.price.amount} DKK`}
                   </span>
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4 text-sm text-white/70">
                     <div className="flex items-center space-x-1">
                       <UsersIcon className="w-4 h-4" />
-                      <span>{nextEvent.registered}/{nextEvent.capacity}</span>
+                      <span>
+                        {nextEvent.registered}/{nextEvent.capacity}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-1">
                       {nextEvent.location.type === 'online' ? (
@@ -124,7 +123,7 @@ const EventsHero: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <motion.a
                     href={`/events/${nextEvent.slug}`}
                     className="px-6 py-3 bg-linear-to-r from-accent-blue to-accent-purple text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-300"
@@ -154,7 +153,7 @@ const EventsHero: React.FC = () => {
               </motion.a>
               <motion.a
                 href="/contact"
-                className="px-8 py-4 bg-glass-light backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-glass-medium transition-all duration-300 text-center"
+                className="px-8 py-4 bg-glass-light backdrop-blur-xs border border-white/20 text-white font-semibold rounded-xl hover:bg-glass-medium transition-all duration-300 text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -172,14 +171,14 @@ const EventsHero: React.FC = () => {
               className="relative"
             >
               {/* Main Stats Card */}
-              <div className="bg-glass-light backdrop-blur-sm rounded-3xl p-8 border border-white/10 relative overflow-hidden">
+              <div className="bg-glass-light backdrop-blur-xs rounded-3xl p-8 border border-white/10 relative overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-br from-accent-blue/5 to-accent-purple/5" />
-                
+
                 <div className="relative">
                   <h3 className="text-2xl font-bold text-white mb-8 text-center">
                     Event Statistics
                   </h3>
-                  
+
                   <div className="space-y-8">
                     {stats.map((stat, index) => (
                       <motion.div
@@ -193,12 +192,8 @@ const EventsHero: React.FC = () => {
                           {stat.icon}
                         </div>
                         <div>
-                          <div className="text-3xl font-bold text-white">
-                            {stat.value}
-                          </div>
-                          <div className="text-white/70">
-                            {stat.label}
-                          </div>
+                          <div className="text-3xl font-bold text-white">{stat.value}</div>
+                          <div className="text-white/70">{stat.label}</div>
                         </div>
                       </motion.div>
                     ))}
@@ -209,12 +204,12 @@ const EventsHero: React.FC = () => {
               {/* Floating Elements */}
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute -top-6 -right-6 w-24 h-24 bg-linear-to-r from-accent-blue to-accent-purple rounded-full opacity-20 blur-xl"
               />
               <motion.div
                 animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute -bottom-6 -left-6 w-32 h-32 bg-linear-to-r from-accent-green to-accent-blue rounded-full opacity-20 blur-xl"
               />
             </motion.div>

@@ -135,7 +135,10 @@ const AIIdeas = () => {
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 animate-pulse">
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-xs rounded-2xl p-6 border border-white/10 animate-pulse"
+              >
                 <div className="h-4 bg-white/20 rounded mb-4" />
                 <div className="h-3 bg-white/20 rounded mb-2" />
                 <div className="h-3 bg-white/20 rounded mb-4" />
@@ -151,7 +154,7 @@ const AIIdeas = () => {
             {ideas.map((idea, index) => (
               <SSRSafeMotion
                 key={idea.id}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent-blue/30 hover:bg-white/10 transition-all duration-300 group"
+                className="bg-white/5 backdrop-blur-xs rounded-2xl p-6 border border-white/10 hover:border-accent-blue/30 hover:bg-white/10 transition-all duration-300 group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}

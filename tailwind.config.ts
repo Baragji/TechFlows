@@ -80,8 +80,8 @@ const config: Config = {
         },
         hover: '#f76c6c',
         success: '#2a9d8f',
-        'text-dark': '#1a1a1a',
-        'text-light': '#6c757d',
+        'text-dark': '#1a1a1a',        // High contrast (16:1 ratio) - WCAG AAA compliant
+        'text-light': '#4a5568',       // Updated for WCAG AA compliance (7.5:1 ratio)
         'background-light': '#f8f8f8',
         'border-color': '#e4e4e4',
         'border': '#e4e4e4', // Tilføj border farve

@@ -28,7 +28,7 @@ export default function HydrationTest() {
   // Test typewriter effect
   const typewriter = useTypewriter(['Server Safe Text', 'Client Enhanced Text'], {
     speed: 100,
-    loop: true
+    loop: true,
   });
 
   // Test scroll animations
@@ -48,7 +48,7 @@ export default function HydrationTest() {
       }
 
       if (typeof navigator !== 'undefined') {
-        setUserAgent(`${navigator.userAgent.slice(0, 50)  }...`); // Safe in useEffect - client-only
+        setUserAgent(`${navigator.userAgent.slice(0, 50)}...`); // Safe in useEffect - client-only
       }
 
       typewriter.start();
@@ -62,29 +62,47 @@ export default function HydrationTest() {
       {/* Hydration Status */}
       <div className="p-4 bg-gray-800 rounded-lg">
         <h2 className="text-xl font-semibold mb-2">Hydration Status</h2>
-        <p>Is Hydrated: <span className={isHydrated ? 'text-green-400' : 'text-yellow-400'}>
-          {isHydrated ? 'Yes' : 'No'}
-        </span></p>
-        <p>Client Time: <span className="text-blue-400">{clientTime || 'Not set yet'}</span></p>
+        <p>
+          Is Hydrated:{' '}
+          <span className={isHydrated ? 'text-green-400' : 'text-yellow-400'}>
+            {isHydrated ? 'Yes' : 'No'}
+          </span>
+        </p>
+        <p>
+          Client Time: <span className="text-blue-400">{clientTime || 'Not set yet'}</span>
+        </p>
       </div>
 
       {/* Date Handling Test */}
       <div className="p-4 bg-gray-800 rounded-lg">
         <h2 className="text-xl font-semibold mb-2">Date Handling (SSR Safe)</h2>
         <p>Test Date: {testDate}</p>
-        <p>Static Format: <span className="text-green-400">{staticFormattedDate}</span></p>
-        <p>Enhanced Format: <span className="text-blue-400">{formattedDate}</span></p>
-        <p>Day Number: <span className="text-yellow-400">{dayNumber}</span></p>
-        <p>Month Name: <span className="text-purple-400">{monthName}</span></p>
+        <p>
+          Static Format: <span className="text-green-400">{staticFormattedDate}</span>
+        </p>
+        <p>
+          Enhanced Format: <span className="text-blue-400">{formattedDate}</span>
+        </p>
+        <p>
+          Day Number: <span className="text-yellow-400">{dayNumber}</span>
+        </p>
+        <p>
+          Month Name: <span className="text-purple-400">{monthName}</span>
+        </p>
       </div>
 
       {/* Typewriter Test */}
       <div className="p-4 bg-gray-800 rounded-lg">
         <h2 className="text-xl font-semibold mb-2">Typewriter Effect</h2>
-        <p>Text: <span className="text-cyan-400 font-mono">{typewriter.displayText}</span></p>
-        <p>Is Started: <span className={typewriter.isStarted ? 'text-green-400' : 'text-red-400'}>
-          {typewriter.isStarted ? 'Yes' : 'No'}
-        </span></p>
+        <p>
+          Text: <span className="text-cyan-400 font-mono">{typewriter.displayText}</span>
+        </p>
+        <p>
+          Is Started:{' '}
+          <span className={typewriter.isStarted ? 'text-green-400' : 'text-red-400'}>
+            {typewriter.isStarted ? 'Yes' : 'No'}
+          </span>
+        </p>
       </div>
 
       {/* SSR Safe Motion Test */}
@@ -93,7 +111,7 @@ export default function HydrationTest() {
 
         {/* Regular motion (potential hydration issue) */}
         <div className="mb-4">
-          <p className="text-sm text-gray-400 mb-2">Regular Motion (potential issue):</p>
+          <p className="text-sm text-gray-200 mb-2">Regular Motion (potential issue):</p>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -105,7 +123,7 @@ export default function HydrationTest() {
 
         {/* SSR Safe motion */}
         <div>
-          <p className="text-sm text-gray-400 mb-2">SSR Safe Motion:</p>
+          <p className="text-sm text-gray-200 mb-2">SSR Safe Motion:</p>
           <SSRSafeMotion
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -120,13 +138,22 @@ export default function HydrationTest() {
       <div className="p-4 bg-gray-800 rounded-lg">
         <h2 className="text-xl font-semibold mb-2">Scroll Animations</h2>
         <div ref={scrollRef as React.RefObject<HTMLDivElement>} className="p-4 bg-gray-700 rounded">
-          <p>Scroll Visibility: <span className={isVisible ? 'text-green-400' : 'text-gray-400'}>
-            {isVisible ? 'Visible' : 'Not Visible'}
-          </span></p>
+          <p>
+            Scroll Visibility:{' '}
+            <span className={isVisible ? 'text-green-400' : 'text-gray-200'}>
+              {isVisible ? 'Visible' : 'Not Visible'}
+            </span>
+          </p>
         </div>
 
-        <div ref={parallaxRef as React.RefObject<HTMLDivElement>} style={{ transform: `translateY(${offset * 0.1}px)` }} className="mt-4 p-4 bg-gray-700 rounded">
-          <p>Parallax Offset: <span className="text-blue-400">{offset.toFixed(2)}px</span></p>
+        <div
+          ref={parallaxRef as React.RefObject<HTMLDivElement>}
+          style={{ transform: `translateY(${offset * 0.1}px)` }}
+          className="mt-4 p-4 bg-gray-700 rounded"
+        >
+          <p>
+            Parallax Offset: <span className="text-blue-400">{offset.toFixed(2)}px</span>
+          </p>
         </div>
       </div>
 
@@ -135,8 +162,12 @@ export default function HydrationTest() {
         <h2 className="text-xl font-semibold mb-2">Browser-Only Features</h2>
         {isHydrated ? (
           <div>
-            <p>Window Width: <span className="text-green-400">{windowWidth || 'N/A'}</span></p>
-            <p>User Agent: <span className="text-blue-400">{userAgent || 'N/A'}</span></p>
+            <p>
+              Window Width: <span className="text-green-400">{windowWidth || 'N/A'}</span>
+            </p>
+            <p>
+              User Agent: <span className="text-blue-400">{userAgent || 'N/A'}</span>
+            </p>
           </div>
         ) : (
           <p className="text-yellow-400">Browser features will load after hydration...</p>

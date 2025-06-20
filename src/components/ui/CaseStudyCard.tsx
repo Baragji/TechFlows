@@ -16,7 +16,7 @@ const categoryColors = {
   web: 'from-green-500 to-teal-600',
   automation: 'from-orange-500 to-red-600',
   analytics: 'from-purple-500 to-pink-600',
-  strategy: 'from-indigo-500 to-blue-600'
+  strategy: 'from-indigo-500 to-blue-600',
 };
 
 const categoryLabels = {
@@ -24,13 +24,13 @@ const categoryLabels = {
   web: 'Web Udvikling',
   automation: 'Automatisering',
   analytics: 'Analytics',
-  strategy: 'Digital Strategi'
+  strategy: 'Digital Strategi',
 };
 
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) => {
   return (
     <motion.div
-      className="group relative bg-glass-light backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500"
+      className="group relative bg-glass-light backdrop-blur-xs rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -48,10 +48,12 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={index < 3}
         />
-        
+
         {/* Category Badge */}
         <div className="absolute top-4 left-4 z-20">
-          <span className={`px-3 py-1 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white text-sm font-medium rounded-full`}>
+          <span
+            className={`px-3 py-1 bg-linear-to-r ${categoryColors[caseStudy.category]} text-white text-sm font-medium rounded-full`}
+          >
             {categoryLabels[caseStudy.category]}
           </span>
         </div>
@@ -69,9 +71,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
       {/* Content */}
       <div className="p-6">
         {/* Client */}
-        <div className="text-accent-blue text-sm font-medium mb-2">
-          {caseStudy.client}
-        </div>
+        <div className="text-accent-blue text-sm font-medium mb-2">{caseStudy.client}</div>
 
         {/* Title */}
         <h3 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-accent-blue transition-colors duration-300">
@@ -87,12 +87,8 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
         <div className="grid grid-cols-2 gap-4 mb-6">
           {caseStudy.metrics.slice(0, 2).map((metric, idx) => (
             <div key={idx} className="text-center">
-              <div className="text-lg font-bold text-accent-green">
-                {metric.value}
-              </div>
-              <div className="text-xs text-white/60">
-                {metric.label}
-              </div>
+              <div className="text-lg font-bold text-accent-green">{metric.value}</div>
+              <div className="text-xs text-white/60">{metric.label}</div>
             </div>
           ))}
         </div>
@@ -100,10 +96,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index = 0 }) =
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-6">
           {caseStudy.technologies.slice(0, 3).map((tech, idx) => (
-            <span
-              key={idx}
-              className="px-2 py-1 bg-glass-medium text-white/80 text-xs rounded-md"
-            >
+            <span key={idx} className="px-2 py-1 bg-glass-medium text-white/80 text-xs rounded-md">
               {tech}
             </span>
           ))}

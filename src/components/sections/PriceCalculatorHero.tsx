@@ -19,7 +19,7 @@ export default function PriceCalculatorHero() {
             transition={{ duration: 0.6 }}
             className="flex justify-center mb-6"
           >
-            <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
+            <div className="bg-white/20 backdrop-blur-xs rounded-full p-4">
               <CalculatorIcon className="w-16 h-16 text-white" />
             </div>
           </motion.div>
@@ -59,7 +59,7 @@ export default function PriceCalculatorHero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto"
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
               <CurrencyDollarIcon className="w-8 h-8 text-green-400 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Transparent Prissætning</h3>
               <p className="text-sm text-blue-200">
@@ -67,13 +67,13 @@ export default function PriceCalculatorHero() {
               </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
               <ClockIcon className="w-8 h-8 text-yellow-400 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Øjeblikkelig Beregning</h3>
               <p className="text-sm text-blue-200">Få dit estimat på få sekunder</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-xs rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
               <CalculatorIcon className="w-8 h-8 text-purple-400 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Fleksible Muligheder</h3>
               <p className="text-sm text-blue-200">Tilpas dit projekt efter dine behov</p>
