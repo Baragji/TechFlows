@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CaseStudy {
   id: string;
@@ -65,16 +65,6 @@ const caseStudies: CaseStudy[] = [
     tags: ['AR/VR', 'E-commerce', '3D'],
     results: ['45% øgning i konvertering', '80% reduktion i returner', 'Branche innovation award'],
     href: '/case-studies/ar-furniture'
-  },
-  {
-    id: 'ux-wireframes',
-    title: 'Digital Transformation Platform',
-    client: 'Enterprise Solutions',
-    description: 'Omfattende digital transformation med fokus på UX design og workflow optimering.',
-    image: '/images/case-studies/Casestudies6.png',
-    tags: ['UX/UI', 'Enterprise', 'Workflow'],
-    results: ['90% forbedring i workflow', '50% reduktion i onboarding tid', '€5M ROI første år'],
-    href: '/case-studies/digital-transformation'
   }
 ];
 
@@ -107,16 +97,16 @@ const CaseStudiesShowcase = () => {
               Vores Arbejde
             </span>
           </motion.div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Case Studies der
             <span className="block bg-linear-to-r from-accent-blue via-accent-green to-accent-purple bg-clip-text text-transparent">
               inspirerer
             </span>
           </h2>
-          
+
           <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Udforsk hvordan vi har hjulpet virksomheder med at transformere deres digitale tilstedeværelse 
+            Udforsk hvordan vi har hjulpet virksomheder med at transformere deres digitale tilstedeværelse
             og opnå målbare resultater gennem innovative teknologiløsninger.
           </p>
         </motion.div>
@@ -140,12 +130,12 @@ const CaseStudiesShowcase = () => {
                       src={caseStudy.image}
                       alt={caseStudy.title}
                       fill
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-obsidian-darker/80 via-transparent to-transparent" />
-                    
+
                     {/* Tags */}
                     <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                       {caseStudy.tags.slice(0, 2).map((tag, tagIndex) => (
@@ -164,11 +154,11 @@ const CaseStudiesShowcase = () => {
                     <div className="mb-2">
                       <span className="text-accent-blue text-sm font-medium">{caseStudy.client}</span>
                     </div>
-                    
+
                     <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent-blue transition-colors duration-300">
                       {caseStudy.title}
                     </h3>
-                    
+
                     <p className="text-white/70 leading-relaxed mb-4 group-hover:text-white/80 transition-colors duration-300">
                       {caseStudy.description}
                     </p>

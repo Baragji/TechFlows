@@ -135,10 +135,13 @@ export const isValidDate = (dateString: string): boolean => {
 };
 
 // Format relative time (e.g., "2 days ago") in a server-safe way
+// NOTE: This function uses current time which can cause hydration mismatches
+// Use only in useEffect or client-side code where hydration safety isn't critical
 export const getRelativeTime = (dateString: string): string => {
   try {
     const date = new Date(dateString);
-    const now = new Date();
+    // eslint-disable-next-line no-restricted-syntax
+    const now = new Date(Date.now()); // Intentional for relative time calculation
     const diffInMs = now.getTime() - date.getTime();
     const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 

@@ -15,6 +15,8 @@ import { useEffect, useState } from 'react';
 export default function HydrationTest() {
   const isHydrated = useHydration();
   const [clientTime, setClientTime] = useState<string>('');
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [userAgent, setUserAgent] = useState<string>('');
 
   // Test date utilities
   const testDate = '2024-12-15T10:30:00Z';
@@ -36,7 +38,19 @@ export default function HydrationTest() {
   // Client-only effects
   useEffect(() => {
     if (isHydrated) {
-      setClientTime(new Date().toLocaleTimeString());
+      // Use current time only in useEffect to avoid hydration mismatch
+      const currentTime = new Date(); // Safe in useEffect - client-only
+      setClientTime(currentTime.toLocaleTimeString());
+
+      // Set browser info safely - these are client-only in useEffect
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth); // Safe in useEffect - client-only
+      }
+
+      if (typeof navigator !== 'undefined') {
+        setUserAgent(`${navigator.userAgent.slice(0, 50)  }...`); // Safe in useEffect - client-only
+      }
+
       typewriter.start();
     }
   }, [isHydrated, typewriter]);
@@ -105,13 +119,13 @@ export default function HydrationTest() {
       {/* Scroll Animation Test */}
       <div className="p-4 bg-gray-800 rounded-lg">
         <h2 className="text-xl font-semibold mb-2">Scroll Animations</h2>
-        <div ref={scrollRef} className="p-4 bg-gray-700 rounded">
+        <div ref={scrollRef as React.RefObject<HTMLDivElement>} className="p-4 bg-gray-700 rounded">
           <p>Scroll Visibility: <span className={isVisible ? 'text-green-400' : 'text-gray-400'}>
             {isVisible ? 'Visible' : 'Not Visible'}
           </span></p>
         </div>
 
-        <div ref={parallaxRef} style={{ transform: `translateY(${offset * 0.1}px)` }} className="mt-4 p-4 bg-gray-700 rounded">
+        <div ref={parallaxRef as React.RefObject<HTMLDivElement>} style={{ transform: `translateY(${offset * 0.1}px)` }} className="mt-4 p-4 bg-gray-700 rounded">
           <p>Parallax Offset: <span className="text-blue-400">{offset.toFixed(2)}px</span></p>
         </div>
       </div>
@@ -121,8 +135,8 @@ export default function HydrationTest() {
         <h2 className="text-xl font-semibold mb-2">Browser-Only Features</h2>
         {isHydrated ? (
           <div>
-            <p>Window Width: <span className="text-green-400">{typeof window !== 'undefined' ? window.innerWidth : 'N/A'}</span></p>
-            <p>User Agent: <span className="text-blue-400">{typeof navigator !== 'undefined' ? `${navigator.userAgent.slice(0, 50)  }...` : 'N/A'}</span></p>
+            <p>Window Width: <span className="text-green-400">{windowWidth || 'N/A'}</span></p>
+            <p>User Agent: <span className="text-blue-400">{userAgent || 'N/A'}</span></p>
           </div>
         ) : (
           <p className="text-yellow-400">Browser features will load after hydration...</p>
@@ -135,7 +149,7 @@ export default function HydrationTest() {
         <ul className="space-y-1 text-sm">
           <li>✅ Static content renders consistently</li>
           <li>✅ Dates format safely on server and client</li>
-          <li>✅ Animations don't cause hydration mismatches</li>
+          <li>✅ Animations don&apos;t cause hydration mismatches</li>
           <li>✅ Client-only features load after hydration</li>
           <li>✅ No console hydration errors should appear</li>
         </ul>

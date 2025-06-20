@@ -299,11 +299,11 @@ export const events: Event[] = [
   },
   {
     id: '3',
-    slug: 'digital-transformation-conference-2024',
-    title: 'Digital Transformation Conference 2024',
-    description: 'Danmarks største konference om digital transformation med internationale talere og case studies.',
+    slug: 'tech-innovation-conference-2024',
+    title: 'Tech Innovation Conference 2024',
+    description: 'Danmarks største konference om tech innovation med internationale talere og case studies.',
     fullDescription: `
-      <p>Bliv inspireret og lær af de bedste inden for digital transformation. Konferencen byder på:</p>
+      <p>Bliv inspireret og lær af de bedste inden for tech innovation. Konferencen byder på:</p>
       <ul>
         <li>Keynotes fra internationale eksperter</li>
         <li>Case studies fra danske success historier</li>
@@ -312,7 +312,7 @@ export const events: Event[] = [
         <li>Innovation showcase med de nyeste teknologier</li>
         <li>Roundtables og interactive sessions</li>
       </ul>
-      <p>Perfekt for C-level executives, IT ledere og alle der driver digital innovation.</p>
+      <p>Perfekt for C-level executives, IT ledere og alle der driver tech innovation.</p>
     `,
     type: 'conference',
     status: 'upcoming',
@@ -342,10 +342,10 @@ export const events: Event[] = [
       },
       {
         name: 'Yousef Beshara',
-        role: 'Digital Transformation Expert',
+        role: 'Tech Innovation Expert',
         company: 'TechFlow Solutions',
         image: '/api/placeholder/150/150',
-        bio: 'Yousef deler insights om digital transformation i SMV segment og success stories fra danske virksomheder.'
+        bio: 'Yousef deler insights om tech innovation i SMV segment og success stories fra danske virksomheder.'
       }
     ],
     agenda: [
@@ -409,13 +409,13 @@ export const events: Event[] = [
       ]
     },
     categories: ['digital-strategi', 'teknologi'],
-    tags: ['Digital Transformation', 'Leadership', 'Innovation', 'Networking', 'Conference'],
+    tags: ['Tech Innovation', 'Leadership', 'Innovation', 'Networking', 'Conference'],
     image: '/api/placeholder/800/400',
     featured: true,
     seo: {
-      title: 'Digital Transformation Conference 2024 - Danmarks Største Event',
-      description: 'Join 500+ ledere på Danmarks største digital transformation konference. Internationale talere og danske success stories.',
-      keywords: ['digital transformation', 'konference', 'innovation', 'ledelse', 'teknologi']
+      title: 'Tech Innovation Conference 2024 - Danmarks Største Event',
+      description: 'Join 500+ ledere på Danmarks største tech innovation konference. Internationale talere og danske success stories.',
+      keywords: ['tech innovation', 'konference', 'innovation', 'ledelse', 'teknologi']
     }
   }
 ];

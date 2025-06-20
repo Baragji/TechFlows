@@ -2,14 +2,15 @@
 
 import { useHydration } from '@/hooks/useHydration';
 import { motion, MotionProps } from 'framer-motion';
-import { HTMLAttributes, ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 
 // Define common motion component props
 interface SSRSafeMotionProps extends Omit<MotionProps, 'children'> {
   children: ReactNode;
-  as?: keyof typeof motion;
+  as?: ElementType;
   fallbackClassName?: string;
-  [key: string]: any;
+  // Allow additional HTML attributes
+  [key: string]: unknown;
 }
 
 /**
@@ -32,21 +33,21 @@ export const SSRSafeMotion = ({
 }: SSRSafeMotionProps) => {
   const isHydrated = useHydration();
 
-  // Create the motion component dynamically
-  const MotionComponent = motion[as] as any;
-
   if (!isHydrated) {
     // During SSR and initial render, use a regular element
-    const StaticComponent = as as keyof JSX.IntrinsicElements;
+    const StaticComponent = as as ElementType;
     return (
       <StaticComponent
         className={`${fallbackClassName} ${className}`.trim()}
-        {...(props as HTMLAttributes<HTMLElement>)}
+        {...props}
       >
         {children}
       </StaticComponent>
     );
   }
+
+  // Create the motion component dynamically after hydration
+  const MotionComponent = motion[as as keyof typeof motion] as ElementType;
 
   // After hydration, use the full motion component
   return (

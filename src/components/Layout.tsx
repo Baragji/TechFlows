@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import Navigation from './Navigation';
 import FooterEnhanced from './FooterEnhanced';
+import Navigation from './Navigation';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,8 +13,8 @@ const Layout: React.FC<LayoutProps> = ({ children, className = '' }) => {
       {/* Navigation */}
       <Navigation />
 
-      {/* Main Content */}
-      <main className="grow bg-obsidian-dark">{children}</main>
+      {/* Main Content - Fjernet main tag, da det skal være i individuelle sider */}
+      <div className="grow bg-obsidian-dark">{children}</div>
 
       {/* Enhanced Footer */}
       <FooterEnhanced />

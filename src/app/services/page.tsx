@@ -1,15 +1,15 @@
 'use client';
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
-  GlobeAltIcon,
-  ShoppingCartIcon,
-  DevicePhoneMobileIcon,
-  CogIcon,
-  ChartBarIcon,
-  LightBulbIcon,
+    ChartBarIcon,
+    CogIcon,
+    DevicePhoneMobileIcon,
+    GlobeAltIcon,
+    LightBulbIcon,
+    ShoppingCartIcon,
 } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const services = [
   {
@@ -56,7 +56,7 @@ const services = [
     id: 'digital-strategi',
     title: 'Digital Strategi',
     description: 'Strategisk rådgivning og planlægning af din digitale transformation og teknologiske roadmap.',
-    features: ['Digital Transformation', 'Technology Roadmap', 'Competitive Analysis', 'ROI Optimization'],
+    features: ['Strategisk Planlægning', 'Technology Roadmap', 'Competitive Analysis', 'ROI Optimization'],
     icon: LightBulbIcon,
     href: '/services/digital-strategi',
     gradient: 'from-accent-blue to-accent-green',
@@ -114,7 +114,7 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Fra hjemmesider og apps til automatisering og digital strategi - vi leverer skræddersyede løsninger 
+              Fra hjemmesider og apps til automatisering og digital strategi - vi leverer skræddersyede løsninger
               der transformerer din forretning og skaber målbare resultater.
             </motion.p>
 
@@ -171,7 +171,7 @@ export default function ServicesPage() {
                 >
                   <div className="relative h-full bg-glass-light backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 group-hover:bg-glass-medium overflow-hidden">
                     <div className={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
-                    
+
                     <div className="relative mb-6">
                       <div className={`w-16 h-16 bg-linear-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg`}>
                         <IconComponent className="w-8 h-8 text-white" />
@@ -182,7 +182,7 @@ export default function ServicesPage() {
                       <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-white transition-colors duration-300">
                         {service.title}
                       </h3>
-                      
+
                       <p className="text-white/70 leading-relaxed mb-6 group-hover:text-white/80 transition-colors duration-300">
                         {service.description}
                       </p>

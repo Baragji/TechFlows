@@ -263,6 +263,24 @@ const eslintConfig = [
       'no-alert': 'off',
     },
   },
+  // Client-only utility files - relax hydration warnings
+  {
+    files: [
+      '**/ServiceWorkerRegistration.tsx',
+      '**/PerformanceMonitor.tsx',
+      '**/useScrollAnimation.tsx',
+      '**/useNotification.tsx',
+      '**/usePerformance.ts',
+      '**/reportAccessibility.ts',
+      '**/components/templates/**/*.tsx', // For sharing functionality
+      '**/components/debug/**/*.tsx', // For test components
+    ],
+    rules: {
+      'no-restricted-globals': 'off', // These are intentionally client-only
+      'no-restricted-syntax': 'off',  // Allow Date() and performance APIs in client-only code
+      'no-alert': 'off', // Allow confirm() in service worker registration
+    },
+  },
   {
     ignores: [
       '.next/**',

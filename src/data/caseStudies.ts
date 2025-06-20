@@ -144,34 +144,6 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: '5',
-    title: 'Digital Transformation - 5x ROI på 18 Måneder',
-    client: 'Traditional Manufacturing A/S',
-    category: 'strategy',
-    heroImage: '/images/case-studies/digital-transformation-hero.jpg',
-    shortDescription: 'Vi guidede en traditionel virksomhed gennem en komplet digital transformation, hvilket resulterede i 5x return on investment og markedslederskab.',
-    challenge: 'En 50-årig produktionsvirksomhed stod over for digital disruption fra konkurrenter. De havde forældede systemer, ingen online tilstedeværelse og manglede digital kompetence internt.',
-    solution: 'Vi udviklede en holistisk digital strategi der omfattede ny website, CRM implementation, automatiserede workflows, digital marketing og medarbejderuddannelse. Transformationen blev rullet ud i faser for at minimere disruption.',
-    results: 'Virksomheden opnåede 5x return on investment inden for 18 måneder, øgede deres markedsandel med 23% og reducerede operationelle omkostninger med 30%. De er nu markedsledere inden for digital innovation i deres branche.',
-    metrics: [
-      { label: 'ROI', value: '5x', description: 'Inden for 18 måneder' },
-      { label: 'Markedsandel', value: '+23%', description: 'Stigning i markedsposition' },
-      { label: 'Omkostningsreduktion', value: '30%', description: 'Operationelle besparelser' },
-      { label: 'Lead Generation', value: '+380%', description: 'Kvalificerede leads' }
-    ],
-    technologies: ['Salesforce', 'HubSpot', 'Microsoft 365', 'Power BI', 'WordPress', 'Mailchimp'],
-    testimonial: {
-      quote: 'TechFlow Solutions reddede vores virksomhed. Deres strategiske tilgang til digital transformation har ikke bare moderniseret vores forretning, men gjort os til markedsledere.',
-      author: 'Jens Møller',
-      position: 'CEO',
-      company: 'Traditional Manufacturing A/S'
-    },
-    timeline: '18 måneder',
-    budget: '500.000 - 1.000.000 DKK',
-    featured: true,
-    slug: 'traditional-manufacturing-transformation'
-  },
-  {
-    id: '6',
     title: 'Hjemmeside Redesign - 300% Stigning i Leads',
     client: 'Local Service Pro',
     category: 'web',

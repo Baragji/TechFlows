@@ -1,5 +1,5 @@
-import { Metadata } from 'next';
 import ServiceTemplate from '@/components/templates/ServiceTemplate';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Digital Strategi | TechFlow Solutions',
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    title: 'Digital Transformation',
+    title: 'Strategisk Planlægning',
     description: 'Omfattende strategi for at digitalisere og modernisere dine forretningsprocesser.',
     icon: 'RocketLaunchIcon',
   },

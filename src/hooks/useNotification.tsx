@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export type NotificationType = 'success' | 'error' | 'info' | 'warning';
@@ -14,7 +14,7 @@ export interface Notification {
 
 interface NotificationComponentProps {
   notification: Notification;
-  onClose: (id: string) => void;  
+  onClose: (id: string) => void;
 }
 
 const NotificationComponent: React.FC<NotificationComponentProps> = ({ notification, onClose }) => {
@@ -89,10 +89,8 @@ export const useNotification = () => {
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line no-restricted-globals
     if (typeof document !== 'undefined') {
-      // eslint-disable-next-line no-restricted-globals
-      setPortalContainer(document.body);
+      setPortalContainer(document.body); // Safe in useEffect - client-only
     }
   }, []);
 

@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback } from 'react';
 import Link from 'next/link';
+import { useCallback } from 'react';
 
 const Hero = () => {
   const heroWords = ["Du", "kunne", "vokse", "lige", "nu"];
@@ -22,24 +22,24 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Hero Background Image - optimized with bg-fixed only */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: "url('/images/hero/obsidian-bg.jpg')"
         }}
       />
-      
+
       {/* Static Background Elements - no animation for performance */}
       <div className="absolute inset-0 -z-10">
         {/* Subtle Obsidian-style dots pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
             backgroundSize: '60px 60px'
           }}
         />
-        
+
         {/* Very subtle geometric shapes - static for performance */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-accent-blue/3 rounded-full blur-3xl" />
@@ -47,11 +47,11 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-32 relative z-20 flex justify-end">
-        <div className="w-1/2 text-left glass-hero p-6 rounded-xl">
+      <div className="container mx-auto px-4 py-32 relative z-20 flex justify-center">
+        <div className="w-full max-w-4xl text-center glass-hero p-6 rounded-xl">
           {/* Main Headline */}
           <div className="space-y-6 mb-6">
-            <div className="flex flex-wrap justify-start gap-4 text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight">
+            <div className="flex flex-wrap justify-center gap-4 text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight">
               {heroWords.map((word, index) => (
                 <span key={index} className="inline-block">
                   {word}
@@ -59,7 +59,7 @@ const Hero = () => {
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-start gap-3 text-2xl md:text-4xl lg:text-5xl font-medium text-white/90 leading-tight">
+            <div className="flex flex-wrap justify-center gap-3 text-2xl md:text-4xl lg:text-5xl font-medium text-white/90 leading-tight">
               {subWords.map((word, index) => (
                 <span key={index} className="inline-block">
                   {word}
@@ -69,13 +69,13 @@ const Hero = () => {
           </div>
 
           {/* Tagline */}
-          <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light mb-8">
-            Vi skaber digitale løsninger der ikke bare ser godt ud – de leverer målbare resultater. 
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-light mb-8">
+            Vi skaber digitale løsninger der ikke bare ser godt ud – de leverer målbare resultater.
             Fra apps der engagerer til hjemmesider der konverterer og automatisering der sparer tid.
           </p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-3 mb-10">
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
             {['Web Development', 'App Development', 'Digital Marketing', 'SEO', 'Automation'].map((tag, index) => (
               <span
                 key={index}
@@ -87,7 +87,7 @@ const Hero = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="pt-8">
+          <div className="pt-8 text-center">
             <Link
               href="/prisberegner"
               className="inline-flex items-center justify-center bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-lg transition-all duration-300"
