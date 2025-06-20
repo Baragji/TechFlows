@@ -1,17 +1,19 @@
-import { Metadata } from 'next';
-import PortfolioGrid from '@/components/sections/PortfolioGrid';
 import ClientMarquee from '@/components/sections/ClientMarquee';
+import PortfolioGrid from '@/components/sections/PortfolioGrid';
 import StatsSection from '@/components/sections/StatsSection';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Case Studies | TechFlow Solutions',
-  description: 'Udforsk vores succeshistorier og se hvordan vi har hjulpet virksomheder med at opnå ekstraordinære resultater gennem innovative digitale løsninger.',
-  keywords: 'case studies, portfolio, succeshistorier, digitale løsninger, app udvikling, hjemmesider, automatisering',
+  description:
+    'Udforsk vores succeshistorier og se hvordan vi har hjulpet virksomheder med at opnå ekstraordinære resultater gennem innovative digitale løsninger.',
+  keywords:
+    'case studies, portfolio, succeshistorier, digitale løsninger, app udvikling, hjemmesider, automatisering',
 };
 
 export default function CaseStudiesPage() {
   return (
-    <main className="min-h-screen bg-obsidian-950">
+    <div className="min-h-screen bg-obsidian-950">
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
         {/* Background Elements */}
@@ -29,8 +31,8 @@ export default function CaseStudiesPage() {
               Succeshistorier der inspirerer og beviser vores ekspertise
             </p>
             <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
-              Udforsk hvordan vi har hjulpet virksomheder med at transformere deres 
-              digitale tilstedeværelse og opnå målbare resultater gennem innovative løsninger.
+              Udforsk hvordan vi har hjulpet virksomheder med at transformere deres digitale
+              tilstedeværelse og opnå målbare resultater gennem innovative løsninger.
             </p>
           </div>
         </div>
@@ -44,6 +46,6 @@ export default function CaseStudiesPage() {
 
       {/* Client Marquee */}
       <ClientMarquee />
-    </main>
+    </div>
   );
 }

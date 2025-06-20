@@ -1,10 +1,9 @@
 /* eslint-env jest */
- 
-import React from 'react'
+
 import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
+import React from 'react'
 import FeaturedEvents from '../FeaturedEvents'
-import Image from 'next/image'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -19,8 +18,8 @@ jest.mock('framer-motion', () => ({
 // Mock Next.js Image component
 jest.mock('next/image', () => {
   return function MockImage({ src, alt, ...props }: React.ComponentProps<'img'>) {
-     
-    return <Image src="/images/events/default-event.svg" alt="Event billede" width={800} height={600} />
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={src || "/images/events/default-event.svg"} alt={alt || "Event billede"} {...props} />
   }
 })
 
@@ -98,7 +97,7 @@ describe('FeaturedEvents', () => {
 
   it('should render featured events', () => {
     render(<FeaturedEvents />)
-    
+
     expect(screen.getByText('Kommende Events')).toBeTruthy()
     expect(screen.getByText('Test Event 1')).toBeTruthy()
     expect(screen.getByText('Test Event 2')).toBeTruthy()
@@ -106,7 +105,7 @@ describe('FeaturedEvents', () => {
 
   it('should have proper alt text for images', () => {
     render(<FeaturedEvents />)
-    
+
     const images = screen.getAllByRole('img')
     images.forEach(img => {
       expect(img.hasAttribute('alt')).toBe(true)
@@ -116,7 +115,7 @@ describe('FeaturedEvents', () => {
 
   it('should have proper src attributes for images', () => {
     render(<FeaturedEvents />)
-    
+
     const images = screen.getAllByRole('img')
     images.forEach(img => {
       expect(img.hasAttribute('src')).toBe(true)
@@ -126,9 +125,9 @@ describe('FeaturedEvents', () => {
 
   it('should use fallback image when event image is empty', () => {
     render(<FeaturedEvents />)
-    
+
     const images = screen.getAllByRole('img')
-    const fallbackImage = images.find(img => 
+    const fallbackImage = images.find(img =>
       img.getAttribute('src')?.includes('default-event.svg')
     )
     expect(fallbackImage).toBeTruthy()
@@ -136,7 +135,7 @@ describe('FeaturedEvents', () => {
 
   it('should have accessible links', () => {
     render(<FeaturedEvents />)
-    
+
     const links = screen.getAllByRole('link')
     links.forEach(link => {
       expect(link.hasAttribute('href')).toBe(true)
@@ -146,17 +145,17 @@ describe('FeaturedEvents', () => {
 
   it('should have proper heading structure', () => {
     render(<FeaturedEvents />)
-    
+
     const mainHeading = screen.getByRole('heading', { level: 2 })
     expect(mainHeading.textContent).toBe('Kommende Events')
-    
+
     const eventHeadings = screen.getAllByRole('heading', { level: 3 })
     expect(eventHeadings).toHaveLength(3) // 2 event titles + 1 'Mist aldrig et event' heading
   })
 
   it('should display event details correctly', () => {
     render(<FeaturedEvents />)
-    
+
     expect(screen.getByText('Gratis')).toBeTruthy()
     expect(screen.getByText('299 DKK')).toBeTruthy()
     expect(screen.getByText('Online Event')).toBeTruthy()
@@ -165,7 +164,7 @@ describe('FeaturedEvents', () => {
 
   it('should show "Få pladser" warning when capacity is almost full', () => {
     render(<FeaturedEvents />)
-    
+
     expect(screen.getByText('Få pladser')).toBeTruthy()
   })
 })

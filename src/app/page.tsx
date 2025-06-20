@@ -2,7 +2,7 @@ import {
   LazyClientMarquee,
   LazyFeaturedEvents,
   LazyStatsSection,
-  LazyTestimonialsCarousel
+  LazyTestimonialsCarousel,
 } from '@/components/lazy/LazyComponents';
 import AIIdeas from '@/components/sections/AIIdeas';
 import CaseStudiesShowcase from '@/components/sections/CaseStudiesShowcase';
@@ -16,13 +16,17 @@ export default function Home() {
     name: 'TechFlow Solutions',
     url: 'https://techflow.dk',
     logo: 'https://techflow.dk/logo.png',
-    description: 'Innovative teknologiløsninger til moderne virksomheder. Specialiseret i app udvikling, hjemmesider og automatisering.',
+    description:
+      'Innovative teknologiløsninger til moderne virksomheder. Specialiseret i app udvikling, hjemmesider og automatisering.',
   };
 
   return (
-    <main>
+    <>
       <StructuredData type="Organization" data={organizationData} />
-      <StructuredData type="WebSite" data={{ name: 'TechFlow Solutions', url: 'https://techflow.dk' }} />
+      <StructuredData
+        type="WebSite"
+        data={{ name: 'TechFlow Solutions', url: 'https://techflow.dk' }}
+      />
       <StructuredData type="LocalBusiness" data={{}} />
 
       <Hero />
@@ -34,6 +38,6 @@ export default function Home() {
       <LazyTestimonialsCarousel />
       <LazyFeaturedEvents />
       <Contact />
-    </main>
+    </>
   );
 }

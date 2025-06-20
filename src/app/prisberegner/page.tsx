@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
-import PriceCalculatorHero from '@/components/sections/PriceCalculatorHero';
-import PriceCalculator from '@/components/sections/PriceCalculator';
 import ContactCTA from '@/components/sections/ContactCTA';
+import PriceCalculator from '@/components/sections/PriceCalculator';
+import PriceCalculatorHero from '@/components/sections/PriceCalculatorHero';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Prisberegner | TechFlow Solutions',
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 export default function PrisberegnerPage() {
   return (
-    <main>
+    <>
       <PriceCalculatorHero />
       <PriceCalculator />
       <ContactCTA />
-    </main>
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
+import { LazyBlogGrid } from '@/components/lazy/LazyComponents';
 import BlogHero from '@/components/sections/BlogHero';
 import Newsletter from '@/components/sections/Newsletter';
-import { LazyBlogGrid } from '@/components/lazy/LazyComponents';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Blog - TechFlow Solutions',
@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main>
+    <>
       <BlogHero />
       <LazyBlogGrid />
       <Newsletter />
-    </main>
+    </>
   );
 }

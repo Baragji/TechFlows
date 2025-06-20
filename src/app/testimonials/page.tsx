@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
-import TestimonialsHero from '@/components/sections/TestimonialsHero';
-import TestimonialsGrid from '@/components/sections/TestimonialsGrid';
-import TestimonialsStats from '@/components/sections/TestimonialsStats';
 import TestimonialsCTA from '@/components/sections/TestimonialsCTA';
+import TestimonialsGrid from '@/components/sections/TestimonialsGrid';
+import TestimonialsHero from '@/components/sections/TestimonialsHero';
+import TestimonialsStats from '@/components/sections/TestimonialsStats';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Kundeanmeldelser - TechFlow Solutions',
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <main>
+    <>
       <TestimonialsHero />
       <TestimonialsGrid />
       <TestimonialsStats />
       <TestimonialsCTA />
-    </main>
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
+import React from 'react'
 
 // Extend Jest matchers
 expect.extend(toHaveNoViolations)
@@ -46,9 +46,9 @@ interface ExampleComponentProps {
   title?: string
 }
 
-const ExampleComponent: React.FC<ExampleComponentProps> = ({ 
-  events = mockEvents, 
-  title = "Featured Events" 
+const ExampleComponent: React.FC<ExampleComponentProps> = ({
+  events = mockEvents,
+  title = "Featured Events"
 }) => {
   return (
     <section className="featured-events" aria-labelledby="featured-events-title">
@@ -56,8 +56,8 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
       <div className="events-grid">
         {events.map((event) => (
           <article key={event.id} className="event-card">
-            <img 
-              src={event.image || '/images/placeholder.svg'} 
+            <img
+              src={event.image || '/images/placeholder.svg'}
               alt={`Billede af ${event.title}`}
               loading="lazy"
             />
@@ -86,7 +86,7 @@ describe('ExampleComponent', () => {
   // Content testing
   it('displays all events', () => {
     render(<ExampleComponent events={mockEvents} />)
-    
+
     mockEvents.forEach(event => {
       expect(screen.getByText(event.title)).toBeInTheDocument()
       expect(screen.getByText(event.location)).toBeInTheDocument()
@@ -97,7 +97,7 @@ describe('ExampleComponent', () => {
   // Image testing
   it('renders images with proper alt text', () => {
     render(<ExampleComponent events={mockEvents} />)
-    
+
     mockEvents.forEach(event => {
       const img = screen.getByAltText(`Billede af ${event.title}`)
       expect(img).toBeInTheDocument()
@@ -123,10 +123,10 @@ describe('ExampleComponent', () => {
   // Structure testing
   it('has correct heading structure', () => {
     render(<ExampleComponent />)
-    
+
     const headings = screen.getAllByRole('heading')
-    expect(headings).toHaveLength(3) // 1 h2 + 2 h3 (events + "Mist aldrig")
-    
+    expect(headings).toHaveLength(4) // 1 h2 + 3 h3 (2 events + "Mist aldrig")
+
     const mainHeading = screen.getByRole('heading', { level: 2 })
     expect(mainHeading).toHaveTextContent('Featured Events')
   })
@@ -141,10 +141,10 @@ describe('ExampleComponent', () => {
   // ARIA testing
   it('has proper ARIA attributes', () => {
     render(<ExampleComponent />)
-    
+
     const section = screen.getByRole('region')
     expect(section).toHaveAttribute('aria-labelledby', 'featured-events-title')
-    
+
     const articles = screen.getAllByRole('article')
     expect(articles).toHaveLength(mockEvents.length)
   })
@@ -153,7 +153,7 @@ describe('ExampleComponent', () => {
   it('handles user interactions', async () => {
     const user = userEvent.setup()
     render(<ExampleComponent />)
-    
+
     // Test that images are focusable and accessible
     const images = screen.getAllByRole('img')
     for (const img of images) {
@@ -170,16 +170,16 @@ describe('Component Utilities', () => {
       ...mockEvents[0],
       image: ''
     }
-    
+
     render(<ExampleComponent events={[eventWithoutImage]} />)
-    
+
     const img = screen.getByAltText(`Billede af ${eventWithoutImage.title}`)
     expect(img).toHaveAttribute('src', '/images/placeholder.svg')
   })
 
   it('maintains semantic structure', () => {
     render(<ExampleComponent />)
-    
+
     // Check for proper semantic elements
     expect(screen.getByRole('region')).toBeInTheDocument() // section
     expect(screen.getAllByRole('article')).toHaveLength(mockEvents.length)

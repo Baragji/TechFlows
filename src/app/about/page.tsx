@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
-import AboutHero from '@/components/sections/AboutHero';
 import AboutContent from '@/components/sections/AboutContent';
+import AboutHero from '@/components/sections/AboutHero';
 import TeamSection from '@/components/sections/TeamSection';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Om os - TechFlow Solutions',
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <AboutHero />
       <AboutContent />
       <TeamSection />
-    </main>
+    </div>
   );
 }

@@ -1,18 +1,5 @@
 {
-  "*.{js,jsx,ts,tsx}": [
-    "eslint --fix",
-    "prettier --write",
-    "git add"
-  ],
-  "*.{json,md,yml,yaml}": [
-    "prettier --write",
-    "git add"
-  ],
-  "*.{css,scss,sass}": [
-    "prettier --write",
-    "git add"
-  ],
-  "*.{ts,tsx}": [
-    "tsc --noEmit --skipLibCheck"
-  ]
+  "*.{js,jsx,ts,tsx}": ["prettier --write", "eslint --fix"],
+  "*.{json,md,yml,yaml}": ["prettier --write"],
+  "*.{css,scss,sass}": ["prettier --write"]
 }
