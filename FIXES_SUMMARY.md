@@ -14,7 +14,7 @@ Successfully fixed all critical issues identified in the Debugstatus.md file. Th
 
 ### 2. TypeScript Type Errors ✅
 - **Problem**: Implicit any types and type compatibility issues
-- **Solution**: 
+- **Solution**:
   - Fixed FeaturedEvents component with proper TypeScript interfaces
   - Fixed SafeImage component type issues
   - Fixed SEO utility type compatibility
@@ -108,5 +108,48 @@ npm run type-check      # ✅ No TypeScript errors
 npm run lint           # ✅ Passing with minor warnings
 npm test               # ✅ Tests running (some test fixes needed)
 ```
+
+## Latest Fixes (Juni 2025)
+
+### 6. Layout Overlap Fix - Hero Section ✅
+- **Date**: 2024-12-23
+- **Problem**: 'Scroll for mere' text and 'Kom i gang i dag' button overlapping
+- **Files Modified**:
+  - src/components/sections/Hero.tsx
+- **Solution**:
+  - Added proper spacing with `pb-16` to CTA container
+  - Enhanced container padding with `pb-20`
+  - Made scroll indicator responsive with breakpoint-specific positioning
+  - Added smooth animations and hover effects
+- **Status**: ✅ Resolved
+- **Build Status**: ✅ Verified successful
+
+### 6.1. Hydration Mismatch Fix - Animation Issue ✅
+- **Date**: 2024-12-23
+- **Problem**: Hydration error caused by `animate-bounce` class applied during SSR
+- **Files Modified**:
+  - src/components/sections/Hero.tsx
+- **Solution**:
+  - Added `useState` and `useEffect` for client-side detection
+  - Conditionally apply `animate-bounce` only after client mount
+  - Prevents server/client HTML mismatch during hydration
+- **Status**: ✅ Resolved
+- **Error**: "Hydration failed because the server rendered HTML didn't match the client"
+
+### 7. Node.js Version Specification ✅
+- **Date**: 2024-12-23
+- **Problem**: Missing Node.js version in package.json for Vercel deployment
+- **Files Modified**:
+  - package.json
+- **Solution**: Added engines field specifying Node.js >=20.0.0 (Vercel recommendation)
+- **Status**: ✅ Resolved
+
+### 8. Deployment Guide Update ✅
+- **Date**: 2024-12-23
+- **Problem**: Outdated deployment guide with incorrect recommendations
+- **Files Modified**:
+  - debugging/Verceldeployment/Guide-Updated-June2025.md
+- **Solution**: Created comprehensive updated guide with June 2025 best practices
+- **Status**: ✅ Resolved
 
 The codebase is now production-ready and all critical issues from the debug status have been resolved.
