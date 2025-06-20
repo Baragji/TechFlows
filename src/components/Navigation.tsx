@@ -106,7 +106,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <motion.nav
-      className="fixed top-5 left-0 w-full z-(--z-index-nav) transition-all duration-300"
+      className="fixed top-5 left-0 w-full z-[var(--z-index-nav)] transition-all duration-300"
       style={{ '--navbar-height': '72px' } as React.CSSProperties}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -115,7 +115,7 @@ const Navigation: React.FC<NavigationProps> = () => {
     >
       <div className="max-w-[1280px] mx-auto flex items-center justify-between">
         {/* Left Navigation Group */}
-        <div className="flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero">
+        <div className="flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero overflow-visible">
           {/* Logo */}
           <motion.div
             className="shrink-0"
@@ -175,7 +175,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 glass-hero rounded-2xl overflow-hidden z-(--z-index-dropdown)"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 glass-hero rounded-2xl overflow-hidden z-[var(--z-index-dropdown)]"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-4">
@@ -230,7 +230,7 @@ const Navigation: React.FC<NavigationProps> = () => {
         </div>
 
         {/* Right Navigation Group */}
-        <div className="hidden lg:flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero">
+        <div className="hidden lg:flex items-center gap-6 px-6 py-2.5 rounded-full glass-hero overflow-visible">
           {/* Language Selector */}
           <div className="flex items-center gap-1 cursor-pointer pr-4 border-r border-white/20">
             <span className="text-sm">🌐</span>

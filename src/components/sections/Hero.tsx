@@ -54,7 +54,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-32 relative z-(--z-index-hero) flex justify-center">
+      <div className="container mx-auto px-4 py-32 relative z-[var(--z-index-hero)] flex justify-center">
         <div className="w-full max-w-4xl text-center glass-hero p-6 pb-20 rounded-xl relative">
           {/* Main Headline */}
           <div className="space-y-6 mb-6">
